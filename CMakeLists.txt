@@ -10,6 +10,7 @@ if(NOT MSVC)
 endif()
 
 include_directories(${CMAKE_SOURCE_DIR}/3rdParty/spdlog/include)
+include_directories(${CMAKE_SOURCE_DIR}/src)
 
 if(WITH_COVERAGE)
     set(CMAKE_CXX_FLAGS "-g -O0 -Wwrite-strings -fprofile-arcs -ftest-coverage")
