@@ -1,29 +1,35 @@
-#include <spdlog/spdlog.h>
-#include <candbc.h>
-
 #include <regex>
 #include <iostream>
+#include <log.hpp>
+#include <candb.h>
+#include <memory>
+
+std::shared_ptr<spdlog::logger> kDefaultLogger;
 
 int main()
 {
-    spdlog::set_level(spdlog::level::debug);
-    spdlog::set_pattern("[%n][%L] %v");
-    auto log = spdlog::stdout_color_mt("CANdbc"); 
-    CANdbc dbc(log);
+    using namespace CANdb;
 
-    std::regex regTst("^BO\\_ (\\w+) (\\w+) *: (\\w+) (\\w+)");
+    kDefaultLogger = spdlog::stdout_color_mt("cdb");
+    kDefaultLogger->set_level(spdlog::level::debug);
 
-    std::string strTst("BO_ 2027 RawChannel11_IocTx: 8 IviBrd2");
+    std::unique_ptr<ParserInterface> parser(Parser::create(Format::DBC));
 
-    std::smatch res;
+    parser->parse("/home/remol/.vimrc");    
 
-    if(std::regex_match(strTst, res, regTst)) {
-        log->info("Match! Size={}", res.size()-1);
+    //std::regex regTst("^BO\\_ (\\w+) (\\w+) *: (\\w+) (\\w+)");
 
-        for(unsigned long i = 1; i < res.size(); ++i) {
-            log->info("Match {}, str: {}", i, res[i].str());
-        }
-    }
+    //std::string strTst("BO_ 2027 RawChannel11_IocTx: 8 IviBrd2");
+
+    //std::smatch res;
+
+    //if(std::regex_match(strTst, res, regTst)) {
+        //cdb_debug("Match! Size={}", res.size()-1);
+
+        //for(unsigned long i = 1; i < res.size(); ++i) {
+            //cdb_debug("Match {}, str: {}", i, res[i].str());
+        //}
+    //}
 
     return 0;
 }

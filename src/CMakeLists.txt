@@ -1,5 +1,6 @@
 set(SRC
-    candbc.cpp
+    candb.cpp
+    dbcparser.cpp
 )
 
 add_library(CANdbc ${SRC})
