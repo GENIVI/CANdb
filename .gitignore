@@ -1,4 +1,8 @@
 build
+.clang-format
+.vimrc
+.ycm_extra_conf.py
+*.user
 
 # VIM swap files
 *.swp
