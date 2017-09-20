@@ -22,7 +22,10 @@ struct CANsignal {
     std::string receiver;
     CANsignalType type;
 
-    bool operator==(const CANsignal& rhs) const { return signal_name == rhs.signal_name; }
+    bool operator==(const CANsignal& rhs) const
+    {
+        return signal_name == rhs.signal_name;
+    }
 };
 
 struct CANmessage {
@@ -34,7 +37,10 @@ struct CANmessage {
 
 namespace std {
 template <> struct less<CANmessage> {
-    bool operator()(const CANmessage& lhs, const CANmessage& rhs) const { return lhs.id < rhs.id; }
+    bool operator()(const CANmessage& lhs, const CANmessage& rhs) const
+    {
+        return lhs.id < rhs.id;
+    }
 };
 } // namespace std
 
@@ -49,12 +55,14 @@ struct CANdb_t {
         std::vector<ValTableEntry> entries;
     };
 
-    std::map<CANmessage, std::vector<CANsignal> > messages;
+    std::map<CANmessage, std::vector<CANsignal>> messages;
     std::string version;
     std::vector<std::string> nodes;
     std::vector<std::string> symbols;
     std::vector<std::string> ecus;
     std::vector<ValTable> val_tables;
+
+    template <typename Archive> void serialize(Archive& ar) { ar(version); }
 };
 
 #endif /* end of include guard: CANTYPES_HPP_ML9DFK7A */
