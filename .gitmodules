@@ -1,3 +1,15 @@
 [submodule "3rdParty/spdlog"]
 	path = 3rdParty/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "3rdParty/cpp-peglib"]
+	path = 3rdParty/cpp-peglib
+	url = https://github.com/yhirose/cpp-peglib.git
+[submodule "3rdParty/embed-resource"]
+	path = 3rdParty/embed-resource
+	url = https://github.com/cyrilcode/embed-resource.git
+[submodule "3rdParty/gtest"]
+	path = 3rdParty/gtest
+	url = https://github.com/google/googletest.git
+[submodule "tests/dbc/opendbc"]
+	path = tests/dbc/opendbc
+	url = https://github.com/commaai/opendbc.git
