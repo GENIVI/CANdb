@@ -2,7 +2,8 @@
 #include <gtest/gtest.h>
 #include <peglib.h>
 
-std::shared_ptr<spdlog::logger> kDefaultLogger = []() -> std::shared_ptr<spdlog::logger> {
+std::shared_ptr<spdlog::logger> kDefaultLogger
+    = []() -> std::shared_ptr<spdlog::logger> {
     auto z = std::getenv("CDB_LEVEL");
     auto logger = spdlog::stdout_color_mt("cdb");
 
@@ -11,7 +12,8 @@ std::shared_ptr<spdlog::logger> kDefaultLogger = []() -> std::shared_ptr<spdlog:
     } else {
         const std::string ll{ z };
 
-        auto it = std::find_if(std::begin(spdlog::level::level_names), std::end(spdlog::level::level_names),
+        auto it = std::find_if(std::begin(spdlog::level::level_names),
+            std::end(spdlog::level::level_names),
             [&ll](const char* name) { return std::string{ name } == ll; });
 
         if (it != std::end(spdlog::level::level_names)) {
@@ -25,7 +27,9 @@ std::shared_ptr<spdlog::logger> kDefaultLogger = []() -> std::shared_ptr<spdlog:
 struct PegParser : public ::testing::Test {
     PegParser()
     {
-        parser.log = [](size_t l, size_t k, const std::string& s) { cdb_error("Parser log {}:{} {}", l, k, s); };
+        parser.log = [](size_t l, size_t k, const std::string& s) {
+            cdb_error("Parser log {}:{} {}", l, k, s);
+        };
     }
     peg::parser parser;
 };

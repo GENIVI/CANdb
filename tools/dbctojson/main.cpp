@@ -8,8 +8,8 @@
 #include <cereal/archives/json.hpp>
 #include <cereal/archives/xml.hpp>
 #include <cereal/cereal.hpp>
-#include <spdlog/fmt/fmt.h>
 #include <cxxopts.hpp>
+#include <spdlog/fmt/fmt.h>
 
 namespace {
 std::string loadDBCFile(const std::string& filename)

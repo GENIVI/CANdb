@@ -58,7 +58,8 @@ TEST_P(OpenDBCTest, parse_dbc_file)
     ASSERT_TRUE(parser.parse(file));
 
     if (dbc_file == "tesla_can.dbc") {
-        EXPECT_EQ(parser.getDb().symbols, test_data::dbc_data.at(dbc_file).symbols);
+        EXPECT_EQ(
+            parser.getDb().symbols, test_data::dbc_data.at(dbc_file).symbols);
         EXPECT_EQ(parser.getDb().ecus, test_data::dbc_data.at(dbc_file).bu);
     }
 }
