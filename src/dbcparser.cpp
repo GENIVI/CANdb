@@ -24,12 +24,13 @@ template <typename T> auto take_first(T& container) -> typename T::value_type
 
     return v;
 }
+
 template <typename T> auto take_back(T& container) -> typename T::value_type
 {
     if (container.empty()) {
         throw std::runtime_error("empty contaienr");
     }
-    auto v = container.back();
+    const auto v = container.back();
     container.pop_back();
 
     return v;
@@ -66,6 +67,7 @@ std::string withLines(const std::string& dbcFile)
     return buff;
 }
 
+// Changes \r\n to \n
 std::string dos2unix(const std::string& data)
 {
     std::string noWindowsShit;
@@ -111,8 +113,7 @@ bool DBCParser::parse(const std::string& data) noexcept
         if (phrases.empty()) {
             throw peg::parse_error("Version phrase not found");
         }
-        can_database.version = phrases.at(0);
-        phrases.clear();
+        can_database.version = take_back(phrases);
     };
 
     parser["phrase"] = [&phrases](const peg::SemanticValues& sv) {
@@ -130,12 +131,12 @@ bool DBCParser::parse(const std::string& data) noexcept
     parser["TOKEN"] = [&idents](const peg::SemanticValues& sv) {
         auto s = sv.token();
         boost::algorithm::erase_all(s, "\n");
-        cdb_trace("Found token {}", s);
         idents.push_back(s);
     };
 
-    parser["bs"] = [](const peg::SemanticValues& sv) {
-        cdb_debug("Found BS {}", sv.token());
+    parser["bs"] = [](const peg::SemanticValues&) {
+        // TODO: Implement me
+        cdb_warn("TAG BS Not implemented");
     };
 
     parser["sign"] = [&signs](const peg::SemanticValues& sv) {
@@ -156,43 +157,53 @@ bool DBCParser::parse(const std::string& data) noexcept
     };
 
     parser["number"] = [&signs, &numbers, this](const peg::SemanticValues& sv) {
-        cdb_debug("Found number {}", sv.token());
-        auto number = std::stol(sv.token(), nullptr, 10);
-        cdb_trace("Found number {}", number);
-        numbers.push_back(number);
+        try {
+            cdb_debug("Found number {}", sv.token());
+            auto number = std::stol(sv.token(), nullptr, 10);
+            cdb_trace("Found number {}", number);
+            numbers.push_back(number);
+        } catch (const std::exception& ex) {
+            cdb_error("Unable to parse {} to a number", sv.token());
+        }
     };
 
     parser["number_phrase_pair"] = [&phrasesPairs, &numbers, &phrases, this](
                                        const peg::SemanticValues& sv) {
-        cdb_trace("number phrase pair");
-        phrasesPairs.push_back(std::make_pair(numbers.at(0), phrases.at(0)));
+        phrasesPairs.push_back(
+            std::make_pair(take_back(numbers), take_back(phrases)));
     };
 
-    parser["val_entry"] = [this, phrasesPairs](const peg::SemanticValues&) {
+    parser["val_entry"] = [this, &phrasesPairs](const peg::SemanticValues&) {
         std::vector<CANdb_t::ValTable::ValTableEntry> tab;
         std::transform(phrasesPairs.begin(), phrasesPairs.end(),
             std::back_inserter(tab), [](const auto& p) {
                 return CANdb_t::ValTable::ValTableEntry{ p.first, p.second };
             });
         can_database.val_tables.push_back(CANdb_t::ValTable{ "", tab });
+        phrasesPairs.clear();
     };
 
     std::vector<CANsignal> signals;
-    parser["message"] = [this, &numbers, &signals, &idents](
-                            const peg::SemanticValues& sv) {
-        cdb_debug(
-            "Found a message {} signals = {}", idents.size(), signals.size());
-        if (numbers.size() < 2 || idents.size() < 2) {
-            return;
-        }
-        CANmessage msg{ static_cast<std::uint32_t>(numbers.at(0)), idents.at(0),
-            static_cast<std::uint32_t>(numbers.at(1)), idents.at(1) };
-        cdb_debug("Found a message with id = {}", msg.id);
-        can_database.messages[msg] = signals;
-        signals.clear();
-        numbers.clear();
-        idents.clear();
-    };
+    parser["message"]
+        = [this, &numbers, &signals, &idents](const peg::SemanticValues& sv) {
+              cdb_debug("Found a message {} signals = {}", idents.size(),
+                  signals.size());
+              if (numbers.size() < 2 || idents.size() < 2) {
+                  return;
+              }
+              auto dlc = take_back(numbers);
+              auto id = take_back(numbers);
+              auto ecu = take_back(idents);
+              auto name = take_back(idents);
+
+              const CANmessage msg{ static_cast<std::uint32_t>(id), name,
+                  static_cast<std::uint32_t>(dlc), ecu };
+              cdb_debug("Found a message with id = {}", msg.id);
+              can_database.messages[msg] = signals;
+              signals.clear();
+              numbers.clear();
+              idents.clear();
+          };
 
     parser["signal"] = [&idents, &numbers, &phrases, &signals, &signs](
                            const peg::SemanticValues& sv) {
