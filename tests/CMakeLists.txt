@@ -23,3 +23,9 @@ target_link_libraries(tesla_dbc_tests CANdbc ${CMAKE_THREAD_LIBS_INIT} gtest gte
 target_include_directories(tesla_dbc_tests PRIVATE ${CMAKE_SOURCE_DIR}/3rdParty/cpp-peglib/)
 
 gtest_add_tests( tesla_dbc_tests "" AUTO)
+
+find_program(VALGRIND "valgrind")
+if(VALGRIND)
+    add_custom_target(valgrind
+        COMMAND "${VALGRIND}" --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ctest)
+endif()
