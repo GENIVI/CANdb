@@ -1,2 +1,2 @@
 add_subdirectory(dbclint)
-add_subdirectory(dbctojson)
+add_subdirectory(dbconverter)
