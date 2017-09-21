@@ -11,9 +11,9 @@ struct DBCParser : public ParserInterface {
     virtual bool parse(const std::string& data) noexcept override;
     virtual CANdb_t getDb() const override;
 
-   private:
+private:
     CANdb_t can_database;
 };
-}  // namespace CANdf
+} // namespace CANdb
 
 #endif /* !__CANDBC_H */

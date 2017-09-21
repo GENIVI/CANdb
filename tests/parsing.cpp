@@ -6,7 +6,8 @@
 
 std::shared_ptr<spdlog::logger> kDefaultLogger;
 
-int main() {
+int main()
+{
     using namespace CANdb;
 
     kDefaultLogger = spdlog::stdout_color_mt("cdb");
