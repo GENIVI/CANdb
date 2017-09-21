@@ -8,6 +8,8 @@
 #include <cereal/archives/json.hpp>
 #include <cereal/archives/xml.hpp>
 #include <cereal/cereal.hpp>
+#include <cereal/types/vector.hpp>
+#include <cereal/types/map.hpp>
 #include <cxxopts.hpp>
 #include <spdlog/fmt/fmt.h>
 
@@ -35,7 +37,7 @@ template <typename Archive>
 void serialize(const std::string& filename, CANdb_t& db)
 {
     std::ofstream file{ filename.c_str() };
-    Archive ar{ file };
+    Archive ar{ std::cout };
     ar(db);
 }
 
