@@ -3,13 +3,14 @@
 
 #include "dbcparser.h"
 #include "log.hpp"
+#include "vsi_serializer.hpp"
 
 #include <cereal/archives/binary.hpp>
 #include <cereal/archives/json.hpp>
 #include <cereal/archives/xml.hpp>
 #include <cereal/cereal.hpp>
-#include <cereal/types/vector.hpp>
 #include <cereal/types/map.hpp>
+#include <cereal/types/vector.hpp>
 #include <cxxopts.hpp>
 #include <spdlog/fmt/fmt.h>
 
@@ -36,7 +37,6 @@ std::string loadDBCFile(const std::string& filename)
 template <typename Archive>
 void serialize(const std::string& filename, CANdb_t& db)
 {
-    std::ofstream file{ filename.c_str() };
     Archive ar{ std::cout };
     ar(db);
 }
@@ -73,7 +73,7 @@ int main(int argc, char* argv[])
     options.add_options()
     ("i,input", "Input file",cxxopts::value<std::string>(),"[path to file]")
     ("d, debug", "Enable debug output")
-    ("f, format", "Format to use", cxxopts::value<std::string>()->default_value("json"),"[xml|json|binary]")
+    ("f, format", "Format to use", cxxopts::value<std::string>()->default_value("json"),"[xml|json|binary|cvsi]")
     ("h,help", "show help message");
     // clang-format on
 
@@ -101,6 +101,8 @@ int main(int argc, char* argv[])
             serialize<cereal::XMLOutputArchive>("dbc.xml", db);
         } else if (options["f"].as<std::string>() == "json") {
             serialize<cereal::JSONOutputArchive>("dbc.json", db);
+        } else if (options["f"].as<std::string>() == "cvsi") {
+            serialize<VSISerializer>("dbc.c", db);
         } else {
             // serialize<cereal::BinaryOutputArchive>("dbc.bin", db);
         }
