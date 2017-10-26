@@ -1,5 +1,5 @@
 # DBC Grammar
-grammar                 <- version _ ns? _ bs? _ (bu / bu_sl)? _ val_table? _ message* _ bo_tx_bu* _ cm* _ ba_def* _ ba_def_def* _ ba* _ vals* _ EndOfFile
+grammar                 <- comment* version _ ns? _ bs? _ (bu / bu_sl)? _ val_table? _ message* _ bo_tx_bu* _ cm* _ ba_def* _ ba_def_def* _ ba* _ vals* _ EndOfFile
 
 version                 <- < 'VERSION' s* phrase s* > NewLine
 ns                      <- < 'NS_' s* ':' s* NewLine symbol_name* > NewLine
@@ -14,6 +14,7 @@ ba_def                  <- < 'BA_DEF_' s* phrase s* TOKEN s* number* s* number* 
 ba_def_def              <- < 'BA_DEF_DEF_' s* phrase s* (phrase / number ) ';' > NewLine
 ba                      <- < 'BA_' s* phrase s* (phrase / number ) ';' > NewLine
 vals                    <- < 'VAL_' s* number s* TOKEN s* number s* phrase s* (number s* phrase s*)* s* ';' > NewLine*
+comment                 <- '//' s* '*'* s NewLine
 
 
 signal                  <- < s* 'SG_' s* TOKEN s* ':' s* number '|' number '@' number sign s* '(' number ',' number ')' s* '[' number '|' number ']' s* phrase s* TOKEN (',' TOKEN)* > NewLine

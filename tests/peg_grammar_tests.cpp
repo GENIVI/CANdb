@@ -165,3 +165,26 @@ TEST_F(PegParser, parse_number_dash_number)
 
     EXPECT_TRUE(parser.parse("[-1638.35|-1638.35]"));
 }
+
+TEST_F(PegParser, comments)
+{
+
+    auto grammar = 
+        R"(grammar                 <- comment* 
+
+           comment                 <- '//' s* '*' ('*'* / s* (TOKEN s)*) s* '*' NewLine
+           TOKEN     <- < [a-zA-Z0-9'_']+ > _
+           s         <- [ \t]
+           ~_     <- [\t\r\n]*
+           NewLine   <- [\r\n]
+    )";
+    ASSERT_TRUE(parser.load_grammar(grammar));
+
+    auto data = 
+        R"(// ****************************** *
+// *                                                                           *
+// *                      Mentor Graphics Corporation                          *
+)";
+
+    EXPECT_TRUE(parser.parse(data));
+}

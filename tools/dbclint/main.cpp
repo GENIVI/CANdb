@@ -2,8 +2,8 @@
 #include <fstream>
 
 #include "Resource.h"
-#include "candb.h"
 #include "log.hpp"
+#include "dbcparser.h"
 #include <spdlog/fmt/fmt.h>
 
 extern const char _resource_dbc_grammar_peg[];

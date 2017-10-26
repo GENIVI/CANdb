@@ -1,7 +1,6 @@
 
 embed_resources(dbc_grammar dbc_grammar.peg)
 set(SRC
-    candb.cpp
     dbcparser.cpp
 )
 

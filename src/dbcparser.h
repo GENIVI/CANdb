@@ -1,18 +1,12 @@
 #ifndef __CANDBC_H
 #define __CANDBC_H
 
-#include "cantypes.hpp"
-#include "parserinterface.hpp"
+#include "parser.hpp"
 
 namespace CANdb {
 
-struct DBCParser : public ParserInterface {
-    DBCParser();
-    virtual bool parse(const std::string& data) noexcept override;
-    virtual CANdb_t getDb() const override;
-
-private:
-    CANdb_t can_database;
+struct DBCParser : public Parser<DBCParser> {
+    bool parse(const std::string& data) noexcept;
 };
 } // namespace CANdb
 

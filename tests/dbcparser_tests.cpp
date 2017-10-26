@@ -59,6 +59,35 @@ TEST_F(DBCParserTests, empty_data)
     EXPECT_TRUE(parser.getDb().messages.empty());
 }
 
+TEST_F(DBCParserTests, comments_only)
+{
+    auto data = R"(// *************************************************************************** *
+// *                                                                           *
+// *                      Mentor Graphics Corporation                          *
+// *                          All rights reserved                              *
+// *                                                                           *
+// *************************************************************************** *
+// *                                                                           *
+// * Description:         Partial CANDB File (for IMC Node)                    *
+// * Generated at:        2016-05-31 08:40:06                                  *
+// * Node                 IMC                                                  *
+// *                                                                           *
+// *************************************************************************** *
+// *                                                                           *
+// *             THIS CONFIGURATION MIGHT CONTAIN SOME ERRORS                  *
+// *              IF THE INPUT MODEL WAS NOT PROPERLY FORMED!                  *
+// *                    Do Not Use this File directly!                         *
+// *                                                                           *
+// *************************************************************************** *
+
+
+VERSION "IMC"
+    )";
+    EXPECT_TRUE(parser.parse(data));
+    EXPECT_TRUE(parser.getDb().messages.empty());
+    EXPECT_EQ(parser.getDb().version, "");
+}
+
 TEST_F(DBCParserTests, one_liner)
 {
     EXPECT_TRUE(parser.parse("VERSION \"\"\n"));
