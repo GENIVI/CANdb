@@ -63,21 +63,15 @@ TEST_F(DBCParserTests, comments_only)
 {
     auto data = R"(// *************************************************************************** *
 // *                                                                           *
-// *                      Mentor Graphics Corporation                          *
-// *                          All rights reserved                              *
+// *                      Some Corporation Limited                             *
 // *                                                                           *
 // *************************************************************************** *
 // *                                                                           *
-// * Description:         Partial CANDB File (for IMC Node)                    *
-// * Generated at:        2016-05-31 08:40:06                                  *
-// * Node                 IMC                                                  *
+// * Description:         This is a file for BORAT                             *
+// * Node                 KORAB                                                *
 // *                                                                           *
 // *************************************************************************** *
-// *                                                                           *
-// *             THIS CONFIGURATION MIGHT CONTAIN SOME ERRORS                  *
-// *              IF THE INPUT MODEL WAS NOT PROPERLY FORMED!                  *
-// *                    Do Not Use this File directly!                         *
-// *                                                                           *
+// * Author: Geralt                                                            *
 // *************************************************************************** *
 
 

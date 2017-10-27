@@ -168,22 +168,28 @@ TEST_F(PegParser, parse_number_dash_number)
 
 TEST_F(PegParser, comments)
 {
+    auto grammar =
+        R"(grammar                 <- NewLine* comment*
 
-    auto grammar = 
-        R"(grammar                 <- comment* 
-
-           comment                 <- '//' s* '*' ('*'* / s* (TOKEN s)*) s* '*' NewLine
-           TOKEN     <- < [a-zA-Z0-9'_']+ > _
-           s         <- [ \t]
+           comment                 <- '//' (!NewLine .)* NewLine
+           TOKEN     <- < [a-zA-Z0-9'_']+ >
+           ws         <- [ \t]
            ~_     <- [\t\r\n]*
            NewLine   <- [\r\n]
     )";
     ASSERT_TRUE(parser.load_grammar(grammar));
+    parser["comment"] = [](const peg::SemanticValues& sv) {
+        cdb_debug("Found commnet [bu] {}", sv.token());
+    };
 
-    auto data = 
-        R"(// ****************************** *
+    auto data =
+        R"(
+// *************************************************************************** *
 // *                                                                           *
-// *                      Mentor Graphics Corporation                          *
+// *                      Mobica Corporation                                   *
+// *                          All rights reserved                              *
+// *                                                                           *
+// *************************************************************************** *
 )";
 
     EXPECT_TRUE(parser.parse(data));
