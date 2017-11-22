@@ -157,11 +157,12 @@ bool DBCParser::parse(const std::string& data) noexcept
     parser["number"] = [&signs, &numbers, this](const peg::SemanticValues& sv) {
         try {
             cdb_debug("Found number {}", sv.token());
-            auto number = std::stol(sv.token(), nullptr, 10);
+            auto number = std::stoull(sv.token(), nullptr, 10);
             cdb_trace("Found number {}", number);
             numbers.push_back(number);
         } catch (const std::exception& ex) {
-            cdb_error("Unable to parse {} to a number", sv.token());
+            cdb_error(
+                "Unable to parse {} to a number from {}", sv.token(), sv.str());
         }
     };
 

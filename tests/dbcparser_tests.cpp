@@ -75,11 +75,13 @@ TEST_F(DBCParserTests, comments_only)
 // *************************************************************************** *
 
 
-VERSION "IMC"
-    )";
+VERSION "KORAB"
+// comment
+
+)";
     EXPECT_TRUE(parser.parse(data));
     EXPECT_TRUE(parser.getDb().messages.empty());
-    EXPECT_EQ(parser.getDb().version, "");
+    EXPECT_EQ(parser.getDb().version, "KORAB");
 }
 
 TEST_F(DBCParserTests, one_liner)
@@ -205,7 +207,7 @@ BU_ :
     ASSERT_TRUE(parser.parse(dbc));
 
     EXPECT_EQ(parser.getDb().messages.size(), values.size());
-    EXPECT_EQ(parser.getDb().messages.at(CANmessage{ 1160 }).size(), 4);
+    EXPECT_EQ(parser.getDb().messages.at(CANmessage{ 1160 }).size(), 5);
 
     // bo1
     std::vector<CANsignal> expectedSignals;
@@ -222,7 +224,7 @@ BU_ :
         0, "", "EPAS" };
 
     ASSERT_EQ(parser.getDb().messages.size(), values.size());
-    ASSERT_EQ(parser.getDb().messages.at(msg).size(), 4);
+    ASSERT_EQ(parser.getDb().messages.at(msg).size(), 5);
     EXPECT_EQ(parser.getDb().messages.at(msg).at(0), expSig);
 
     expSig = CANsignal{ "DAS_steeringControlChecksum", 31, 8, 0, "+", 1, 0, 0,

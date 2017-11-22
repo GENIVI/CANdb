@@ -4,8 +4,10 @@ namespace test_data {
 const std::string bo1 = R"(BO_ 1160 DAS_steeringControl: 4 NEO
   SG_ DAS_steeringControlType : 23|2@0+ (1,0) [0|0] "" EPAS
   SG_ DAS_steeringControlChecksum : 31|8@0+ (1,0) [0|0] "" EPAS
-  SG_ DAS_steeringControlCounter : 19|4@0+ (1,0) [0|0] "" EPAS
-  SG_ DAS_steeringHapticRequest : 7|1@0+ (1,0) [0|0] "" EPAS)";
+  SG_ DAS_steeringControlCounter : 14|7@0+ (15.0, 0.0) [0.0|1425.0] "Mins" Vector_XXX
+  SG_ DAS_steeringHapticRequest : 7|1@0+ (1,0) [0|0] "" EPAS
+  SG_ DAS_BOOT : 14|7@0+ (15.0, 0.0) [0.0|1425.0] "Mins" EPAS
+)";
 
 const std::string bo2 = R"(BO_ 257 GTW_epasControl: 3 NEO
   SG_ GTW_epasControlChecksum : 16|8@1+ (1,0) [0|255] "" NEO
