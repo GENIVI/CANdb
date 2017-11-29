@@ -1,10 +1,12 @@
 #include <cxxopts.hpp>
 #include <fstream>
+#include <regex>
+#include <spdlog/fmt/fmt.h>
 
 #include "Resource.h"
-#include "log.hpp"
 #include "dbcparser.h"
-#include <spdlog/fmt/fmt.h>
+#include "log.hpp"
+#include "termcolor.hpp"
 
 extern const char _resource_dbc_grammar_peg[];
 extern const size_t _resource_dbc_grammar_peg_len;
@@ -26,6 +28,62 @@ std::string loadDBCFile(const std::string& filename)
         std::istreambuf_iterator<char>(), std::back_inserter(buff));
 
     file.close();
+    return buff;
+}
+
+template <typename T> std::string red(T&& t)
+{
+    std::stringstream ss;
+    ss << termcolor::colorize << termcolor::red << t << termcolor::reset;
+    return ss.str();
+}
+
+template <typename T> std::string green(T&& t)
+{
+    std::stringstream ss;
+    ss << termcolor::colorize << termcolor::green << t << termcolor::reset;
+    return ss.str();
+}
+
+template <typename T> std::string blue(T&& t)
+{
+    std::stringstream ss;
+    ss << termcolor::colorize << termcolor::blue << t << termcolor::reset;
+    return ss.str();
+}
+template <typename T> std::string magenta(T&& t)
+{
+    std::stringstream ss;
+    ss << termcolor::colorize << termcolor::magenta << t << termcolor::reset;
+    return ss.str();
+}
+
+std::string dumpSignal(const CANsignal& sig)
+{
+    return fmt::format("name={},startBit={},signalSize={}", sig.signal_name,
+        sig.startBit, sig.signalSize);
+}
+
+std::string dumpMessages(
+    const CANdb_t& dbc, const std::string& regex, bool dumpMessages = false)
+{
+    std::string buff;
+    buff += "messages: \n";
+    for (const auto& msg : dbc.messages) {
+        const bool isMatch
+            = std::regex_match(msg.first.name, std::regex{ regex });
+        if (isMatch) {
+            buff += fmt::format("  id= {}, name= {:<30}, dlc= {}, ecu={} \n",
+                green(msg.first.id), red(msg.first.name), blue(msg.first.dlc),
+                magenta(msg.first.ecu));
+        }
+
+        if (dumpMessages) {
+            for (const auto& signal : msg.second) {
+                buff += fmt::format("     {}\n", dumpSignal(signal));
+            }
+        }
+    }
     return buff;
 }
 } // namespace
@@ -56,10 +114,14 @@ std::shared_ptr<spdlog::logger> kDefaultLogger
 int main(int argc, char* argv[])
 {
     cxxopts::Options options(argv[0], "dbc lint");
+    std::string regex;
     // clang-format off
     options.add_options()
     ("i,input", "Input file",cxxopts::value<std::string>(),"[path to file]")
     ("d, dump-peg", "Dump DBC grammar")
+    ("m, messages", "Dump messages from DBC")
+    ("t, tree", "Dump messages and signals")
+    ("f, filter", "filter by messages/signals", cxxopts::value<std::string>(regex)->default_value(".*"), "regexp")
     ("h,help", "show help message");
     // clang-format on
 
@@ -102,6 +164,11 @@ int main(int argc, char* argv[])
         if (success) {
             std::cout << fmt::format("DBC file {} successfully parsed", file)
                       << std::endl;
+        }
+        if (options.count("m")) {
+            std::cout << dumpMessages(parser.getDb(), regex);
+        } else if (options.count("t")) {
+            std::cout << dumpMessages(parser.getDb(), regex, true);
         }
 
     } catch (const std::exception& ex) {
