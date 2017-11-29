@@ -77,8 +77,6 @@ std::string dos2unix(const std::string& data)
     return noWindowsShit;
 }
 
-DBCParser::DBCParser() {}
-
 bool DBCParser::parse(const std::string& data) noexcept
 {
     Resource dbc{ _resource_dbc_grammar_peg, _resource_dbc_grammar_peg_len };
@@ -113,7 +111,7 @@ bool DBCParser::parse(const std::string& data) noexcept
         if (phrases.empty()) {
             throw peg::parse_error("Version phrase not found");
         }
-        can_database.version = take_back(phrases);
+        can_db.version = take_back(phrases);
     };
 
     parser["phrase"] = [&phrases](const peg::SemanticValues& sv) {
@@ -123,7 +121,7 @@ bool DBCParser::parse(const std::string& data) noexcept
     };
 
     parser["ns"] = [this, &idents](const peg::SemanticValues& sv) {
-        can_database.symbols = to_vector(idents);
+        can_db.symbols = to_vector(idents);
         cdb_debug("Found symbols {}", sv.token());
         idents.clear();
     };
@@ -145,13 +143,13 @@ bool DBCParser::parse(const std::string& data) noexcept
     };
 
     parser["bu"] = [&idents, this](const peg::SemanticValues& sv) {
-        can_database.ecus = to_vector(idents);
+        can_db.ecus = to_vector(idents);
         cdb_debug("Found ecus [bu] {}", sv.token());
         idents.clear();
     };
 
     parser["bu_sl"] = [&idents, this](const peg::SemanticValues& sv) {
-        can_database.ecus = to_vector(idents);
+        can_db.ecus = to_vector(idents);
         cdb_debug("Found ecus [bu] {}", sv.token());
         idents.clear();
     };
@@ -159,11 +157,12 @@ bool DBCParser::parse(const std::string& data) noexcept
     parser["number"] = [&signs, &numbers, this](const peg::SemanticValues& sv) {
         try {
             cdb_debug("Found number {}", sv.token());
-            auto number = std::stol(sv.token(), nullptr, 10);
+            auto number = std::stoull(sv.token(), nullptr, 10);
             cdb_trace("Found number {}", number);
             numbers.push_back(number);
         } catch (const std::exception& ex) {
-            cdb_error("Unable to parse {} to a number", sv.token());
+            cdb_error(
+                "Unable to parse {} to a number from {}", sv.token(), sv.str());
         }
     };
 
@@ -179,7 +178,7 @@ bool DBCParser::parse(const std::string& data) noexcept
             std::back_inserter(tab), [](const auto& p) {
                 return CANdb_t::ValTable::ValTableEntry{ p.first, p.second };
             });
-        can_database.val_tables.push_back(CANdb_t::ValTable{ "", tab });
+        can_db.val_tables.push_back(CANdb_t::ValTable{ "", tab });
         phrasesPairs.clear();
     };
 
@@ -199,7 +198,7 @@ bool DBCParser::parse(const std::string& data) noexcept
               const CANmessage msg{ static_cast<std::uint32_t>(id), name,
                   static_cast<std::uint32_t>(dlc), ecu };
               cdb_debug("Found a message with id = {}", msg.id);
-              can_database.messages[msg] = signals;
+              can_db.messages[msg] = signals;
               signals.clear();
               numbers.clear();
               idents.clear();
@@ -236,5 +235,3 @@ bool DBCParser::parse(const std::string& data) noexcept
 
     return parser.parse(noTabsData.c_str());
 }
-
-CANdb_t DBCParser::getDb() const { return can_database; }

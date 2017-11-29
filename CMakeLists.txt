@@ -14,6 +14,7 @@ include_directories(${CMAKE_SOURCE_DIR}/3rdParty/cereal/include)
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/3rdParty/embed-resource)
+add_subdirectory(${CMAKE_SOURCE_DIR}/3rdParty/termcolor)
 add_subdirectory(${CMAKE_SOURCE_DIR}/3rdParty/gtest)
 add_subdirectory(${CMAKE_SOURCE_DIR}/3rdParty/cpp-peglib/lint)
 set(CXXOPTS_BUILD_EXAMPLES CACHE FORCE OFF)

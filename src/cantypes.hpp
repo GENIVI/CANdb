@@ -28,11 +28,6 @@ struct CANsignal {
     {
         return signal_name == rhs.signal_name;
     }
-
-    template <typename Archive> void serialize(Archive& ar)
-    {
-        ar(CEREAL_NVP(signal_name));
-    }
 };
 
 struct CANmessage {
@@ -40,11 +35,6 @@ struct CANmessage {
     std::string name;
     std::uint32_t dlc;
     std::string ecu;
-
-    template <typename Archive> void serialize(Archive& ar)
-    {
-        ar(CEREAL_NVP(id), CEREAL_NVP(name), CEREAL_NVP(dlc), CEREAL_NVP(ecu));
-    }
 };
 
 namespace std {
@@ -73,12 +63,6 @@ struct CANdb_t {
     std::vector<std::string> symbols;
     std::vector<std::string> ecus;
     std::vector<ValTable> val_tables;
-
-    template <typename Archive> void serialize(Archive& ar)
-    {
-        ar(CEREAL_NVP(version), CEREAL_NVP(nodes), CEREAL_NVP(symbols),
-            CEREAL_NVP(ecus), CEREAL_NVP(messages));
-    }
 };
 
 #endif /* end of include guard: CANTYPES_HPP_ML9DFK7A */
