@@ -98,9 +98,9 @@ int main(int argc, char* argv[])
         parser.parse(loadDBCFile(options["i"].as<std::string>()));
         auto db = parser.getDb();
         if (options["f"].as<std::string>() == "xml") {
-            serialize<cereal::XMLOutputArchive>("dbc.xml", db);
+            //serialize<cereal::XMLOutputArchive>("dbc.xml", db);
         } else if (options["f"].as<std::string>() == "json") {
-            serialize<cereal::JSONOutputArchive>("dbc.json", db);
+            //serialize<cereal::JSONOutputArchive>("dbc.json", db);
         } else if (options["f"].as<std::string>() == "cvsi") {
             serialize<VSISerializer>("dbc.c", db);
         } else {

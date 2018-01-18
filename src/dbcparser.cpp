@@ -103,7 +103,7 @@ bool DBCParser::parse(const std::string& data) noexcept
 
     strings phrases;
     std::deque<std::string> idents, signs;
-    std::deque<std::int64_t> numbers;
+    std::deque<float> numbers;
     using PhrasePair = std::pair<std::uint32_t, std::string>;
     std::vector<PhrasePair> phrasesPairs;
 
@@ -157,7 +157,7 @@ bool DBCParser::parse(const std::string& data) noexcept
     parser["number"] = [&signs, &numbers, this](const peg::SemanticValues& sv) {
         try {
             cdb_debug("Found number {}", sv.token());
-            auto number = std::stoull(sv.token(), nullptr, 10);
+            auto number = std::stod(sv.token());
             cdb_trace("Found number {}", number);
             numbers.push_back(number);
         } catch (const std::exception& ex) {
@@ -228,9 +228,9 @@ bool DBCParser::parse(const std::string& data) noexcept
             static_cast<std::uint8_t>(startBit),
             static_cast<std::uint8_t>(signalSize),
             static_cast<std::uint8_t>(byteOrder), value_type,
-            static_cast<std::uint8_t>(factor),
-            static_cast<std::uint8_t>(offset), static_cast<std::int8_t>(min),
-            static_cast<std::int8_t>(max), unit, receiver });
+            static_cast<float>(factor),
+            static_cast<float>(offset), static_cast<float>(min),
+            static_cast<float>(max), unit, receiver });
     };
 
     return parser.parse(noTabsData.c_str());

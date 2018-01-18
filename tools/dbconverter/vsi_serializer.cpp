@@ -3,30 +3,6 @@
 
 #include <spdlog/fmt/fmt.h>
 
-std::string getType(const CANsignal& signal)
-{
-    if (signal.byteOrder < 2) {
-        if (signal.value_type == "+") {
-            return "UNSIGNED_INT";
-        }
-        return "SIGNED_INT";
-    }
-    switch (signal.byteOrder) {
-    case 2:
-        return "SP_FLOAT";
-        break;
-    case 3:
-        return "DP_FLOAT";
-        break;
-    case 4:
-        return "STRING";
-        break;
-    }
-
-    throw std::runtime_error("Can't map signal to type");
-    return "";
-}
-
 std::string dumpMessages(
     const std::map<CANmessage, std::vector<CANsignal>>& msgs)
 {
@@ -37,19 +13,24 @@ std::string dumpMessages(
             auto signal_c_desc =
                 R"({{
                 .canId = 0x{can_id:x}
-                .sigId = {signal_id}
                 .sigName = "{signal_name}"
                 .start = {start},
-                .end = 0,
+                .size = {size},
+                .byteOrder = {order},
+                .valueType = {type},
+                .factor = {factor},
+                .offset = {offset},
                 .min = {min},
                 .max = {max},
-                .type = {type}
+                .unit = {unit},
+                .receiver = {receiver}
 }},)";
             using namespace fmt::literals;
             auto ss = fmt::format(signal_c_desc, "can_id"_a = p.first.id,
-                "signal_id"_a = 0, "signal_name"_a = signal.signal_name,
-                "start"_a = signal.startBit, "min"_a = signal.min,
-                "max"_a = signal.max, "type"_a = getType(signal));
+                "signal_name"_a = signal.signal_name, "start"_a = signal.startBit,
+                "size"_a = signal.signalSize, "factor"_a = signal.factor, "offset"_a = signal.offset,
+                "min"_a = signal.min, "max"_a = signal.max, "order"_a = signal.byteOrder,
+                "type"_a = signal.value_type, "unit"_a = signal.unit, "receiver"_a = signal.receiver);
             buff += ss + std::string{ "\n" };
         }
     }
