@@ -8,16 +8,17 @@ option(WITH_TOOLS "Build example dbc tools" ON)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(${CMAKE_SOURCE_DIR}/3rdParty/spdlog/include)
-include_directories(${CMAKE_SOURCE_DIR}/3rdParty/embed-resource)
-include_directories(${CMAKE_SOURCE_DIR}/3rdParty/cereal/include)
-include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(3rdParty/spdlog/include)
+include_directories(3rdParty/embed-resource)
+include_directories(3rdParty/cereal/include)
+include_directories(3rdParty/cpp-peglib)
+include_directories(src)
 
-add_subdirectory(${CMAKE_SOURCE_DIR}/3rdParty/embed-resource)
-add_subdirectory(${CMAKE_SOURCE_DIR}/3rdParty/termcolor)
-add_subdirectory(${CMAKE_SOURCE_DIR}/3rdParty/gtest)
+add_subdirectory(3rdParty/embed-resource)
+add_subdirectory(3rdParty/termcolor)
+add_subdirectory(3rdParty/gtest)
 set(CXXOPTS_BUILD_EXAMPLES CACHE FORCE OFF)
-add_subdirectory(${CMAKE_SOURCE_DIR}/3rdParty/cxxopts)
+add_subdirectory(3rdParty/cxxopts)
 
 find_package(Threads REQUIRED)
 
