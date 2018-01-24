@@ -6,8 +6,6 @@
 #include <string>
 #include <vector>
 
-#include <cereal/archives/xml.hpp>
-
 enum class CANsignalType { Int, Float, String };
 
 struct CANsignal {
