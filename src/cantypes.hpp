@@ -13,7 +13,7 @@ struct CANsignal {
     std::uint8_t startBit;
     std::uint8_t signalSize;
     std::uint8_t byteOrder;
-    std::string value_type;
+    bool valueSigned;
     float factor;
     float offset;
     float min;

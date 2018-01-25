@@ -167,7 +167,7 @@ bool DBCParser::parse(const std::string& data) noexcept
     };
 
     parser["number_phrase_pair"] = [&phrasesPairs, &numbers, &phrases, this](
-                                       const peg::SemanticValues& sv) {
+                                       const peg::SemanticValues&) {
         phrasesPairs.push_back(
             std::make_pair(take_back(numbers), take_back(phrases)));
     };
@@ -184,7 +184,7 @@ bool DBCParser::parse(const std::string& data) noexcept
 
     std::vector<CANsignal> signals;
     parser["message"]
-        = [this, &numbers, &signals, &idents](const peg::SemanticValues& sv) {
+        = [this, &numbers, &signals, &idents](const peg::SemanticValues&) {
               cdb_debug("Found a message {} signals = {}", idents.size(),
                   signals.size());
               if (numbers.size() < 2 || idents.size() < 2) {
@@ -216,7 +216,7 @@ bool DBCParser::parse(const std::string& data) noexcept
         auto offset = take_back(numbers);
         auto factor = take_back(numbers);
 
-        auto value_type = take_back(signs);
+        auto valueSigned = take_back(signs) == "-";
 
         auto byteOrder = take_back(numbers);
         auto signalSize = take_back(numbers);
@@ -227,7 +227,7 @@ bool DBCParser::parse(const std::string& data) noexcept
         signals.push_back(CANsignal{ signal_name,
             static_cast<std::uint8_t>(startBit),
             static_cast<std::uint8_t>(signalSize),
-            static_cast<std::uint8_t>(byteOrder), value_type,
+            static_cast<std::uint8_t>(byteOrder), valueSigned,
             static_cast<float>(factor),
             static_cast<float>(offset), static_cast<float>(min),
             static_cast<float>(max), unit, receiver });

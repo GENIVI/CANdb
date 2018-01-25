@@ -17,7 +17,7 @@ std::string dumpMessages(
                 .start = {start},
                 .size = {size},
                 .byteOrder = {order},
-                .valueType = {type},
+                .valueSigned = {type},
                 .factor = {factor},
                 .offset = {offset},
                 .min = {min},
@@ -30,7 +30,7 @@ std::string dumpMessages(
                 "signal_name"_a = signal.signal_name, "start"_a = signal.startBit,
                 "size"_a = signal.signalSize, "factor"_a = signal.factor, "offset"_a = signal.offset,
                 "min"_a = signal.min, "max"_a = signal.max, "order"_a = signal.byteOrder,
-                "type"_a = signal.value_type, "unit"_a = signal.unit, "receiver"_a = signal.receiver);
+                "type"_a = signal.valueSigned, "unit"_a = signal.unit, "receiver"_a = signal.receiver);
             buff += ss + std::string{ "\n" };
         }
     }
