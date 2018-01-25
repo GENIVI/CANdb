@@ -43,6 +43,8 @@ template <> struct less<CANmessage> {
 };
 } // namespace std
 
+using CANmessages_t = std::map<CANmessage, std::vector<CANsignal>>;
+
 struct CANdb_t {
     struct ValTable {
         std::string identifier;
