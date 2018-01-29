@@ -27,7 +27,7 @@ sign                    <- < [-+] > _
 TOKEN                   <- [a-zA-Z0-9'_']+
 number                  <- float / integer 
 integer                 <- < sign? [0-9]+ > _
-float                   <- < sign? [0-9]+'.'[0-9]+ > _
+float                   <- < sign? [0-9]+'.'[0-9]+('E+'[0-9]+)? > _
 symbol_name             <- < s* TOKEN > NewLine
 
 EndOfFile <- !.
