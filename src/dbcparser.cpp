@@ -102,7 +102,7 @@ bool DBCParser::parse(const std::string& data) noexcept
     cdb_debug("DBC file  = \n{}", withLines(noTabsData));
 
     strings phrases;
-    std::deque<std::string> idents, signs;
+    std::deque<std::string> idents, signs, ecu_token;
     std::deque<float> numbers;
     using PhrasePair = std::pair<std::uint32_t, std::string>;
     std::vector<PhrasePair> phrasesPairs;
@@ -124,6 +124,12 @@ bool DBCParser::parse(const std::string& data) noexcept
         can_db.symbols = to_vector(idents);
         cdb_debug("Found symbols {}", sv.token());
         idents.clear();
+    };
+
+    parser["ECU_TOKEN"] = [&ecu_token](const peg::SemanticValues& sv) {
+        auto s = sv.token();
+        boost::algorithm::erase_all(s, "\n");
+        ecu_token.push_back(s);
     };
 
     parser["TOKEN"] = [&idents](const peg::SemanticValues& sv) {
@@ -204,11 +210,11 @@ bool DBCParser::parse(const std::string& data) noexcept
               idents.clear();
           };
 
-    parser["signal"] = [&idents, &numbers, &phrases, &signals, &signs](
+    parser["signal"] = [&ecu_token, &idents, &numbers, &phrases, &signals, &signs](
                            const peg::SemanticValues& sv) {
         cdb_debug("Found signal {}", sv.token());
 
-        auto receiver = take_back(idents);
+        auto receiver = take_back(ecu_token);
         auto unit = take_back(phrases);
 
         auto max = take_back(numbers);
