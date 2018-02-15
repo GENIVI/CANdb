@@ -23,14 +23,17 @@ std::string dumpMessages(
                 .min = {min},
                 .max = {max},
                 .unit = {unit},
-                .receiver = {receiver}
+                .receiver = {receiver},
+                .mux = {mux},
+                .muxNdx = {muxNdx}
 }},)";
             using namespace fmt::literals;
             auto ss = fmt::format(signal_c_desc, "can_id"_a = p.first.id,
                 "signal_name"_a = signal.signal_name, "start"_a = signal.startBit,
                 "size"_a = signal.signalSize, "factor"_a = signal.factor, "offset"_a = signal.offset,
                 "min"_a = signal.min, "max"_a = signal.max, "order"_a = signal.byteOrder,
-                "type"_a = signal.valueSigned, "unit"_a = signal.unit, "receiver"_a = signal.receiver);
+                "type"_a = signal.valueSigned, "unit"_a = signal.unit, "receiver"_a = signal.receiver,
+                "mux"_a = signal.mux, "muxNdx"_a = signal.muxNdx);
             buff += ss + std::string{ "\n" };
         }
     }

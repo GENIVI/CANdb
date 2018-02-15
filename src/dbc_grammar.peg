@@ -31,7 +31,7 @@ ba_def_rel              <- 'BA_DEF_REL_' (!NewLine .)* NewLine
 ba_def_def_rel          <- 'BA_DEF_DEF_REL_' (!NewLine .)* NewLine
 ba_rel                  <- 'BA_REL_' (!NewLine .)* NewLine
 
-signal                  <- < s* 'SG_' s* TOKEN s* mux? mux_sel? s* ':' s* number '|' number '@' number sign s* '(' number ',' s* number ')' s* '[' number '|' number ']' s* phrase s* ECU_TOKEN* > NewLine
+signal                  <- < s* 'SG_' s* TOKEN s* mux? mux_ndx? s* ':' s* number '|' number '@' number sign s* '(' number ',' s* number ')' s* '[' number '|' number ']' s* phrase s* ECU_TOKEN* > NewLine
 val_entry               <- < 'VAL_TABLE_' s* TOKEN s (number_phrase_pair)* ';' > NewLine
 number_phrase_pair      <- number s phrase s
 phrase                  <- < '"' (!'"' .)* '"' >
@@ -45,7 +45,7 @@ integer                 <- < sign? [0-9]+ > _
 float                   <- < sign? ([0-9]+'.')?[0-9]+('E' sign [0-9]+)? > _
 symbol_name             <- < s* TOKEN > NewLine
 mux                     <- 'M'
-mux_sel                 <- 'm'[0-9]+
+mux_ndx                 <- 'm'< [0-9]+ >
 EndOfFile <- !.
 
 s         <- [ \t]

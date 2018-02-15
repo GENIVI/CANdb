@@ -20,6 +20,8 @@ struct CANsignal {
     float max;
     std::string unit;
     std::string receiver;
+    std::string mux;
+    std::uint8_t muxNdx;
 
     bool operator==(const CANsignal& rhs) const
     {
