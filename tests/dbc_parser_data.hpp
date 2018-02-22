@@ -6,7 +6,8 @@ const std::string bo1 = R"(BO_ 1160 DAS_steeringControl: 4 NEO
   SG_ DAS_steeringControlChecksum : 31|8@0+ (1,0) [0|0] "" EPAS
   SG_ DAS_steeringControlCounter : 14|7@0+ (15.0, 0.0) [0.0|1425.0] "Mins" Vector_XXX
   SG_ DAS_steeringHapticRequest : 7|1@0+ (1,0) [0|0] "" EPAS
-  SG_ DAS_BOOT : 14|7@0+ (15.0, 0.0) [0.0|1425.0] "Mins" EPAS
+  SG_ DAS_BOOT : 14|7@0+ (15.0, 0.0) [0.0|1.84467440737096E+019] "Mins" EPAS
+  SG_ DAS_ASD : 30|28@1+ (1E-008,0) [0|180] "Unit_ZLO"  Vector_XXX
 )";
 
 const std::string bo2 = R"(BO_ 257 GTW_epasControl: 3 NEO

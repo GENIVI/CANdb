@@ -207,43 +207,43 @@ BU_ :
     ASSERT_TRUE(parser.parse(dbc));
 
     EXPECT_EQ(parser.getDb().messages.size(), values.size());
-    EXPECT_EQ(parser.getDb().messages.at(CANmessage{ 1160 }).size(), 5);
+    EXPECT_EQ(parser.getDb().messages.at(CANmessage{ 1160 }).size(), 6);
 
     // bo1
     std::vector<CANsignal> expectedSignals;
     expectedSignals.push_back(CANsignal{
-        "DAS_steeringControlType", 23, 2, 0, "+", 1, 0, 0, 0, "", "EPAS" });
+        "DAS_steeringControlType", 23, 2, 0, "+", 1, 0, 0, 0, "", {{"EPAS"}} });
     expectedSignals.push_back(CANsignal{
-        "DAS_steeringControlChecksum", 31, 8, 0, "+", 1, 0, 0, 0, "", "EPAS" });
+        "DAS_steeringControlChecksum", 31, 8, 0, "+", 1, 0, 0, 0, "", {{"EPAS"}} });
     expectedSignals.push_back(CANsignal{
-        "DAS_steeringControlType", 19, 4, 0, "+", 1, 0, 0, 0, "", "EPAS" });
+        "DAS_steeringControlType", 19, 4, 0, "+", 1, 0, 0, 0, "", {"EPAS"} });
     expectedSignals.push_back(CANsignal{
-        "DAS_steeringControlType", 7, 2, 0, "+", 1, 0, 0, 0, "", "EPAS" });
+        "DAS_steeringControlType", 7, 2, 0, "+", 1, 0, 0, 0, "", {"EPAS"} });
     CANmessage msg{ 1160, "DAS_steeringControl", 4, "NEO" };
     auto expSig = CANsignal{ "DAS_steeringControlType", 23, 2, 0, "+", 1, 0, 0,
-        0, "", "EPAS" };
+        0, "", {"EPAS"} };
 
     ASSERT_EQ(parser.getDb().messages.size(), values.size());
-    ASSERT_EQ(parser.getDb().messages.at(msg).size(), 5);
+    ASSERT_EQ(parser.getDb().messages.at(msg).size(), 6);
     EXPECT_EQ(parser.getDb().messages.at(msg).at(0), expSig);
 
     expSig = CANsignal{ "DAS_steeringControlChecksum", 31, 8, 0, "+", 1, 0, 0,
-        0, "", "EPAS" };
+        0, "", {"EPAS"} };
     EXPECT_EQ(parser.getDb().messages.at(msg).at(1), expSig);
 
     expSig = CANsignal{ "DAS_steeringControlCounter", 19, 4, 0, "+", 1, 0, 0, 0,
-        "", "EPAS" };
+        "", {"EPAS"} };
     EXPECT_EQ(parser.getDb().messages.at(msg).at(2), expSig);
 
     expSig = CANsignal{ "DAS_steeringHapticRequest", 7, 1, 0, "+", 1, 0, 0, 0,
-        "", "EPAS" };
+        "", {"EPAS"} };
     EXPECT_EQ(parser.getDb().messages.at(msg).at(3), expSig);
 
     msg = CANmessage{ 257, "GTW_epasControl", 3, "NEO" };
     ASSERT_EQ(parser.getDb().messages.at(msg).size(), 7);
 
     expSig = CANsignal{ "GTW_epasEmergencyOn", 0, 1, 0, "+", 1, 0, 2, -1, "",
-        "EPAS" };
+        {"EPAS"} };
     EXPECT_EQ(parser.getDb().messages.at(msg).at(3), expSig);
 }
 

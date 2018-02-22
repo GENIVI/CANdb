@@ -6,8 +6,6 @@
 #include <string>
 #include <vector>
 
-#include <cereal/archives/xml.hpp>
-
 enum class CANsignalType { Int, Float, String };
 
 struct CANsignal {
@@ -15,14 +13,15 @@ struct CANsignal {
     std::uint8_t startBit;
     std::uint8_t signalSize;
     std::uint8_t byteOrder;
-    std::string value_type;
-    std::uint8_t factor;
-    std::uint8_t offset;
-    std::int8_t min;
-    std::int8_t max;
+    bool valueSigned;
+    float factor;
+    float offset;
+    float min;
+    float max;
     std::string unit;
-    std::string receiver;
-    CANsignalType type;
+    std::vector<std::string> receiver;
+    std::string mux;
+    std::uint8_t muxNdx;
 
     bool operator==(const CANsignal& rhs) const
     {
@@ -35,6 +34,8 @@ struct CANmessage {
     std::string name;
     std::uint32_t dlc;
     std::string ecu;
+    std::uint32_t updateCycle{ 0 };
+    std::string initValue{ "" };
 };
 
 namespace std {
@@ -45,6 +46,8 @@ template <> struct less<CANmessage> {
     }
 };
 } // namespace std
+
+using CANmessages_t = std::map<CANmessage, std::vector<CANsignal>>;
 
 struct CANdb_t {
     struct ValTable {
