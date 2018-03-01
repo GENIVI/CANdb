@@ -102,8 +102,12 @@ bool DBCParser::parse(const std::string& data) noexcept
     cdb_debug("DBC file  = \n{}", withLines(noTabsData));
 
     strings phrases;
-    std::deque<std::string> idents, signs;
+    std::deque<std::string> idents, signs, ecu_tokens;
     std::deque<std::int64_t> numbers;
+
+    bool mux = false;
+    int muxNdx = -1;
+
     using PhrasePair = std::pair<std::uint32_t, std::string>;
     std::vector<PhrasePair> phrasesPairs;
 
@@ -130,6 +134,12 @@ bool DBCParser::parse(const std::string& data) noexcept
         auto s = sv.token();
         boost::algorithm::erase_all(s, "\n");
         idents.push_back(s);
+    };
+
+    parser["ECU_TOKEN"] = [&ecu_tokens](const peg::SemanticValues& sv) {
+        auto s = sv.token();
+        boost::algorithm::erase_all(s, "\n");
+        ecu_tokens.push_back(s);
     };
 
     parser["bs"] = [](const peg::SemanticValues&) {
@@ -182,41 +192,61 @@ bool DBCParser::parse(const std::string& data) noexcept
         phrasesPairs.clear();
     };
 
+    parser["mux"] = [&mux](const peg::SemanticValues&) { mux = true; };
+    parser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) {
+        muxNdx = std::stoi(sv.token());
+    };
+
+    std::string muxName;
     std::vector<CANsignal> signals;
-    parser["message"]
-        = [this, &numbers, &signals, &idents](const peg::SemanticValues& sv) {
-              cdb_debug("Found a message {} signals = {}", idents.size(),
-                  signals.size());
-              if (numbers.size() < 2 || idents.size() < 2) {
-                  return;
-              }
-              auto dlc = take_back(numbers);
-              auto id = take_back(numbers);
-              auto ecu = take_back(idents);
-              auto name = take_back(idents);
+    parser["message"] = [this, &numbers, &signals, &idents, &ecu_tokens, &mux,
+                            &muxNdx, &muxName](const peg::SemanticValues& sv) {
+        cdb_debug(
+            "Found a message {} signals = {}", idents.size(), signals.size());
+        if (numbers.size() < 2 || idents.size() < 2) {
+            return;
+        }
+        auto dlc = take_back(numbers);
+        auto id = take_back(numbers);
+        auto ecu = take_back(idents);
+        auto name = take_back(idents);
 
-              const CANmessage msg{ static_cast<std::uint32_t>(id), name,
-                  static_cast<std::uint32_t>(dlc), ecu };
-              cdb_debug("Found a message with id = {}", msg.id);
-              can_db.messages[msg] = signals;
-              signals.clear();
-              numbers.clear();
-              idents.clear();
-          };
+        const CANmessage msg{ static_cast<std::uint32_t>(id), name,
+            static_cast<std::uint32_t>(dlc), ecu };
+        cdb_debug("Found a message with id = {}", msg.id);
+        can_db.messages[msg] = signals;
+        signals.clear();
+        numbers.clear();
+        idents.clear();
+        mux = false;
+        muxNdx = -1;
+        muxName = "";
+    };
 
-    parser["signal"] = [&idents, &numbers, &phrases, &signals, &signs](
-                           const peg::SemanticValues& sv) {
+    parser["signal"] = [&idents, &numbers, &phrases, &signals, &signs,
+                           &ecu_tokens, &mux, &muxNdx,
+                           &muxName](const peg::SemanticValues& sv) {
         cdb_debug("Found signal {}", sv.token());
 
-        auto receiver = take_back(idents);
+        const std::vector<std::string> receiver{ ecu_tokens.begin(),
+            ecu_tokens.end() };
         auto unit = take_back(phrases);
 
         auto max = take_back(numbers);
         auto min = take_back(numbers);
         auto offset = take_back(numbers);
         auto factor = take_back(numbers);
+        auto valueSigned = take_back(signs) == "-";
 
-        auto value_type = take_back(signs);
+        std::string sigMuxName;
+        std::uint8_t sigMuxNdx = 0xff;
+
+        if (muxNdx != -1) {
+            sigMuxName = muxName;
+            sigMuxNdx = static_cast<std::uint8_t>(muxNdx);
+            muxNdx = -1;
+            cdb_debug("Signal: muxName {}, muxNdx {}", muxName, sigMuxNdx);
+        }
 
         auto byteOrder = take_back(numbers);
         auto signalSize = take_back(numbers);
@@ -224,13 +254,19 @@ bool DBCParser::parse(const std::string& data) noexcept
 
         auto signal_name = take_back(idents);
 
-        signals.push_back(CANsignal{ signal_name,
-            static_cast<std::uint8_t>(startBit),
-            static_cast<std::uint8_t>(signalSize),
-            static_cast<std::uint8_t>(byteOrder), value_type,
-            static_cast<std::uint8_t>(factor),
-            static_cast<std::uint8_t>(offset), static_cast<std::int8_t>(min),
-            static_cast<std::int8_t>(max), unit, receiver });
+        if (mux) {
+            sigMuxName = muxName;
+            sigMuxNdx = static_cast<std::uint8_t>(muxNdx);
+            muxNdx = -1;
+        }
+
+        signals.push_back(
+            CANsignal{ signal_name, static_cast<std::uint8_t>(startBit),
+                static_cast<std::uint8_t>(signalSize),
+                static_cast<std::uint8_t>(byteOrder), valueSigned,
+                static_cast<float>(factor), static_cast<float>(offset),
+                static_cast<float>(min), static_cast<float>(max), unit,
+                receiver, sigMuxName, sigMuxNdx });
     };
 
     return parser.parse(noTabsData.c_str());
