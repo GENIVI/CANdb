@@ -10,7 +10,7 @@ echo "CMake: $cmake_command"
 echo "ci_env: $ci_env"
 docker run \
      $ci_env -e WITH_COVERAGE -e CC -e CXX \
-     -v `pwd`:/root/sources bartekt/can_dev_base_image /bin/bash \
+     -v `pwd`:/root/sources rkollataj/candevstudio /bin/bash \
      -c "cd /root/sources && rm -rf build && mkdir -p build && cd build &&
         $cmake_command &&
         make -j5 &&
