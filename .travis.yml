@@ -8,10 +8,6 @@ notifications:
 services:
   docker
 
-before_install:
-  - docker pull bartekt/can_dev_base_image
-  - export ci_env=`bash <(curl -s https://codecov.io/env)`
-
 script:
   - export CC=gcc-53 CXX=g++-53 CMAKE_BUILD_TYPE=Release
   - ./.travis.sh
