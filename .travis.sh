@@ -14,4 +14,7 @@ docker run \
      -c "sudo service xvfb start && sudo chown cds:cds /home/sources && cd /home/sources && rm -rf build && mkdir -p build && cd build && source /opt/qt58/bin/qt58-env.sh &&
         $cmake_command &&
         make -j5 &&
-        make test"
+        make test &&
+        ./tests/opendbc_tests
+        "
+
