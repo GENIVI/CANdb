@@ -9,10 +9,11 @@ fi
 echo "CMake: $cmake_command"
 echo "ci_env: $ci_env"
 docker run \
-     $ci_env -e WITH_COVERAGE -e CC -e CXX \
-     -v `pwd`:/root/sources bartekt/can_dev_base_image /bin/bash \
-     -c "cd /root/sources && rm -rf build && mkdir -p build && cd build &&
+     $ci_env -e WITH_COVERAGE -u cds -e CC -e CXX -e DISPLAY=:10 --privileged --cap-add=ALL \
+     -v `pwd`:/home/sources rkollataj/candevstudio /bin/bash \
+     -c "sudo service xvfb start && sudo chown -R cds:cds /home/sources && cd /home/sources && rm -rf build && mkdir -p build && cd build && source /opt/qt58/bin/qt58-env.sh &&
         $cmake_command &&
         make -j5 &&
-        make test &&
-        if [ '$WITH_COVERAGE' == 'ON' ]; then bash <(curl -s https://codecov.io/bash) -x gcov-6 || echo 'Codecov did not collect coverage reports'; fi"
+        make test
+        "
+
