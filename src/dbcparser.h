@@ -1,5 +1,5 @@
-#ifndef __CANDBC_H
-#define __CANDBC_H
+#ifndef __CANDB_H
+#define __CANDB_H
 
 #include "parser.hpp"
 
@@ -10,4 +10,4 @@ struct DBCParser : public Parser<DBCParser> {
 };
 } // namespace CANdb
 
-#endif /* !__CANDBC_H */
+#endif /* !__CANDB_H */
