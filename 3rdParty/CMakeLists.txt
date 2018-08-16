@@ -1,5 +1,6 @@
 add_subdirectory(embed-resource)
 add_subdirectory(termcolor)
+add_subdirectory(gtest)
 set(CXXOPTS_BUILD_EXAMPLES CACHE FORCE OFF)
 add_subdirectory(cxxopts)
 
