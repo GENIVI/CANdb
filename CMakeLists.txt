@@ -9,6 +9,7 @@ option(WITH_TOOLS "Build example dbc tools" ON)
 set(CMAKE_CXX_STANDARD 14)
 
 find_package(Threads REQUIRED)
+find_package(Boost REQUIRED)
 
 add_subdirectory(3rdParty)
 

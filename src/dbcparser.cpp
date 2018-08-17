@@ -1,5 +1,4 @@
 #include "dbcparser.h"
-#include "lambda_visitor.hpp"
 #include "log.hpp"
 #include <dbc_grammar.hpp>
 
