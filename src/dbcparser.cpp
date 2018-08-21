@@ -1,7 +1,6 @@
 #include "dbcparser.h"
-#include "Resource.h"
-#include "lambda_visitor.hpp"
 #include "log.hpp"
+#include <dbc_grammar.hpp>
 
 #include <fstream>
 #include <peglib.h>
@@ -10,9 +9,6 @@
 #include <boost/algorithm/string/erase.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/split.hpp>
-
-extern const char _resource_dbc_grammar_peg[];
-extern const size_t _resource_dbc_grammar_peg_len;
 
 template <typename T> auto take_first(T& container) -> typename T::value_type
 {
@@ -79,8 +75,6 @@ std::string dos2unix(const std::string& data)
 
 bool DBCParser::parse(const std::string& data) noexcept
 {
-    Resource dbc{ _resource_dbc_grammar_peg, _resource_dbc_grammar_peg_len };
-
     auto noTabsData = dos2unix(data);
 
     peg::parser parser;
@@ -89,7 +83,7 @@ bool DBCParser::parse(const std::string& data) noexcept
         cdb_error("Parser log {}:{} {}", l, k, s);
     };
 
-    if (!parser.load_grammar(dbc.data(), dbc.size())) {
+    if (!parser.load_grammar(dbc_grammar.c_str(), dbc_grammar.length())) {
         cdb_error("Unable to parse grammar");
         return false;
     }

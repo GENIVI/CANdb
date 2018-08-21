@@ -3,13 +3,11 @@
 #include <regex>
 #include <spdlog/fmt/fmt.h>
 
-#include "Resource.h"
 #include "dbcparser.h"
 #include "log.hpp"
 #include "termcolor.hpp"
 
-extern const char _resource_dbc_grammar_peg[];
-extern const size_t _resource_dbc_grammar_peg_len;
+extern std::string dbc_grammar;
 
 namespace {
 std::string loadDBCFile(const std::string& filename)
@@ -143,10 +141,7 @@ int main(int argc, char* argv[])
     }
 
     if (options.count("d") != 0) {
-        Resource dbc{ _resource_dbc_grammar_peg,
-            _resource_dbc_grammar_peg_len };
-        auto str = dbc.toString();
-        std::cout << str << std::endl;
+        std::cout << dbc_grammar << std::endl;
         return EXIT_SUCCESS;
     }
 
