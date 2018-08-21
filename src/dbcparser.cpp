@@ -158,7 +158,7 @@ bool DBCParser::parse(const std::string& data) noexcept
         idents.clear();
     };
 
-    parser["number"] = [&signs, &numbers, this](const peg::SemanticValues& sv) {
+    parser["number"] = [&numbers](const peg::SemanticValues& sv) {
         try {
             cdb_debug("Found number {}", sv.token());
             auto number = std::stoull(sv.token(), nullptr, 10);
@@ -170,11 +170,11 @@ bool DBCParser::parse(const std::string& data) noexcept
         }
     };
 
-    parser["number_phrase_pair"] = [&phrasesPairs, &numbers, &phrases, this](
-                                       const peg::SemanticValues& sv) {
-        phrasesPairs.push_back(
-            std::make_pair(take_back(numbers), take_back(phrases)));
-    };
+    parser["number_phrase_pair"]
+        = [&phrasesPairs, &numbers, &phrases](const peg::SemanticValues&) {
+              phrasesPairs.push_back(
+                  std::make_pair(take_back(numbers), take_back(phrases)));
+          };
 
     parser["val_entry"] = [this, &phrasesPairs](const peg::SemanticValues&) {
         std::vector<CANdb_t::ValTable::ValTableEntry> tab;
@@ -193,8 +193,8 @@ bool DBCParser::parse(const std::string& data) noexcept
 
     std::string muxName;
     std::vector<CANsignal> signals;
-    parser["message"] = [this, &numbers, &signals, &idents, &ecu_tokens, &mux,
-                            &muxNdx, &muxName](const peg::SemanticValues& sv) {
+    parser["message"] = [this, &numbers, &signals, &idents, &mux, &muxNdx,
+                            &muxName](const peg::SemanticValues&) {
         cdb_debug(
             "Found a message {} signals = {}", idents.size(), signals.size());
         if (numbers.size() < 2 || idents.size() < 2) {

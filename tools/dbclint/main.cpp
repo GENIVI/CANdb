@@ -135,17 +135,19 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    if (options.count("h") != 0) {
+    const auto res = options.parse(argc, argv);
+
+    if (res.count("h") != 0) {
         std::cout << options.help({ "" }) << std::endl;
         return EXIT_SUCCESS;
     }
 
-    if (options.count("d") != 0) {
+    if (res.count("d") != 0) {
         std::cout << dbc_grammar << std::endl;
         return EXIT_SUCCESS;
     }
 
-    if (options.count("i") == 0) {
+    if (res.count("i") == 0) {
         std::cerr << options.help({ "" }) << std::endl;
         return EXIT_FAILURE;
     }
@@ -153,16 +155,16 @@ int main(int argc, char* argv[])
     bool success = false;
     try {
         CANdb::DBCParser parser;
-        const auto file = options["i"].as<std::string>();
+        const auto file = res["i"].as<std::string>();
         success = parser.parse(loadDBCFile(file));
 
         if (success) {
             std::cout << fmt::format("DBC file {} successfully parsed", file)
                       << std::endl;
         }
-        if (options.count("m")) {
+        if (res.count("m")) {
             std::cout << dumpMessages(parser.getDb(), regex);
-        } else if (options.count("t")) {
+        } else if (res.count("t")) {
             std::cout << dumpMessages(parser.getDb(), regex, true);
         }
 
