@@ -16,8 +16,7 @@ template <typename Derived> struct Parser {
 
     CANdb_t getDb() const noexcept { return can_db; }
 
-    template <typename T> void fetchData(T&& dataStream) {
-    }
+    template <typename T> void fetchData(T&&) {}
 
 protected:
     CANdb_t can_db;
