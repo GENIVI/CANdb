@@ -24,7 +24,7 @@ template <typename T> auto take_first(T& container) -> typename T::value_type
 template <typename T> auto take_back(T& container) -> typename T::value_type
 {
     if (container.empty()) {
-        throw std::runtime_error("empty contaienr");
+        throw std::runtime_error("empty container");
     }
     const auto v = container.back();
     container.pop_back();
