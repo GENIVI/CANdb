@@ -23,7 +23,7 @@ std::string loadDBCFile(const std::string& filename)
 
     if (!file.good()) {
         throw std::runtime_error(
-            fmt::format("File {} does not exists", filename));
+            fmt::format("File {} does not exist", filename));
     }
 
     std::string buff;
