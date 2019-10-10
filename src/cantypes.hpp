@@ -9,6 +9,28 @@
 enum class CANsignalType { Int, Float, String };
 
 struct CANsignal {
+    // Constructor required for vs2015
+    CANsignal(std::string _signal_name, std::uint8_t _startBit,
+        std::uint8_t _signalSize, std::uint8_t _byteOrder, bool _valueSigned,
+        float _factor, float _offset, float _min, float _max, std::string _unit,
+        std::vector<std::string> _receiver, const std::string& _mux = "",
+        std::uint8_t _muxNdx = 0)
+        : signal_name(_signal_name)
+        , startBit(_startBit)
+        , signalSize(_signalSize)
+        , byteOrder(_byteOrder)
+        , valueSigned(_valueSigned)
+        , factor(_factor)
+        , offset(_offset)
+        , min(_min)
+        , max(_max)
+        , unit(_unit)
+        , receiver(_receiver)
+        , mux(_mux)
+        , muxNdx(_muxNdx)
+    {
+    }
+
     std::string signal_name;
     std::uint8_t startBit;
     std::uint8_t signalSize;
@@ -30,7 +52,7 @@ struct CANsignal {
 };
 
 struct CANmessage {
-    // Constructor required for vs2015 to be able to use initializer_list
+    // Constructor required for vs2015
     CANmessage(std::uint32_t _id, const std::string& _name = "",
         std::uint32_t _dlc = 0, const std::string& _ecu = "")
         : id(_id)
