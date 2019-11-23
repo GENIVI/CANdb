@@ -1,7 +1,6 @@
 [submodule "3rdParty/spdlog"]
 	path = 3rdParty/spdlog
 	url = https://github.com/gabime/spdlog.git
-	branch = v1.4.2
 [submodule "3rdParty/cpp-peglib"]
 	path = 3rdParty/cpp-peglib
 	url = https://github.com/yhirose/cpp-peglib.git

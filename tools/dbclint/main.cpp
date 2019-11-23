@@ -94,8 +94,16 @@ std::shared_ptr<spdlog::logger> kDefaultLogger
     if (z == nullptr) {
         logger->set_level(spdlog::level::err);
     } else {
-	const std::string ll{ z };
-        logger->set_level(spdlog::level::from_str(ll));
+        const std::string ll{ z };
+
+        auto it = std::find_if(std::begin(spdlog::level::level_names),
+            std::end(spdlog::level::level_names),
+            [&ll](const char* name) { return std::string{ name } == ll; });
+
+        if (it != std::end(spdlog::level::level_names)) {
+            int i = std::distance(std::begin(spdlog::level::level_names), it);
+            logger->set_level(static_cast<spdlog::level::level_enum>(i));
+        }
     }
 
     return logger;
