@@ -97,7 +97,7 @@ bool DBCParser::parse(const std::string& data) noexcept
 
     strings phrases;
     std::deque<std::string> idents, signs, ecu_tokens;
-    std::deque<std::int64_t> numbers;
+    std::deque<float> numbers;
 
     bool mux = false;
     int muxNdx = -1;
@@ -161,7 +161,7 @@ bool DBCParser::parse(const std::string& data) noexcept
     parser["number"] = [&numbers](const peg::SemanticValues& sv) {
         try {
             cdb_debug("Found number {}", sv.token());
-            auto number = std::stoull(sv.token(), nullptr, 10);
+            auto number = std::stof(sv.token());
             cdb_trace("Found number {}", number);
             numbers.push_back(number);
         } catch (const std::exception& ex) {
