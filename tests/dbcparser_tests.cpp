@@ -198,8 +198,8 @@ BU_ :
   GTW
 
 )";
-    // std::vector<std::string> values { test_data::bo1, test_data::bo2 };
-    std::vector<std::string> values{ test_data::bo1, test_data::bo2 };
+    std::vector<std::string> values{ test_data::bo1, test_data::bo2,
+        test_data::bo_with_window_endline };
     for (const auto& value : values) {
         dbc += value;
         dbc += "\n";
@@ -272,18 +272,18 @@ BU_ :
 
 // test case instantiations
 
-INSTANTIATE_TEST_CASE_P(Ecus, EcusTest,
+INSTANTIATE_TEST_SUITE_P(Ecus, EcusTest,
     ::testing::Values(strings{ "NEO" }, strings{ "NEO", "MCU" }));
 
-INSTANTIATE_TEST_CASE_P(Symbols, SymbolsTest,
+INSTANTIATE_TEST_SUITE_P(Symbols, SymbolsTest,
     ::testing::Values(
         strings{}, strings{ "NS_DESC" }, strings{ "NS_DESC2", "NS_DESC" }));
-INSTANTIATE_TEST_CASE_P(Value, ValuesTest,
+INSTANTIATE_TEST_SUITE_P(Value, ValuesTest,
     ::testing::Values(
         strings{ "VAL_ 880 EPAS_steeringReduced 0 \"NORMAL_ASSIST\" "
                  "1 \"REDUCED_ASSIST\" ;" }));
 
-INSTANTIATE_TEST_CASE_P(Values, ValuesTableTest,
+INSTANTIATE_TEST_SUITE_P(Values, ValuesTableTest,
     ::testing::Values(strings{ "StW_AnglHP_Spd 16383 \"SNA\" ;",
         "DI_aebFaultReason 15 "
         "\"DI_AEB_FAULT_DAS_REQ_DI_UNAVAIL\" 14 "
