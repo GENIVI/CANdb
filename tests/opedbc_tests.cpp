@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-
 #include <fstream>
 
 #include "dbcparser.h"
@@ -64,7 +63,7 @@ TEST_P(OpenDBCTest, parse_dbc_file)
     }
 }
 
-INSTANTIATE_TEST_CASE_P(TeslaDBC, OpenDBCTest,
+INSTANTIATE_TEST_SUITE_P(TeslaDBC, OpenDBCTest,
     ::testing::Values("tesla_can.dbc", "acura_ilx_2016_can.dbc",
         "acura_ilx_2016_can.dbc", "acura_ilx_2016_nidec.dbc",
         "gm_global_a_chassis.dbc", "gm_global_a_lowspeed.dbc",
