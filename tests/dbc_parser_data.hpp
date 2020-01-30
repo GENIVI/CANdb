@@ -19,4 +19,7 @@ const std::string bo2 = R"(BO_ 257 GTW_epasControl: 3 NEO
   SG_ GTW_epasPowerMode : 1|4@1+ (1,0) [4|14] "" NEO
   SG_ GTW_epasTuneRequest : 5|3@1+ (1,0) [8|-1] "" NEO)";
 
+// This is windows newline
+const std::string bo_with_window_endline = R"(BO_ 666 GTW_stupidSt: 3 NEO SG_ GTW_epasTuneRequest : 5|3@1+ (1,0) [8|-1] "" NEO)";
+
 } // namespace test_data
