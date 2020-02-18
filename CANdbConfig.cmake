@@ -2,6 +2,9 @@ if (CANdb_FOUND)
     return()
 endif(CANdb_FOUND)
 
+add_definitions(-DFMT_HEADER_ONLY)
+find_package(spdlog 1.4.2 REQUIRED)
+
 set (CANDB_VERSION ${CANDB_VERSION_MAJOR}${CANDB_VERSION_MINOR}0)
 set (CANdb_LIB "CANdb")
 
