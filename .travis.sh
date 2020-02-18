@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cmake_command="cmake .. -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE"
+cmake_command="cmake .. -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE -DCMAKE_INSTALL_PREFIX=$(pwd)/install"
 
 if [ "$CANDB__WITH_COVERAGE" == "ON" ]; then
     cmake_command="$cmake_command -DCANDB__WITH_COVERAGE=ON"
