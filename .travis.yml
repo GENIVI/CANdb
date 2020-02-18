@@ -3,7 +3,7 @@ language: cpp
 dist: trusty
 
 notifications:
-  email: false
+  email: true
 
 services:
   docker
