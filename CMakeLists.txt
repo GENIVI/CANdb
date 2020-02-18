@@ -5,14 +5,22 @@ project(CANdb CXX C)
 option(CANDB__WITH_COVERAGE "Build with coverage" OFF)
 option(CANDB__WITH_TESTS "Build with test" ON)
 option(CANDB__WITH_TOOLS "Build example dbc tools" ON)
+option(CANDB__TRAVIS_BUILD "Build via travis" ON)
 
 set(CMAKE_CXX_STANDARD 14)
 
 find_package(Threads REQUIRED)
 find_package(Boost REQUIRED)
 
-# This is for spdlog / libfmt
-add_definitions(-DFMT_HEADER_ONLY)
+add_definitions(-DFMT_HEADER_ONLY) # for spdlog/libfmt
+if (NOT CANDB__TRAVIS_BUILD)
+    find_package(spdlog 1.4.2 REQUIRED)
+    set(LIBSPDLOG spdlog::spdlog)
+else (NOT CANDB__TRAVIS_BUILD)
+    # only to allow building with travis... for now
+    set(LIBSPDLOG spdlog)
+endif (NOT CANDB__TRAVIS_BUILD)
+
 add_subdirectory(3rdParty)
 
 if(CANDB__WITH_COVERAGE)

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cmake_command="cmake .. -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE -DCMAKE_INSTALL_PREFIX=$(pwd)/install -DBUILD_GMOCK=FALSE -DINSTALL_GTEST=FALSE"
+cmake_command="cmake .. -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE -DCMAKE_INSTALL_PREFIX=$(pwd)/install -DBUILD_GMOCK=FALSE -DINSTALL_GTEST=FALSE -DCANDB__TRAVIS_BUILD=TRUE"
 
 echo "CMake: $cmake_command"
 echo "Working dir: $(pwd)"
