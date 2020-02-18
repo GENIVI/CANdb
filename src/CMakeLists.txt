@@ -19,5 +19,15 @@ set_target_properties(CANdb PROPERTIES
             BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-install(TARGETS CANdb DESTINATION ./lib)
+install(TARGETS CANdb DESTINATION lib)
+install(
+    FILES 
+        cantypes.hpp
+        log.hpp
+        parser.hpp
+        dbcparser.h 
+    DESTINATION 
+        include
+)
+
 

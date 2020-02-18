@@ -29,3 +29,5 @@ endif()
 if(CANDB__WITH_TOOLS)
     add_subdirectory(tools)
 endif(CANDB__WITH_TOOLS)
+
+install(FILES CANdbConfig.cmake DESTINATION .)
