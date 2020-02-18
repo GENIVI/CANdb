@@ -14,6 +14,3 @@
 [submodule "3rdParty/cxxopts"]
 	path = 3rdParty/cxxopts
 	url = https://github.com/jarro2783/cxxopts.git
-[submodule "3rdParty/cereal"]
-	path = 3rdParty/cereal
-	url = https://github.com/USCiLab/cereal.git
