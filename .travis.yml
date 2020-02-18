@@ -1,5 +1,8 @@
 language: cpp
 dist: xenial
+arch:
+  - amd64
+  - arm64
 os: linux
 
 notifications:
