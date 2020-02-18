@@ -1,9 +1,9 @@
-sudo: required
 language: cpp
 dist: trusty
+os: linux
 
 notifications:
-  email: false
+  email: true
 
 services:
   docker
