@@ -11,6 +11,8 @@ set(CMAKE_CXX_STANDARD 14)
 find_package(Threads REQUIRED)
 find_package(Boost REQUIRED)
 
+# This is for spdlog / libfmt
+add_definitions(-DFMT_HEADER_ONLY)
 add_subdirectory(3rdParty)
 
 if(CANDB__WITH_COVERAGE)
