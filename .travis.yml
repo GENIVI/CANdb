@@ -13,11 +13,12 @@ before_install:
   - sudo apt-get -y install libboost-dev
 
 before_script:
-  - rm -rf *
+  - git --version
+  - cd 3rdParty/spdlog && git checkout v1.4.2 && cd ../..
 
 script:
-  - CMAKE_BUILD_TYPE=Release
+  - export CMAKE_BUILD_TYPE=Release
   - ./.travis.sh
-  - CMAKE_BUILD_TYPE=Debug 
+  - export CMAKE_BUILD_TYPE=Debug 
   - ./.travis.sh
     
