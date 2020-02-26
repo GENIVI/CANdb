@@ -6,12 +6,15 @@
 #include <string>
 #include <vector>
 
-enum class CANsignalType { Int, Float, String };
-
 struct CANsignal {
+
+    // plain enums to retain backwards compatibility
+    enum ByteOrder { Motorola = 0, Intel = 1 };
+    enum SignType { Unsigned = false, Signed = true};
+
     // Constructor required for vs2015
     CANsignal(std::string _signal_name, std::uint8_t _startBit,
-        std::uint8_t _signalSize, std::uint8_t _byteOrder, bool _valueSigned,
+        std::uint8_t _signalSize, CANsignal::ByteOrder _byteOrder, CANsignal::SignType _valueSigned,
         float _factor, float _offset, float _min, float _max, std::string _unit,
         std::vector<std::string> _receiver, const std::string& _mux = "",
         std::uint8_t _muxNdx = 0)
@@ -34,8 +37,8 @@ struct CANsignal {
     std::string signal_name;
     std::uint8_t startBit;
     std::uint8_t signalSize;
-    std::uint8_t byteOrder;
-    bool valueSigned;
+    CANsignal::ByteOrder byteOrder;
+    CANsignal::SignType valueSigned;
     float factor;
     float offset;
     float min;
@@ -47,7 +50,14 @@ struct CANsignal {
 
     bool operator==(const CANsignal& rhs) const
     {
-        return signal_name == rhs.signal_name;
+        return (signal_name == rhs.signal_name) &&
+               (startBit == rhs.startBit) &&
+               (signalSize == rhs.signalSize) &&
+               (byteOrder == rhs.byteOrder) &&
+               (valueSigned == rhs.valueSigned) &&
+               (factor == rhs.factor) &&
+               (offset == rhs.offset);
+        // Theres is more to compare, yet this is the logical minimum.
     }
 };
 

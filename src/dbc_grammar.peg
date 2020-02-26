@@ -34,11 +34,12 @@ vals                    <- < 'VAL_' s* number s* TOKEN s* number s* phrase s* (n
 comment                 <- '//' (!NewLine .)* NewLine
 sig_val                 <- < 'SIG_VALTYPE_' s* number s* TOKEN s* ':' s* number ';' > NewLine
 
-signal                  <- < s* 'SG_' s* TOKEN s* mux? mux_ndx? s* ':' s* number '|' number '@' number sign s* '(' number ',' s* number ')' s* '[' number '|' number ']' s* phrase s* ECU_TOKEN (',' ECU_TOKEN)* > NewLine
+signal                  <- < s* 'SG_' s* TOKEN s* mux? mux_ndx? s* ':' s* number '|' number '@' number sig_sign s* '(' number ',' s* number ')' s* '[' number '|' number ']' s* phrase s* ECU_TOKEN (',' ECU_TOKEN)* > NewLine
 val_entry               <- < 'VAL_TABLE_' s* TOKEN s (number_phrase_pair)* ';' > NewLine
 number_phrase_pair      <- number s phrase s
 phrase                  <- < '"' (!'"' .)* '"' >
 sign                    <- < [-+] > _
+sig_sign                <- < [-+] > _
 TOKEN                   <- [a-zA-Z0-9'_']+
 ECU_TOKEN               <- [a-zA-Z0-9'_']+
 ENUM_VAL                <- (!';' .)+

@@ -96,7 +96,7 @@ bool DBCParser::parse(const std::string& data) noexcept
     cdb_debug("DBC file  = \n{}", withLines(noTabsData));
 
     strings phrases;
-    std::deque<std::string> idents, signs, ecu_tokens;
+    std::deque<std::string> idents, signs, sig_sign, ecu_tokens;
     std::deque<float> numbers;
 
     bool mux = false;
@@ -142,8 +142,13 @@ bool DBCParser::parse(const std::string& data) noexcept
     };
 
     parser["sign"] = [&signs](const peg::SemanticValues& sv) {
-        cdb_trace("Found sign {}", sv.token());
+        cdb_debug("Found sign {}", sv.token());
         signs.push_back(sv.token());
+    };
+
+    parser["sig_sign"] = [&sig_sign](const peg::SemanticValues& sv) {
+        cdb_debug("Found sig_sign {}", sv.token());
+        sig_sign.push_back(sv.token());
     };
 
     parser["bu"] = [&idents, this](const peg::SemanticValues& sv) {
@@ -217,7 +222,7 @@ bool DBCParser::parse(const std::string& data) noexcept
         muxName = "";
     };
 
-    parser["signal"] = [&idents, &numbers, &phrases, &signals, &signs,
+    parser["signal"] = [&idents, &numbers, &phrases, &signals, &signs, &sig_sign,
                            &ecu_tokens, &mux, &muxNdx,
                            &muxName](const peg::SemanticValues& sv) {
         cdb_debug("Found signal {}", sv.token());
@@ -230,7 +235,8 @@ bool DBCParser::parse(const std::string& data) noexcept
         auto min = take_back(numbers);
         auto offset = take_back(numbers);
         auto factor = take_back(numbers);
-        auto valueSigned = take_back(signs) == "-";
+        CANsignal::SignType valueSigned = (take_back(sig_sign) == "-") ?
+                    CANsignal::Signed : CANsignal::Unsigned;
 
         std::string sigMuxName;
         std::uint8_t sigMuxNdx = 0xff;
@@ -242,7 +248,9 @@ bool DBCParser::parse(const std::string& data) noexcept
             cdb_debug("Signal: muxName {}, muxNdx {}", muxName, sigMuxNdx);
         }
 
-        auto byteOrder = take_back(numbers);
+        CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0) ?
+                    CANsignal::Motorola : CANsignal::Intel;
+
         auto signalSize = take_back(numbers);
         auto startBit = take_back(numbers);
 
@@ -256,8 +264,7 @@ bool DBCParser::parse(const std::string& data) noexcept
 
         signals.push_back(
             CANsignal{ signal_name, static_cast<std::uint8_t>(startBit),
-                static_cast<std::uint8_t>(signalSize),
-                static_cast<std::uint8_t>(byteOrder), valueSigned,
+                static_cast<std::uint8_t>(signalSize), byteOrder, valueSigned,
                 static_cast<float>(factor), static_cast<float>(offset),
                 static_cast<float>(min), static_cast<float>(max), unit,
                 receiver, sigMuxName, sigMuxNdx });

@@ -19,6 +19,12 @@ const std::string bo2 = R"(BO_ 257 GTW_epasControl: 3 NEO
   SG_ GTW_epasPowerMode : 1|4@1+ (1,0) [4|14] "" NEO
   SG_ GTW_epasTuneRequest : 5|3@1+ (1,0) [8|-1] "" NEO)";
 
+const std::string bo_signed_sigs = R"(BO_ 1091 FKD_Gyro_04: 6 NEO
+  SG_ FKD_GyroRoll : 32|9@1- (0.1,0) [-25.6|25.5] "" Vector__XXX
+  SG_ FKD_GyroPitch : 16|9@1- (0.1,0) [-25.6|25.5] "" Vector__XXX
+  SG_ FKD_GyroHead : 0|12@1+ (0.1,0) [0|409.5] "" Vector__XXX
+)";
+
 // This is windows newline
 const std::string bo_with_window_endline = R"(BO_ 666 GTW_stupidSt: 3 NEO SG_ GTW_epasTuneRequest : 5|3@1+ (1,0) [8|-1] "" NEO)";
 
