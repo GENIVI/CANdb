@@ -1,7 +1,6 @@
 os:
   - linux
   - osx
-  - windows
 
 language: cpp
 osx_image: xcode11.5
