@@ -8,5 +8,5 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/dbc_grammar.hpp.in
 
 add_library(CANdb ${SRC} ${dbc_grammar})
 target_include_directories(CANdb INTERFACE ${CMAKE_CURRENT_SOURCE_DIR} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(CANdb cpp-peglib spdlog)
+target_link_libraries(CANdb PUBLIC cpp-peglib spdlog)
 
