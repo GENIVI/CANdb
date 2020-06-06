@@ -1,6 +1,6 @@
 sudo: required
 language: cpp
-dist: trusty
+dist: focal
 
 notifications:
   email: false
