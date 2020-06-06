@@ -3,6 +3,7 @@ os:
   - osx
 
 language: cpp
+osx_image: xcode11.5
 dist: focal
 addons:
   apt:
