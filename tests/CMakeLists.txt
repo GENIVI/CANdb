@@ -1,13 +1,19 @@
+include(GoogleTest)
 function(candb_add_test test_name)
     add_executable(${test_name} ${test_name}.cpp)
-    target_link_libraries(${test_name} CANdb gtest gtest_main)
+    gtest_discover_tests(${test_name})
+    target_link_libraries(${test_name} CANdb gtest gtest_main test_helper)
     add_test(NAME ${test_name} COMMAND ${test_name})
 endfunction()
 
+add_library(test_helper STATIC test_helper.cpp)
+target_link_libraries(test_helper PUBLIC spdlog)
+target_compile_definitions(test_helper PUBLIC DBC_DIR="${CMAKE_CURRENT_SOURCE_DIR}/dbc/")
+
 candb_add_test(dbcparser_tests)
 candb_add_test(opendbc_tests)
+candb_add_test(prop_tests)
 
-target_compile_definitions(opendbc_tests PRIVATE OPENDBC_DIR="${CMAKE_CURRENT_SOURCE_DIR}/dbc/opendbc/")
 
 find_program(VALGRIND "valgrind")
 if(VALGRIND)

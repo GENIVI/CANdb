@@ -43,9 +43,9 @@ sig_sign                <- < [-+] > _
 TOKEN                   <- [a-zA-Z0-9'_']+
 ECU_TOKEN               <- [a-zA-Z0-9'_']+
 ENUM_VAL                <- (!';' .)+
-number                  <- float / integer
+number                  <- double / integer
 integer                 <- < sign? [0-9]+ > _
-float                   <- < sign? ([0-9]+'.')?[0-9]+('E' sign [0-9]+)? > _
+double                   <- < sign? ([0-9]+'.')?[0-9]+('E' sign [0-9]+)? > _
 symbol_name             <- < s* TOKEN > NewLine
 mux                     <- 'M'
 mux_ndx                 <- 'm'< [0-9]+ >

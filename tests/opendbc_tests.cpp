@@ -1,27 +1,10 @@
-#include <gtest/gtest.h>
 #include <fstream>
+#include <gtest/gtest.h>
 
 #include "dbcparser.h"
 #include "log.hpp"
 #include "opendbc_tests_expected_data.hpp"
-
-extern const char _resource_tesla_can_dbc[];
-extern const size_t _resource_tesla_can_dbc_len;
-using strings = std::vector<std::string>;
-
-std::string loadDBCFile(const std::string& filename)
-{
-    const std::string path = std::string{ OPENDBC_DIR } + filename;
-
-    std::fstream file{ path.c_str() };
-
-    std::string buff;
-    std::copy(std::istreambuf_iterator<char>(file),
-        std::istreambuf_iterator<char>(), std::back_inserter(buff));
-
-    file.close();
-    return buff;
-}
+#include "test_helper.hpp"
 
 std::shared_ptr<spdlog::logger> kDefaultLogger
     = []() -> std::shared_ptr<spdlog::logger> {
@@ -53,7 +36,7 @@ struct OpenDBCTest : public ::testing::TestWithParam<std::string> {
 TEST_P(OpenDBCTest, parse_dbc_file)
 {
     auto dbc_file = GetParam();
-    auto file = loadDBCFile(dbc_file);
+    auto file = test_helper::loadDBCFile("opendbc/" + dbc_file);
     ASSERT_TRUE(parser.parse(file));
 
     if (dbc_file == "tesla_can.dbc") {
@@ -63,7 +46,7 @@ TEST_P(OpenDBCTest, parse_dbc_file)
     }
 }
 
-INSTANTIATE_TEST_SUITE_P(TeslaDBC, OpenDBCTest,
+INSTANTIATE_TEST_SUITE_P(OpenDBC, OpenDBCTest,
     ::testing::Values("tesla_can.dbc", "acura_ilx_2016_can.dbc",
         "acura_ilx_2016_can.dbc", "acura_ilx_2016_nidec.dbc",
         "gm_global_a_chassis.dbc", "gm_global_a_lowspeed.dbc",
