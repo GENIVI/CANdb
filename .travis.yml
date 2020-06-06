@@ -11,6 +11,7 @@ addons:
       - gcc-7
       - g++-7
       - ninja-build
+      - libboost-dev
   homebrew:
     packages:
       - cmake
