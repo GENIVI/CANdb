@@ -10,9 +10,13 @@ addons:
       - cmake
       - gcc-7
       - g++-7
+      - ninja-build
   homebrew:
     packages:
       - cmake
+      - ninja
 
 script:
-  - cmake --version
+  - cmake -S . -Bbuild -GNinja
+  - ninja -C build
+  - ninja -C build test
