@@ -1,10 +1,6 @@
-os:
-  - linux
-  - osx
+dist: focal
 
 language: cpp
-osx_image: xcode11.5
-dist: focal
 addons:
   apt:
     packages:
@@ -22,3 +18,26 @@ script:
   - cmake -S . -Bbuild -GNinja
   - ninja -C build
   - ninja -C build test
+
+
+jobs:
+  include:
+    - os: linux
+      compiler: gcc-7
+      env:
+        - GENERATOR=Ninja
+        - CC=gcc-7
+        - CXX=g++-7
+        - CMAKE_BUILD_TYPE=Release
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+    - os: osx
+      osx_image: xcode11.5
+      env:
+        - CC=clang
+        - CXX=clang++
+        - CMAKE_BUILD_TYPE=Release
