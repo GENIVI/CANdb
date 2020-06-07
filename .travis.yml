@@ -49,6 +49,9 @@ jobs:
         apt:
           packages:
             - clang
+            - cmake
+            - libboost-dev
+            - ninja-build
     - os: osx
       osx_image: xcode11.5
       env:
