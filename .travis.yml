@@ -1,18 +1,6 @@
 dist: focal
 
 language: cpp
-addons:
-  apt:
-    packages:
-      - cmake
-      - gcc-7
-      - g++-7
-      - ninja-build
-      - libboost-dev
-  homebrew:
-    packages:
-      - cmake
-      - ninja
 
 script:
   - cmake -S . -Bbuild -GNinja
@@ -39,6 +27,22 @@ jobs:
             - libboost-dev
             - ninja-build
     - os: linux
+      compiler: gcc-9
+      env:
+        - GENERATOR=Ninja
+        - CC=gcc-9
+        - CXX=g++-9
+        - CMAKE_BUILD_TYPE=Release
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-9
+            - cmake
+            - libboost-dev
+            - ninja-build
+    - os: linux
       compiler: clang
       env:
         - GENERATOR=Ninja
@@ -52,6 +56,22 @@ jobs:
             - cmake
             - libboost-dev
             - ninja-build
+    - os: linux
+      compiler: clang-10
+      env:
+        - GENERATOR=Ninja
+        - CC=clang-10
+        - CXX=clang++-10
+        - CMAKE_BUILD_TYPE=Release
+      addons:
+        apt:
+          packages:
+            - clang-10
+            - cmake
+            - libboost-dev
+            - ninja-build
+          sources:
+            - llvm-toolchain-focal-10
     - os: osx
       osx_image: xcode11.5
       env:
