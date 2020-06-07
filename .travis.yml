@@ -35,6 +35,17 @@ jobs:
             - ubuntu-toolchain-r-test
           packages:
             - g++-7
+    - os: linux
+      compiler: clang
+      env:
+        - GENERATOR=Ninja
+        - CC=clang
+        - CXX=clang++
+        - CMAKE_BUILD_TYPE=Release
+      addons:
+        apt:
+          packages:
+            - clang
     - os: osx
       osx_image: xcode11.5
       env:
