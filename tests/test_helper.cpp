@@ -1,7 +1,6 @@
 #include "test_helper.hpp"
 #include "spdlog/fmt/bundled/format.h"
 
-#include <filesystem>
 #include <fstream>
 #include <stdexcept>
 
@@ -32,9 +31,9 @@ std::shared_ptr<spdlog::logger> kDefaultLogger
 }();
 
 namespace test_helper {
-std::string loadDBCFile(const std::filesystem::path& dbcFileName)
+std::string loadDBCFile(const fs::path& dbcFileName)
 {
-    const auto path = std::filesystem::path{ DBC_DIR } / dbcFileName;
+    const auto path = fs::path{ DBC_DIR } / dbcFileName;
 
     std::fstream ff{ path.c_str() };
 
