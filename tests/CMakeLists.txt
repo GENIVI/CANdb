@@ -1,11 +1,33 @@
-add_executable(dbcparser_tests dbcparser_tests.cpp)
-target_link_libraries(dbcparser_tests CANdb ${CMAKE_THREAD_LIBS_INIT} gtest gtest_main cpp-peglib CANdb)
-add_test(NAME dbcparser_tests COMMAND dbcparser_tests)
+include(GoogleTest)
+function(candb_add_test test_name)
+    add_executable(${test_name} ${test_name}.cpp)
+    gtest_discover_tests(${test_name})
+    target_link_libraries(${test_name} CANdb gtest gtest_main test_helper)
+    add_test(NAME ${test_name} COMMAND ${test_name})
+endfunction()
 
-add_executable(opendbc_tests opedbc_tests.cpp)
-target_link_libraries(opendbc_tests CANdb ${CMAKE_THREAD_LIBS_INIT} gtest gtest_main cpp-peglib CANdb)
-target_compile_definitions(opendbc_tests PRIVATE OPENDBC_DIR="${CMAKE_CURRENT_SOURCE_DIR}/dbc/opendbc/")
-add_test(NAME opendbc_tests COMMAND opendbc_tests)
+add_library(test_helper STATIC test_helper.cpp)
+target_link_libraries(test_helper PUBLIC spdlog)
+target_compile_definitions(test_helper PUBLIC DBC_DIR="${CMAKE_CURRENT_SOURCE_DIR}/dbc/")
+
+# check if c++17 filesystem is in place
+try_compile(HAS_STD_FILESYSTEM "${CMAKE_BINARY_DIR}/temp" "${CMAKE_SOURCE_DIR}/cmake/has_filesystem.cpp"
+    CMAKE_FLAGS -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_STANDARD_REQUIRED=ON
+)
+
+if(NOT HAS_STD_FILESYSTEM)
+    find_package(Boost REQUIRED COMPONENTS filesystem system)
+    target_link_libraries(test_helper PUBLIC Boost::filesystem)
+else()
+    target_compile_features(test_helper PUBLIC cxx_std_17)
+    target_compile_definitions(test_helper PUBLIC HAS_STD_FILESYSTEM)
+endif()
+
+
+candb_add_test(dbcparser_tests)
+candb_add_test(opendbc_tests)
+candb_add_test(prop_tests)
+
 
 find_program(VALGRIND "valgrind")
 if(VALGRIND)

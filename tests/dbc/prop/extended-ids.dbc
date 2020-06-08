@@ -1,0 +1,1173 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: VDU_Champion
+
+
+BO_ 2566865694 PDM_PropB_43: 3 Vector__XXX
+ SG_ CAN_PDMVIGN : 16|8@1+ (0.2,0) [0|50] "V"  VDU_Champion
+ SG_ CAN_PDM_BoardTemp : 8|8@1+ (1,-40) [-40|210] "°C"  VDU_Champion
+ SG_ CAN_PDMVBAT : 0|8@1+ (0.2,0) [0|50] "V"  VDU_Champion
+
+BO_ 2566865438 PDM_PropB_42: 8 Vector__XXX
+ SG_ CAN_KBK11CircuitStatus : 50|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBK10CircuitStatus : 48|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBK09CircuitStatus : 46|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBK08CircuitStatus : 44|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBK07CircuitStatus : 42|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBK06CircuitStatus : 40|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBK05CircuitStatus : 38|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBK04CircuitStatus : 36|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBK03CircuitStatus : 34|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBK02CircuitStatus : 32|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBK01CircuitStatus : 30|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY11CircuitStatus : 28|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY10CircuitStatus : 26|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY09CircuitStatus : 24|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY08CircuitStatus : 22|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY07CircuitStatus : 20|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY06CircuitStatus : 18|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY05CircuitStatus : 16|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY04CircuitStatus : 14|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY03CircuitStatus : 12|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY02CircuitStatus : 10|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KGY01CircuitStatus : 8|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBU13CircuitStatus : 6|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBU12CircuitStatus : 4|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBU08CircuitStatus : 2|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_KBU07CircuitStatus : 0|2@1+ (1,0) [0|3] ""  VDU_Champion
+
+BO_ 2566864926 PDM_PropB_40: 8 Vector__XXX
+ SG_ CAN_FGY10Status : 62|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY09Status : 60|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY08Status : 58|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBK0607Status : 56|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBK0405Status : 54|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBK0103Status : 52|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBK11Status : 50|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBK10Status : 48|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBK09Status : 46|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBK08Status : 44|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY07Status : 42|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY06Status : 40|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY05Status : 38|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY04Status : 36|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY03Status : 34|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY02bStatus : 32|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY02aStatus : 30|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY01bStatus : 28|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY01aStatus : 26|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU13Status : 24|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU12Status : 22|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU11Status : 20|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU10Status : 18|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU09Status : 16|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU08Status : 14|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU07Status : 12|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU06Status : 10|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU05Status : 8|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU04Status : 6|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU03Status : 4|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU02Status : 2|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FBU01Status : 0|2@1+ (1,0) [0|3] ""  VDU_Champion
+
+BO_ 2566865182 PDM_PropB_41: 8 Vector__XXX
+ SG_ CAN_FBU14Status : 2|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CAN_FGY11Status : 0|2@1+ (1,0) [0|3] ""  VDU_Champion
+
+BO_ 2566855936 MEASDAT8: 8 Vector__XXX
+ SG_ CANEngWarningLamp : 1|1@1+ (1,0) [0|0] ""  VDU_Champion
+ SG_ FaultStatus : 55|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EngRunningStatus : 48|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EngineProtectionPhase : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ StartProtectionOverride : 36|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ForcedShutdownOverride : 35|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PowerReductionOverride : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PowerReduction : 18|8@1+ (1,0) [0|0] "%" Vector__XXX
+ SG_ Eng_PowertrainProtection : 10|2@1- (1,0) [0|0] "" Vector__XXX
+ SG_ PreheatLamp : 8|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OilWarningLamp : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EngineCoolantLamp : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CANEngStopLamp : 2|1@1+ (1,0) [0|0] ""  VDU_Champion
+ SG_ EngProtectionLamp : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 2566849536 MEASDAT1: 8 Vector__XXX
+ SG_ CanSetPointStatus : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CANEngOilPress : 48|8@1+ (4,0) [0|1020] "kPa" Vector__XXX
+ SG_ CANEngCoolantTemp : 40|8@1+ (1,-40) [-40|215] "°C" Vector__XXX
+ SG_ AccelPedalPos1 : 32|8@1+ (0.4,0) [0|100] "%" Vector__XXX
+ SG_ EngIntakeManifold1Press : 24|8@1+ (2,0) [0|500] "kPa" Vector__XXX
+ SG_ EngineSpeed : 8|16@1+ (0.125,0) [0|8031.88] "rpm" Vector__XXX
+ SG_ StatusPreheatSenseLine : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ FlameFuelValveActiveStatus : 5|1@1- (1,0) [0|0] "" Vector__XXX
+ SG_ FlameGlowPlugActiveStatus : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GlowPlugActiveStatus : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PostHeatActive : 2|1@1- (1,0) [0|0] "" Vector__XXX
+ SG_ ReadyForStart : 1|1@1- (1,0) [0|0] "" Vector__XXX
+ SG_ CANPreheatActive : 0|1@1+ (1,0) [0|0] ""  VDU_Champion
+
+BO_ 2365534211 TCUProp30: 8 Vector__XXX
+ SG_ CANActiveGear : 8|4@1+ (1,0) [0|15] ""  VDU_Champion
+ SG_ CANDirectionOfTravel : 0|2@1+ (1,0) [0|3] ""  VDU_Champion
+
+BO_ 2566849329 OICPriRotaryStatus: 8 Vector__XXX
+ SG_ CANOICRotary2YPlus : 36|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICRotary2YMinus : 38|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICRotary2XPlus : 32|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICRotary2XMinus : 34|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICRotary2Counter : 40|8@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICRotary1Error : 4|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICRotary1ChannelB : 22|10@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICRotary1ChannelA : 6|10@1+ (1,0) [0|1023] ""  VDU_Champion
+
+BO_ 2566849074 OICSecondaryHMIInputs: 8 Vector__XXX
+ SG_ CANOICHMIButton9Status : 22|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton8Status : 8|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton7Status : 10|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton6Status : 12|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton5Status : 14|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton21Rotary2Status : 46|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton20Status : 32|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton19Status : 34|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton18Status : 36|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton17Status : 38|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton16Status : 24|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton15Status : 26|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton14Status : 28|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton13Status : 30|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton12Status : 16|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton11Status : 18|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton10Status : 20|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton4Status : 0|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton3Status : 2|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton2Status : 4|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton1Status : 6|2@1+ (1,0) [0|3] ""  VDU_Champion
+
+BO_ 2566849073 OICPrimaryHMIInputs: 8 Vector__XXX
+ SG_ CANOICHMIButton9Status : 22|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton8Status : 8|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton7Status : 10|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton6Status : 12|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton5Status : 14|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton21Rotary2Status : 46|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton20Status : 32|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton19Status : 34|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton18Status : 36|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton17Status : 38|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton16Status : 24|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton15Status : 26|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton14Status : 28|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton13Status : 30|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICHMIButton12Status : 16|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton11Status : 18|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton10Status : 20|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton4Status : 0|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton3Status : 2|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton2Status : 4|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANOICHMIButton1Status : 6|2@1+ (1,0) [0|3] ""  VDU_Champion
+
+BO_ 2566849585 OICPrimaryElectricalInputs: 8 Vector__XXX
+ SG_ CANOICPrimaryAnIn2 : 24|16@1+ (1,0) [0|65535] ""  VDU_Champion
+ SG_ CANOICPrimaryAnIn1 : 8|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ CANOICPrimaryDigIn4 : 6|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICPrimaryDigIn3 : 4|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICPrimaryDigIn2 : 2|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOICPrimaryDigIn1 : 0|2@1+ (1,0) [0|3] "" Vector__XXX
+
+BO_ 2566888999 HCUPropB9E_Popups1: 8 Vector__XXX
+ SG_ CANPopupCloseDoor : 0|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupSeatEmpty : 2|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupReleaseParkBrake : 4|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupNeutralRequest : 6|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupEmergencyStop : 8|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupNoConfiguration : 10|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupParkBrakeNeeded : 12|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupLongPressParkRegen : 14|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupRegenNotNeeded : 16|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupLowTemperature : 18|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupSetNeutralRegen : 20|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupSetParkBrake : 22|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupLowerTheBoom : 24|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupParkedRegenInProgress : 26|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupRegenNotStarted : 28|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupParkedRegenDone : 30|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupParkedRegenAborted : 32|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupTransNoCom : 34|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupEngineNoCom : 36|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupEcuReplacement : 38|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupEcuWrongSoftware : 40|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupMachineSpeedTooHigh : 42|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupAshLoadWarning : 44|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupAshLoadHighLevel : 46|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupTransModeAuto : 48|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupOilChange : 50|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupTransFailure : 52|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupTransLimpHome : 54|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupTransCalibNeeded : 56|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupTransCalibInProgress : 58|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupTransCalibDone : 60|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANPopupTransCalibFailed : 62|2@1+ (1,0) [0|3] ""  VDU_Champion
+
+BO_ 2566883879 HCUPropB8A_SystemFluidLevels: 8 Vector__XXX
+ SG_ CANFuelLevel : 0|8@1+ (0.4,0) [0|255] "%"  VDU_Champion
+ SG_ CANFuelLevelAlertThreshold : 8|8@1+ (0.4,0) [0|255] "%"  VDU_Champion
+ SG_ CANDEFLevel : 24|8@1+ (0.4,0) [0|255] "%"  VDU_Champion
+ SG_ CANDEFLevelAlertThreshold : 32|8@1+ (0.4,0) [0|255] "%"  VDU_Champion
+
+BO_ 2566887975 HCUPropB9A_Inputs1: 8 Vector__XXX
+ SG_ CANForwardRequest : 0|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANReverseRequest : 2|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANForwardActive : 4|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANReverseActive : 6|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANDispTransGear : 8|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ CANDispTransMaxGear : 12|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ CANParkBrake : 16|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANTransAuto : 18|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANSpeedLimitLowRange : 20|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANEcoMode : 22|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANDispVehicleSpeed : 24|8@1+ (0.5,0) [0|255] "km/h" Vector__XXX
+ SG_ CANDispVehicleMaxSpeed : 32|8@1+ (0.5,0) [0|255] "km/h" Vector__XXX
+ SG_ CANDispEngineSpeed : 40|16@1+ (0.125,0) [0|65535] "tr/min" Vector__XXX
+ SG_ CANRearWheelAlignement : 56|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANFrontWheelAlignement : 58|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANSteeringMode : 60|3@1+ (1,0) [0|7] ""  VDU_Champion
+
+BO_ 2566888231 HCUPropB9B_Inputs2: 8 Vector__XXX
+ SG_ CANBoomAngle : 0|8@1+ (1,-125) [-125|130] "�" Vector__XXX
+ SG_ CANStrainGauge : 8|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ CANOverridePressed : 16|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANHydroNeutralization : 18|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANTransWarmUp : 20|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANPreheatLamp : 22|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANAlternatorNotCharging : 24|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANDpfLampStatus : 26|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ CANScrLampStatus : 29|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ CANStandstillRegeForcedLamp : 32|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANStandstillRegeInhibitedLamp : 34|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANTransOilPressure : 36|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANTransOilTemperature : 38|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANEngineOilPressure : 40|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANDefaultSteeringSensor : 42|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANAirFilterCloggingSensor : 44|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANHydOilFilterState : 46|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANFaultBrakingSensor : 48|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANLowBrakeFluidLevelSensor : 50|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANLowCoolantFluidLevelSensor : 52|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANWaterInFuel : 54|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANOverheatCoolantTemp : 56|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANExhaustHighTemp : 58|2@1+ (1,0) [0|3] "" Vector__XXX
+
+BO_ 2365530151 HCUPropB20_TrPS09_1: 8 Vector__XXX
+ SG_ CANTravelDirectionCommand : 0|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANShiftLeverGear : 2|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ CANShiftLeverFaultState : 6|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANDeclucthEnable : 8|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANParkBrakeStatus : 10|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANInchingEnable : 16|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANInchingMode : 18|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANAutoManualShift : 20|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANKickDownRqst : 24|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANDisconnect : 26|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANLockupEnable : 40|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANEcoModeEnable : 42|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANAutomatiqueKickdownFunction : 44|2@1+ (1,0) [0|3] "" Vector__XXX
+
+BO_ 2566884647 HCUPropB8D_FuelConsumption: 8 Vector__XXX
+ SG_ CANFuelAutonomy : 0|16@1+ (0.1,0) [0|65535] "h"  VDU_Champion
+ SG_ CANTripFuelUsed : 16|16@1+ (0.1,0) [0|65535] "l"  VDU_Champion
+ SG_ CANTripFuelAverage : 32|8@1+ (0.1,0) [0|255] "l/h"  VDU_Champion
+
+BO_ 2566912551 HCUPropBFA_HeatExchngrPrmtrs: 8 Vector__XXX
+ SG_ CANHeatExchangerTOT : 0|8@1+ (1,-40) [-40|215] "�C"  VDU_Champion
+ SG_ CANHeatExchangerHOT : 8|8@1+ (1,-40) [-40|215] "�C"  VDU_Champion
+ SG_ CANHeatExchangerAirIntakeTemp : 16|8@1+ (1,-40) [-40|215] "�C"  VDU_Champion
+ SG_ CANHeatExchangerAmbientTemp : 24|8@1+ (1,-40) [-40|215] "�C"  VDU_Champion
+ SG_ CANLsuSpeedError : 48|16@1+ (1,-32000) [-32000|33535] "Tr/min" Vector__XXX
+
+BO_ 2566749184 DPFC1: 8 Vector__XXX
+ SG_ ActiveRegenAvailabilityStatus : 3|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbt5629 : 58|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ AFT1DPFCondNotMetForActiveRegen : 60|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ HydrocarbonDoserPurgingEnable : 56|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnFrcdSttus : 53|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ CANHESTLampCmd : 50|3@1+ (1,0) [0|7] ""  VDU_Champion
+ SG_ DslPrtcltFltrAtmtcActvRgnrtnIntt : 48|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbt3717 : 46|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbtdDTE : 44|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbt3715 : 42|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbtdDTT : 40|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbt3713 : 38|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbt3712 : 36|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbtdDTL : 34|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbt3710 : 32|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbtdDTV : 30|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbtdDTO : 28|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbtdDTA : 26|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbtdDTP : 24|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbtdDTS : 22|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbtdDTC : 20|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DslPrtcltFltrActvRgnrtnInhbtdDTI : 18|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANDPFActiveRegenInhibitedStatus : 16|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ AFTDPFStatus : 12|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ AFTDPFActiveRegenStatus : 10|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ AFTDPFPassiveRegenStatus : 8|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ CANDPFLampCmd : 0|3@1+ (1,0) [0|7] ""  VDU_Champion
+
+BO_ 2566841600 HOURS: 8 Vector__XXX
+ SG_ CANEngTotalHoursOfOperation : 0|32@1+ (0.05,0) [0|210554060.75] "h"  VDU_Champion
+
+BO_ 2365522174 HCUPropB00_SystemStates: 8 Vector__XXX
+ SG_ CANBatteryVoltage : 16|16@1+ (0.05,0) [0|3276.75] "V"  VDU_Champion
+ SG_ CANBatteryNotCharging : 8|2@1+ (1,0) [0|3] ""  VDU_Champion
+ SG_ CANIgnitionStatus : 0|2@1+ (1,0) [0|3] ""  VDU_Champion
+
+BO_ 2566844160 EFL_P1: 8 Vector__XXX
+ SG_ CANEngCoolantLevel : 56|8@1+ (0.4,0) [0|102] "%"  VDU_Champion
+ SG_ CANEngOilPress : 24|8@1+ (4,0) [0|1020] "kPa"  VDU_Champion
+ SG_ CANEngFuelDeliveryPress : 0|8@1+ (4,0) [0|1020] "kPa"  VDU_Champion
+
+BO_ 2364539904 EEC1: 8 Vector__XXX
+ SG_ CANEngDemandPercentTorque : 56|8@1+ (1,-125) [-125|125] "%" Vector__XXX
+ SG_ CANEngStarterMode : 48|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ CANSAOfCntrllngDvcForEngCtrl : 40|8@1+ (1,0) [0|253] "" Vector__XXX
+ SG_ CANEngSpeed : 24|16@1+ (0.125,0) [0|8031.875] "rpm"  VDU_Champion
+ SG_ CANActualEngPercentTorque : 16|8@1+ (1,-125) [0|125] "%"  VDU_Champion
+ SG_ CANDriversDemandEngPercentTorque : 8|8@1+ (1,-125) [0|125] "%" Vector__XXX
+ SG_ CANEngTorqueMode : 0|4@1+ (1,0) [0|15] "" Vector__XXX
+
+BO_ 2566843904 ET1: 8 Vector__XXX
+ SG_ CANEngOilTemp1 : 16|16@1+ (0.03125,-273) [-273|1734.96875] "�C"  VDU_Champion
+ SG_ CANEngCoolantTemp : 0|8@1+ (1,-40) [-40|210] "°C"  VDU_Champion
+
+BO_ 2566804992 AT1T1I1: 8 Vector__XXX
+ SG_ HtrPreliminaryFMI : 56|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ Htr : 48|8@1+ (0.4,0) [0|100] "%" Vector__XXX
+ SG_ SCROpIndSev : 45|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ TempPreliminaryFMI : 40|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ DEFTankLowLvlInd : 37|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ LvlVolPreliminaryFMI : 32|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ Lvl : 16|16@1+ (0.1,0) [0|6425.5] "mm" Vector__XXX
+ SG_ Temp1 : 8|8@1+ (1,-40) [-40|210] "°C" Vector__XXX
+ SG_ CANDEFLevel : 0|8@1+ (0.4,0) [0|100] "%"  VDU_Champion
+
+
+
+CM_ SG_ 2566865694 CAN_PDMVIGN "Key Switched Voltage;  Range:0-50V";
+CM_ SG_ 2566865694 CAN_PDM_BoardTemp "Range:-40 to 210 °C
+Offset: -40 °C";
+CM_ SG_ 2566865694 CAN_PDMVBAT "Battery Voltage;  Range:0-50V";
+CM_ SG_ 2566865438 CAN_KBK11CircuitStatus "Diagnostic status of relay circuit 11 on black connector";
+CM_ SG_ 2566865438 CAN_KBK10CircuitStatus "Diagnostic status of relay circuit 10 on black connector";
+CM_ SG_ 2566865438 CAN_KBK09CircuitStatus "Diagnostic status of relay circuit 09 on black connector";
+CM_ SG_ 2566865438 CAN_KBK08CircuitStatus "Diagnostic status of relay circuit 08 on black connector";
+CM_ SG_ 2566865438 CAN_KBK07CircuitStatus "Diagnostic status of relay circuit 07 on black connector";
+CM_ SG_ 2566865438 CAN_KBK06CircuitStatus "Diagnostic status of relay circuit 06 on black connector";
+CM_ SG_ 2566865438 CAN_KBK05CircuitStatus "Diagnostic status of relay circuit 05 on black connector";
+CM_ SG_ 2566865438 CAN_KBK04CircuitStatus "Diagnostic status of relay circuit 04 on black connector";
+CM_ SG_ 2566865438 CAN_KBK03CircuitStatus "Diagnostic status of relay circuit 03 on black connector";
+CM_ SG_ 2566865438 CAN_KBK02CircuitStatus "Diagnostic status of relay circuit 02 on black connector";
+CM_ SG_ 2566865438 CAN_KBK01CircuitStatus "Diagnostic status of relay circuit 01 on black connector";
+CM_ SG_ 2566865438 CAN_KGY11CircuitStatus "Diagnostic status of relay circuit 11 on gray connector";
+CM_ SG_ 2566865438 CAN_KGY10CircuitStatus "Diagnostic status of relay circuit 10 on gray connector";
+CM_ SG_ 2566865438 CAN_KGY09CircuitStatus "Diagnostic status of relay circuit 09 on gray connector";
+CM_ SG_ 2566865438 CAN_KGY08CircuitStatus "Diagnostic status of relay circuit 08 on gray connector";
+CM_ SG_ 2566865438 CAN_KGY07CircuitStatus "Diagnostic status of relay circuit 07 on gray connector";
+CM_ SG_ 2566865438 CAN_KGY06CircuitStatus "Diagnostic status of relay circuit 06 on gray connector";
+CM_ SG_ 2566865438 CAN_KGY05CircuitStatus "Diagnostic status of relay circuit 05 on gray connector";
+CM_ SG_ 2566865438 CAN_KGY04CircuitStatus "Diagnostic status of relay circuit 04 on gray connector";
+CM_ SG_ 2566865438 CAN_KGY03CircuitStatus "Diagnostic status of relay circuit 03 on gray connector";
+CM_ SG_ 2566865438 CAN_KGY02CircuitStatus "Diagnostic status of relay circuit 02 on gray connector";
+CM_ SG_ 2566865438 CAN_KGY01CircuitStatus "Diagnostic status of relay circuit 01 on gray connector";
+CM_ SG_ 2566865438 CAN_KBU13CircuitStatus "Diagnostic status of relay circuit 13 on blue connector";
+CM_ SG_ 2566865438 CAN_KBU12CircuitStatus "Diagnostic status of relay circuit 12 on blue connector";
+CM_ SG_ 2566865438 CAN_KBU08CircuitStatus "Diagnostic status of relay circuit 08 on blue connector";
+CM_ SG_ 2566865438 CAN_KBU07CircuitStatus "Diagnostic status of relay circuit 07 on blue connector";
+CM_ SG_ 2566864926 CAN_FGY10Status "Diagnostic status of fuse 10 on gray connector";
+CM_ SG_ 2566864926 CAN_FGY09Status "Diagnostic status of fuse 09 on gray connector";
+CM_ SG_ 2566864926 CAN_FGY08Status "Diagnostic status of fuse 08 on gray connector";
+CM_ SG_ 2566864926 CAN_FBK0607Status "Diagnostic status of fuse 06 to 07 on black connector";
+CM_ SG_ 2566864926 CAN_FBK0405Status "Diagnostic status of fuse 04 to 05 on black connector";
+CM_ SG_ 2566864926 CAN_FBK0103Status "Diagnostic status of fuse 01 to 03 on black connector";
+CM_ SG_ 2566864926 CAN_FBK11Status "Diagnostic status of fuse 11 on black connector";
+CM_ SG_ 2566864926 CAN_FBK10Status "Diagnostic status of fuse 10 on black connector";
+CM_ SG_ 2566864926 CAN_FBK09Status "Diagnostic status of fuse 09 on black connector";
+CM_ SG_ 2566864926 CAN_FBK08Status "Diagnostic status of fuse 08 on black connector";
+CM_ SG_ 2566864926 CAN_FGY07Status "Diagnostic status of fuse 07 on gray connector";
+CM_ SG_ 2566864926 CAN_FGY06Status "Diagnostic status of fuse 06 on gray connector";
+CM_ SG_ 2566864926 CAN_FGY05Status "Diagnostic status of fuse 05 on gray connector";
+CM_ SG_ 2566864926 CAN_FGY04Status "Diagnostic status of fuse 04 on gray connector";
+CM_ SG_ 2566864926 CAN_FGY03Status "Diagnostic status of fuse 03 on gray connector";
+CM_ SG_ 2566864926 CAN_FGY02bStatus "Diagnostic status of fuse 02b on gray connector";
+CM_ SG_ 2566864926 CAN_FGY02aStatus "Diagnostic status of fuse 02a on gray connector";
+CM_ SG_ 2566864926 CAN_FGY01bStatus "Diagnostic status of fuse 01b on gray connector";
+CM_ SG_ 2566864926 CAN_FGY01aStatus "Diagnostic status of fuse 01a on gray connector";
+CM_ SG_ 2566864926 CAN_FBU13Status "Diagnostic status of fuse 13 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU12Status "Diagnostic status of fuse 12 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU11Status "Diagnostic status of fuse 11 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU10Status "Diagnostic status of fuse 10 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU09Status "Diagnostic status of fuse 09 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU08Status "Diagnostic status of fuse 08 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU07Status "Diagnostic status of fuse 07 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU06Status "Diagnostic status of fuse 06 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU05Status "Diagnostic status of fuse 05 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU04Status "Diagnostic status of fuse 04 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU03Status "Diagnostic status of fuse 03 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU02Status "Diagnostic status of fuse 02 on blue connector";
+CM_ SG_ 2566864926 CAN_FBU01Status "Diagnostic status of fuse 01 on blue connector";
+CM_ SG_ 2566865182 CAN_FBU14Status "Diagnostic status of fuse 14 on blue connector";
+CM_ SG_ 2566865182 CAN_FGY11Status "Diagnostic status of fuse 11 on gray connector";
+CM_ BO_ 2566855936 "Mesuared data 8";
+CM_ SG_ 2566855936 CANEngWarningLamp "Engine Warning Lamp";
+CM_ SG_ 2566855936 FaultStatus "Fault status";
+CM_ SG_ 2566855936 EngRunningStatus "Engine Running Status";
+CM_ SG_ 2566855936 EngineProtectionPhase "Engine Protection Phase**";
+CM_ SG_ 2566855936 StartProtectionOverride "Start Protection Override*";
+CM_ SG_ 2566855936 ForcedShutdownOverride "Forced Shutdown Override";
+CM_ SG_ 2566855936 PowerReductionOverride "Power Reduction Override";
+CM_ SG_ 2566855936 PowerReduction "Power reduction
+ 1 %/bit, 0 % offset";
+CM_ SG_ 2566855936 Eng_PowertrainProtection "Engine and powertrain protection";
+CM_ SG_ 2566855936 PreheatLamp "Preheat Lamp";
+CM_ SG_ 2566855936 OilWarningLamp "Oil Warning Lamp";
+CM_ SG_ 2566855936 EngineCoolantLamp "Engine Coolant Lamp";
+CM_ SG_ 2566855936 CANEngStopLamp "Engine Stop Lamp";
+CM_ SG_ 2566855936 EngProtectionLamp "Engine Protection Lamp";
+CM_ BO_ 2566849536 "Measured Data 1";
+CM_ SG_ 2566849536 CanSetPointStatus "Can set point status";
+CM_ SG_ 2566849536 CANEngOilPress "Gage pressure of oil in engine lubrication system as provided by oil pump. See SPN 100 for alternate resolution.";
+CM_ SG_ 2566849536 CANEngCoolantTemp "Temperature of liquid found in engine cooling system. The higher resolution is required for control purposes.";
+CM_ SG_ 2566849536 AccelPedalPos1 "Accelerator Pedal Position 1
+
+The ratio of actual position of the analog engine speed/torque request input device (such as an accelerator pedal or throttle lever) to the maximum position of the input device. 
+
+0.4 %/bit, 0 offset";
+CM_ SG_ 2566849536 EngIntakeManifold1Press "Eng Intake Manifold Press
+
+The gage pressure measurement of the air intake manifold. If there are multiple air pressure sensors in the intake stream, this is the last one in flow direction before entering the combustion chamber.  
+
+2 kPa/bit, 0 offset";
+CM_ SG_ 2566849536 EngineSpeed "Actual engine speed which is calculated over a minimum crankshaft angle of 720 degrees divided by the number of cylinders.
+
+0,125 rpm /Bit, Offset 0";
+CM_ SG_ 2566849536 StatusPreheatSenseLine "Status of Preheat sense line";
+CM_ SG_ 2566849536 FlameFuelValveActiveStatus "Flame fuel valve active status";
+CM_ SG_ 2566849536 FlameGlowPlugActiveStatus "Flame Glow Plug active status";
+CM_ SG_ 2566849536 GlowPlugActiveStatus "Glow Plug active status";
+CM_ SG_ 2566849536 PostHeatActive "Post heat active";
+CM_ SG_ 2566849536 ReadyForStart "Ready for start (Preheat complete)";
+CM_ SG_ 2566849536 CANPreheatActive "Preheat Active";
+CM_ SG_ 2566849329 CANOICRotary2YPlus "Throttle error status (0 = no error, 1 = error, 3 = unused) - indicates Rotary1 values are out of bounds or Channel A and Channel B do not agree on encoder position.";
+CM_ SG_ 2566849329 CANOICRotary2YMinus "Throttle error status (0 = no error, 1 = error, 3 = unused) - indicates Rotary1 values are out of bounds or Channel A and Channel B do not agree on encoder position.";
+CM_ SG_ 2566849329 CANOICRotary2XPlus "Throttle error status (0 = no error, 1 = error, 3 = unused) - indicates Rotary1 values are out of bounds or Channel A and Channel B do not agree on encoder position.";
+CM_ SG_ 2566849329 CANOICRotary2XMinus "Throttle error status (0 = no error, 1 = error, 3 = unused) - indicates Rotary1 values are out of bounds or Channel A and Channel B do not agree on encoder position.";
+CM_ SG_ 2566849329 CANOICRotary2Counter "Throttle error status (0 = no error, 1 = error, 3 = unused) - indicates Rotary1 values are out of bounds or Channel A and Channel B do not agree on encoder position.";
+CM_ SG_ 2566849329 CANOICRotary1Error "Throttle error status (0 = no error, 1 = error, 3 = unused) - indicates Rotary1 values are out of bounds or Channel A and Channel B do not agree on encoder position.";
+CM_ SG_ 2566849329 CANOICRotary1ChannelB "Throttle error status (0 = no error, 1 = error, 3 = unused) - indicates Rotary1 values are out of bounds or Channel A and Channel B do not agree on encoder position.";
+CM_ SG_ 2566849329 CANOICRotary1ChannelA "Throttle error status (0 = no error, 1 = error, 3 = unused) - indicates Rotary1 values are out of bounds or Channel A and Channel B do not agree on encoder position.";
+CM_ SG_ 2566888999 CANPopupCloseDoor "Popup: Fermer la porte afin d'obtenir la pr�sence conducteur hydraulique ou transmission";
+CM_ SG_ 2566888999 CANPopupSeatEmpty "Popup: La pr�sence conducteur va �tre perdue si le si�ge reste inoccup�";
+CM_ SG_ 2566888999 CANPopupReleaseParkBrake "Popup: D�serrer le frein de Park";
+CM_ SG_ 2566888999 CANPopupNeutralRequest "Popup: Le retour du Fnr au neutre est demand�";
+CM_ SG_ 2566888999 CANPopupEmergencyStop "Popup: Arr�t d'urgence enclench� (bip et/ou popup)";
+CM_ SG_ 2566888999 CANPopupNoConfiguration "Popup: Machine non configur�e";
+CM_ SG_ 2566888999 CANPopupParkBrakeNeeded "Popup: Serrer le frein � main";
+CM_ SG_ 2566888999 CANPopupLongPressParkRegen "Popup: Appuyer de 2 secondes sur le Dsb pour lancer la r�g�n�ration ";
+CM_ SG_ 2566888999 CANPopupRegenNotNeeded "Popup: Pas de r�g�n�ration requise ";
+CM_ SG_ 2566888999 CANPopupLowTemperature "Popup: Temp�rature moteur trop faible pour lancer la r�g�n�ration ";
+CM_ SG_ 2566888999 CANPopupSetNeutralRegen "Popup: Mettre le Fnr au neutre pour lancer la r�g�n�ration ";
+CM_ SG_ 2566888999 CANPopupSetParkBrake "Popup: Serrer le frein de park pour lancer la r�g�n�ration ";
+CM_ SG_ 2566888999 CANPopupLowerTheBoom "Popup: Baisser la fl�che pour lancer la r�g�n�ration ";
+CM_ SG_ 2566888999 CANPopupParkedRegenInProgress "Popup: R�g�n�ration parqu�e en cours";
+CM_ SG_ 2566888999 CANPopupRegenNotStarted "Popup: La r�g�n�ration ne s'est pas lanc�e. Consulter le manuel.";
+CM_ SG_ 2566888999 CANPopupParkedRegenDone "Popup: La r�g�n�ration s'est termin�e avec succ�s";
+CM_ SG_ 2566888999 CANPopupParkedRegenAborted "Popup: Abandon ou �chec de la r�g�n�ration";
+CM_ SG_ 2566888999 CANPopupTransNoCom "Popup: Perte communication CAN avec la transmission";
+CM_ SG_ 2566888999 CANPopupEngineNoCom "Popup: Perte communication CAN avec le moteur";
+CM_ SG_ 2566888999 CANPopupEcuReplacement "Popup: Remplacement Ecu";
+CM_ SG_ 2566888999 CANPopupEcuWrongSoftware "Popup: Incoh�rence messageries CAN";
+CM_ SG_ 2566888999 CANPopupMachineSpeedTooHigh "Popup: Survitesse machine";
+CM_ SG_ 2566888999 CANPopupAshLoadWarning "Popup : Moteur stage 5, Ash Load alerte niveau 1";
+CM_ SG_ 2566888999 CANPopupAshLoadHighLevel "Popup : Moteur stage 5, Ash Load alerte niveau 2";
+CM_ SG_ 2566888999 CANPopupTransModeAuto "Popup: Activation du mode automatique";
+CM_ SG_ 2566888999 CANPopupOilChange "Popup: Changement d'huile n�cessaire";
+CM_ SG_ 2566888999 CANPopupTransFailure "Popup: D�faut transmission";
+CM_ SG_ 2566888999 CANPopupTransLimpHome "Popup: Transmission en mode Limp Home";
+CM_ SG_ 2566888999 CANPopupTransCalibNeeded "Popup: Calibration transmission non effectu�e";
+CM_ SG_ 2566888999 CANPopupTransCalibInProgress "Popup: Calibration transmission en cours";
+CM_ SG_ 2566888999 CANPopupTransCalibDone "Popup: Calibration transmission finie avec succ�s";
+CM_ SG_ 2566888999 CANPopupTransCalibFailed "Popup: Echec de la calibration transmission";
+CM_ SG_ 2566883879 CANFuelLevel "Pourcentage de carburant restant dans le r�servoir";
+CM_ SG_ 2566883879 CANFuelLevelAlertThreshold "Pourcentage d'alerte niveau de carburant bas.";
+CM_ SG_ 2566883879 CANDEFLevel "Pourcentage d'AdBlue restant dans le r�servoir";
+CM_ SG_ 2566883879 CANDEFLevelAlertThreshold "Pourcentage d'alerte niveau d'AdBlue bas.";
+CM_ SG_ 2566887975 CANForwardRequest "Demande Fnr Forward";
+CM_ SG_ 2566887975 CANReverseRequest "Demande Fnr Reverse";
+CM_ SG_ 2566887975 CANForwardActive "Etat pilotage Fnr Forward";
+CM_ SG_ 2566887975 CANReverseActive "Etat pilotage Fnr Reverse";
+CM_ SG_ 2566887975 CANDispTransGear "Rapport engag� de la transmission";
+CM_ SG_ 2566887975 CANDispTransMaxGear "Rapport maximum de la transmission";
+CM_ SG_ 2566887975 CANParkBrake "Affichage du picto frein de park au dashboard";
+CM_ SG_ 2566887975 CANTransAuto "Mode automatique de la transmission";
+CM_ SG_ 2566887975 CANSpeedLimitLowRange "For�age de l'affichage de limitation � utiliser la plage de vitesse 0-25 km/h";
+CM_ SG_ 2566887975 CANEcoMode "Affichage du picto EcoMode";
+CM_ SG_ 2566887975 CANDispVehicleSpeed "Vitesse v�hicule pour affichage";
+CM_ SG_ 2566887975 CANDispVehicleMaxSpeed "Vitesse v�hicule pour affichage";
+CM_ SG_ 2566887975 CANDispEngineSpeed "R�gime du moteur pour affichage";
+CM_ SG_ 2566887975 CANRearWheelAlignement "Information alignement du pont arri�re pour affichage";
+CM_ SG_ 2566887975 CANFrontWheelAlignement "Information alignement du pont avant pour affichage";
+CM_ SG_ 2566887975 CANSteeringMode "Mode de direction en cours pour affichage";
+CM_ SG_ 2566888231 CANBoomAngle "Angle de fl�che pour affichage";
+CM_ SG_ 2566888231 CANStrainGauge "Etat de la jauge de contrainte pour affichage";
+CM_ SG_ 2566888231 CANOverridePressed "Affichage du voyant override sur le dashboard";
+CM_ SG_ 2566888231 CANHydroNeutralization "Affichage du voyant neutralisation hydraulique";
+CM_ SG_ 2566888231 CANTransWarmUp "Affichage du rapport en bleu pour le Warm Up";
+CM_ SG_ 2566888231 CANPreheatLamp "Affichage du voyant de pr�chauffe moteur";
+CM_ SG_ 2566888231 CANAlternatorNotCharging "Affichage du voyant d�faut alternateur sur le dashboard";
+CM_ SG_ 2566888231 CANDpfLampStatus "Affichage de la lampe Dpf";
+CM_ SG_ 2566888231 CANScrLampStatus "Affichage de la lampe Scr";
+CM_ SG_ 2566888231 CANStandstillRegeForcedLamp "Affichage du voyant r�g�n�ration park�e";
+CM_ SG_ 2566888231 CANStandstillRegeInhibitedLamp "Affichage du voyant r�g�n�ration inhib�e";
+CM_ SG_ 2566888231 CANTransOilPressure "Affichage du voyant d�faut pression transmission";
+CM_ SG_ 2566888231 CANTransOilTemperature "Affichage du voyant d�faut temp�rature transmission";
+CM_ SG_ 2566888231 CANEngineOilPressure "Affichage du voyant d�faut pression moteur";
+CM_ SG_ 2566888231 CANDefaultSteeringSensor "Affichage du voyant d�faut direction";
+CM_ SG_ 2566888231 CANAirFilterCloggingSensor "Affichage du voyant filtre � air colmat�";
+CM_ SG_ 2566888231 CANHydOilFilterState "Affichage du voyant filtre hydraulique colmat�";
+CM_ SG_ 2566888231 CANFaultBrakingSensor "Affichage du voyant d�faut frein";
+CM_ SG_ 2566888231 CANLowBrakeFluidLevelSensor "Affichage du voyant liquide de frein bas";
+CM_ SG_ 2566888231 CANLowCoolantFluidLevelSensor "Affichage du voyant liquide de refroidissement bas";
+CM_ SG_ 2566888231 CANWaterInFuel "Affichage du voyant eau de le gasoil";
+CM_ SG_ 2566888231 CANOverheatCoolantTemp "Indique une surchauffe eau moteur (pour moteur m�canique)";
+CM_ SG_ 2566888231 CANExhaustHighTemp "Indique que la temp�rature des gazs d'�chappement sont �lev�s";
+CM_ SG_ 2365530151 CANTravelDirectionCommand "To PS09:";
+CM_ SG_ 2365530151 CANShiftLeverGear "To PS09:";
+CM_ SG_ 2365530151 CANShiftLeverFaultState "To PS09:";
+CM_ SG_ 2365530151 CANDeclucthEnable "To PS09:";
+CM_ SG_ 2365530151 CANParkBrakeStatus "To PS09:";
+CM_ SG_ 2365530151 CANInchingEnable "To PS09:";
+CM_ SG_ 2365530151 CANInchingMode "To PS09:";
+CM_ SG_ 2365530151 CANAutoManualShift "To PS09:";
+CM_ SG_ 2365530151 CANKickDownRqst "To PS09:";
+CM_ SG_ 2365530151 CANDisconnect "To PS09:";
+CM_ SG_ 2365530151 CANLockupEnable "To PS09:";
+CM_ SG_ 2365530151 CANEcoModeEnable "To PS09:";
+CM_ SG_ 2365530151 CANAutomatiqueKickdownFunction "To PS09:";
+CM_ SG_ 2566912551 CANHeatExchangerTOT "Coolant Temperature Debug Frame";
+CM_ SG_ 2566912551 CANHeatExchangerHOT "Transmission Oil Temperature";
+CM_ SG_ 2566912551 CANHeatExchangerAirIntakeTemp "Hydraulic Oil Temperature";
+CM_ SG_ 2566912551 CANHeatExchangerAmbientTemp "Intake Air Temperature";
+CM_ SG_ 2566912551 CANLsuSpeedError "Lsu error, requested speed, actual speed";
+CM_ BO_ 2566749184 "Diesel Particulate Filter Control 1
+This PGN contains information about the diesel particulate filter regeneration control.
+If there are aftertreatment systems on two banks, this PGN represents the composite information from both banks.
+NOTE ...";
+CM_ SG_ 2566749184 ActiveRegenAvailabilityStatus "Indicates that diesel particulate filter active regeneration is available for initiation through Aftertreatment Regeneration Force Switch (SPN 3696).
+
+00 - Not ready for initiation
+01 - Ready for initiation
+10 - Reserved
+11 - Not Available";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt5629 "Diesel Particulate Filter Active Regeneration Inhibited Due to Low Exhaust Gas Pressure
+Indicates the state of diesel particulate filter active regeneration inhibition due to low exhaust pressure.
+";
+CM_ SG_ 2566749184 AFT1DPFCondNotMetForActiveRegen "Diesel Particulate Filter 1 Conditions Not Met for Active Regeneration
+Indicates that diesel particulate filter 1 is not able to begin or continue an active regenerate event at the current engine operating conditions.
+";
+CM_ SG_ 2566749184 HydrocarbonDoserPurgingEnable "Hydrocarbon Doser Purging Enable
+Purging enable of the Hydrocarbon Doser (HCD).";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnFrcdSttus "Diesel Particulate Filter Active Regeneration Forced Status
+Indicates the forced execution status of diesel particulate filter regeneration.
+";
+CM_ SG_ 2566749184 CANHESTLampCmd "Exhaust System High Temperature Lamp Command
+Command to control the exhaust system high temperature lamp.  This lamp indicates that the exhaust system temperature is high.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrAtmtcActvRgnrtnIntt "Diesel Particulate Filter Automatic Active Regeneration Initiation Configuration
+Indicates the configuration of diesel particulate filter active regeneration automatic initiation.";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3717 "Diesel Particulate Filter Active Regeneration Inhibited Due to Vehicle Speed Below Allowed Speed
+Indicates the state of diesel particulate filter active regeneration inhibition due to vehicle speed being less than the allowed vehicle speed.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTE "Diesel Particulate Filter Active Regeneration Inhibited Due to Engine Not Warmed Up
+Indicates the state of diesel particulate filter active regeneration inhibition due to the engine not being warmed up.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3715 "Diesel Particulate Filter Active Regeneration Inhibited Due to Permanent System Lockout
+Indicates the state of diesel particulate filter active regeneration inhibition due to a permanent system lockout.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTT "Diesel Particulate Filter Active Regeneration Inhibited Due to Temporary System Lockout
+Indicates the state of diesel particulate filter active regeneration inhibition due to a temporary system lockout.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3713 "Diesel Particulate Filter Active Regeneration Inhibited Due to System Timeout
+Indicates the state of diesel particulate filter active regeneration inhibition due to a system timeout.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3712 "Diesel Particulate Filter Active Regeneration Inhibited Due to System Fault Active
+Indicates the state of diesel particulate filter active regeneration inhibition due to a system fault being active.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTL "Diesel Particulate Filter Active Regeneration Inhibited Due to Low Exhaust Gas Temperature
+Indicates the state of diesel particulate filter active regeneration inhibition due to the exhaust temperature being too low.  ";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3710 "Diesel Particulate Filter Active Regeneration Inhibited Due to Parking Brake Not Set
+Indicates the state of diesel particulate filter active regeneration inhibition due to the parking brake being not set.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTV "Diesel Particulate Filter Active Regeneration Inhibited Due to Vehicle Speed Above Allowed Speed
+Indicates the state of diesel particulate filter active regeneration inhibition due to the vehicle speed being above an allowed limit.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTO "Diesel Particulate Filter Active Regeneration Inhibited Due to Out of Neutral
+Indicates the state of diesel particulate filter active regeneration inhibition due to the transmission being out of neutral.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTA "Diesel Particulate Filter Active Regeneration Inhibited Due to Accelerator Pedal Off Idle
+Indicates the state of diesel particulate filter active regeneration inhibition due to the accelerator pedal being off idle.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTP "Diesel Particulate Filter Active Regeneration Inhibited Due to PTO active
+Indicates the state of diesel particulate filter active regeneration inhibition due to the PTO being active.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTS "Diesel Particulate Filter Active Regeneration Inhibited Due to Service Brake active
+Indicates the state of diesel particulate filter active regeneration inhibition due to the service brake being active.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTC "Diesel Particulate Filter Active Regeneration Inhibited Due to Clutch disengaged
+Indicates the state of diesel particulate filter active regeneration inhibition due to the clutch being disengaged.
+";
+CM_ SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTI "Diesel Particulate Filter Active Regeneration Inhibited Due to Inhibit Switch
+Indicates the state of diesel particulate filter active regeneration inhibition due to the Diesel Particulate Filter Regeneration Inhibit Switch.
+";
+CM_ SG_ 2566749184 CANDPFActiveRegenInhibitedStatus "Diesel Particulate Filter Active Regeneration Inhibited Status
+Indicates the state of diesel particulate filter active regeneration inhibition.
+This SPN indicates the reason for the diesel particulate filter regeneration not ...";
+CM_ SG_ 2566749184 AFTDPFStatus "Diesel Particulate Filter Status
+Indicates the state of the diesel particulate filter regeneration need and urgency.  This is an aggregate of bank 1 and bank 2.  It is a system status and not individual bank status.
+";
+CM_ SG_ 2566749184 AFTDPFActiveRegenStatus "Diesel Particulate Filter Active Regeneration Status
+Indicates the state of diesel particulate filter active regeneration.  This is an aggregate of bank 1 and bank 2.  It is a system status and not individual bank status.
+
+";
+CM_ SG_ 2566749184 AFTDPFPassiveRegenStatus "Diesel Particulate Filter Passive Regeneration Status
+Indicates the state of diesel particulate filter passive regeneration.  This is an aggregate of bank 1 and bank 2.  It is a system status and not individual bank status.";
+CM_ SG_ 2566749184 CANDPFLampCmd "Diesel Particulate Filter Lamp Command
+Command to control the diesel particulate filter lamp..";
+CM_ BO_ 2566841600 "Engine Hours, Revolutions
+Cycle time or Repetition rate (msec): On request using PGN 59904";
+CM_ SG_ 2566841600 CANEngTotalHoursOfOperation "Accumulated time of operation of engine.";
+CM_ BO_ 2566844160 "Engine Fluid Level/Pressure 1
+PGN which identifies parameters that are either measuring various pressures within the engine or identifying engine fluid levels";
+CM_ SG_ 2566844160 CANEngCoolantLevel "Ratio of volume of liquid found in engine cooling system to total cooling system volume.  Typical monitoring location is in the coolant expansion tank.";
+CM_ SG_ 2566844160 CANEngOilPress "Gage pressure of oil in engine lubrication system as provided by oil pump. See SPN 100 for alternate resolution.";
+CM_ SG_ 2566844160 CANEngFuelDeliveryPress "Gage pressure of fuel in system as delivered from supply pump to the injection pump. See SPN 94 for alternate resolution.
+
+See also SPN 5578 for Engine Fuel Delivery Absolute Pressure.";
+CM_ BO_ 2364539904 "Electronic Engine Controller 1
+Engine related parameters";
+CM_ SG_ 2364539904 CANEngDemandPercentTorque "The limiting torque of the gearbox is used.
+TSC1-TE message is the source.
+1% /Bit Offset -125%
+i.e. 0xCDh means 205-125 = 80% of Mdmax";
+CM_ SG_ 2364539904 CANEngStarterMode "There are several phases in a starting action and different reasons why a start cannot take place.";
+CM_ SG_ 2364539904 CANSAOfCntrllngDvcForEngCtrl "0x00h if EMR4 controls the engine torque else the source address of the TSC1 message identifier which is controlling the torque.";
+CM_ SG_ 2364539904 CANEngSpeed "Actual engine speed which is calculated over a minimum crankshaft angle of 720 degrees divided by the number of cylinders.";
+CM_ SG_ 2364539904 CANActualEngPercentTorque "The calculated output torque of the engine.  
+Actual Engine torque in % related to Mdmax
+1% /Bit, Offset -125%, i.e. 0xCDh means 205-
+125 = 80% of Mdmax of Engine**
+ (see the engine configuration message, PGN 65251).";
+CM_ SG_ 2364539904 CANDriversDemandEngPercentTorque "The requested torque output of the engine by the driver.1% /Bit, Offset -125%, indicated torque,
+i.e. 0xCDh means 205-125 = 80% of Mdmax.";
+CM_ SG_ 2364539904 CANEngTorqueMode "State signal which indicates which engine torque mode is currently generating, limiting, or controlling the torque.  Note that the modes are not in prioritized order. Not all modes may be relevant for a given device.  Some devices may not implement ...";
+CM_ BO_ 2566843904 "Engine Temperature 1";
+CM_ SG_ 2566843904 CANEngOilTemp1 "Temperature of the engine lubricant.
+Note:  If there is only one engine oil temperature measurement, this SPN should be used.  This is the SPN that is typically displayed on an on-highway truck instrument cluster.
+See also SPNs 1135 and 5925 for ...";
+CM_ SG_ 2566843904 CANEngCoolantTemp "Temperature of liquid found in engine cooling system.";
+CM_ BO_ 2566804992 "Aftertreatment 1 Diesel Exhaust Fluid Tank 1 Information 1
+Contains information on various tank levels";
+CM_ SG_ 2566804992 HtrPreliminaryFMI "Used to identify the applicable J1939-73 FMI detected for the heater of the diesel exhaust fluid tank for aftertreatment system 1 (exhaust bank 1), as detected by the manufacturer's control software.  In the case of multiple failures the most severe ...";
+CM_ SG_ 2566804992 Htr "Percentage of heating applied to the aftertreatment 1 diesel exhaust fluid tank heater.  A value of 0% means no heating applied, a value of 100% means full heating applied.  The diesel exhaust fluid tank heater warms the diesel exhaust fluid in the ...";
+CM_ SG_ 2566804992 SCROpIndSev "Aftertreatment SCR Operator Inducement Severity
+Severity status of the operator inducement system for anomalies with the SCR system, such as tampering, low DEF quality, and DEF tank level.  Higher numerical levels indicate more severe levels of inducem..";
+CM_ SG_ 2566804992 TempPreliminaryFMI "Used to identify the applicable J1939-73 FMI detected for the diesel exhaust fluid tank temperature for aftertreatment system 1 (exhaust bank 1), as detected by the manufacturer�s control software. In the case of multiple failures the most severe is ...";
+CM_ SG_ 2566804992 DEFTankLowLvlInd "The desired illumination of the driver's warning indicator for diesel exhaust fluid (DEF) tank low level.
+000 - Off -  indicates adequate DEF level
+e.g., for Euro VI this is used to indicate the driver warning system is non-active for diesel ...";
+CM_ SG_ 2566804992 LvlVolPreliminaryFMI "Used to identify the applicable J1939-73 FMI detected in the diesel exhaust fluid tank level sensor by the manufacturer's sensor control software.  This FMI is applicable to either the diesel exhaust fluid tank level or diesel exhaust fluid tank ...";
+CM_ SG_ 2566804992 Lvl "The diesel exhaust fluid level height in mm in the diesel exhaust fluid storage container for aftertreatment system 1 (exhaust bank 1).  See SPN 1761 and SPN 7530 for alternate measurements.
+Parameter Specific Indicator:  A value of FB00h indicates ...";
+CM_ SG_ 2566804992 Temp1 "Temperature of the diesel exhaust fluid in the storage tank.";
+CM_ SG_ 2566804992 CANDEFLevel "Ratio of volume of diesel exhaust fluid to the total volume of diesel exhaust fluid storage container for aftertreatment system 1 (exhaust bank 1).  0% is empty and 100% is full.  See SPN 3517 and SPN 7530 for alternate measurements.
+Parameter ...";
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType";
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ SG_  "GenSigStartValue" INT 0 2147483647;
+BA_DEF_ SG_  "GenSigEVName" STRING ;
+BA_DEF_ SG_  "SPN" INT 0 524287;
+BA_DEF_ SG_  "SigType" ENUM  "Default","Range","RangeSigned","ASCII","Discrete","Control","ReferencePGN","DTC","StringDelimiter","StringLength","StringLengthControl";
+BA_DEF_ SG_  "GenSigILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgFastOnStart" INT 0 100000;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 3600000;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 1000000;
+BA_DEF_ BO_  "TpJ1939VarDlc" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 1000;
+BA_DEF_ BO_  "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","reserved","J1939PG";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 3600000;
+BA_DEF_ BO_  "GenMsgRequestable" INT 0 1;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","NotUsed","IfActive","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed","noMsgSendType";
+BA_DEF_ BU_  "NmStationAddress" INT 0 255;
+BA_DEF_ BU_  "NmJ1939AAC" INT 0 1;
+BA_DEF_ BU_  "NmJ1939ECUInstance" INT 0 3;
+BA_DEF_ BU_  "NmJ1939Function" INT 0 255;
+BA_DEF_ BU_  "NmJ1939FunctionInstance" INT 0 7;
+BA_DEF_ BU_  "NmJ1939IdentityNumber" INT 0 2097151;
+BA_DEF_ BU_  "NmJ1939IndustryGroup" INT 0 7;
+BA_DEF_ BU_  "NmJ1939ManufacturerCode" INT 0 2047;
+BA_DEF_ BU_  "NmJ1939System" INT 0 127;
+BA_DEF_ BU_  "NmJ1939SystemInstance" INT 0 15;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_  "ProtocolType" STRING ;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_DEF_  "GenSigSendType" "NoSigSendType";
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigEVName" "Env@Nodename_@Signame";
+BA_DEF_DEF_  "SPN" 0;
+BA_DEF_DEF_  "SigType" "Default";
+BA_DEF_DEF_  "GenSigILSupport" "Yes";
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "GenMsgFastOnStart" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "TpJ1939VarDlc" "No";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "VFrameFormat" "J1939PG";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgRequestable" 1;
+BA_DEF_DEF_  "GenMsgSendType" "noMsgSendType";
+BA_DEF_DEF_  "NmStationAddress" 254;
+BA_DEF_DEF_  "NmJ1939AAC" 0;
+BA_DEF_DEF_  "NmJ1939ECUInstance" 0;
+BA_DEF_DEF_  "NmJ1939Function" 0;
+BA_DEF_DEF_  "NmJ1939FunctionInstance" 0;
+BA_DEF_DEF_  "NmJ1939IdentityNumber" 0;
+BA_DEF_DEF_  "NmJ1939IndustryGroup" 0;
+BA_DEF_DEF_  "NmJ1939ManufacturerCode" 0;
+BA_DEF_DEF_  "NmJ1939System" 0;
+BA_DEF_DEF_  "NmJ1939SystemInstance" 0;
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ProtocolType" "J1939";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_DEF_DEF_  "DBName" "";
+BA_ "BusType" "CAN";
+BA_ "ProtocolType" "J1939";
+BA_ "DBName" "TH_CTRL_95kW";
+BA_ "NmJ1939Function" BU_ VDU_Champion 60;
+BA_ "NmStationAddress" BU_ VDU_Champion 40;
+BA_ "GenMsgCycleTime" BO_ 2566865694 1000;
+BA_ "GenMsgCycleTimeFast" BO_ 2566865694 100;
+BA_ "VFrameFormat" BO_ 2566865694 3;
+BA_ "GenMsgCycleTime" BO_ 2566865438 2000;
+BA_ "GenMsgCycleTimeFast" BO_ 2566865438 40;
+BA_ "VFrameFormat" BO_ 2566865438 3;
+BA_ "GenMsgCycleTime" BO_ 2566864926 2000;
+BA_ "GenMsgCycleTimeFast" BO_ 2566864926 40;
+BA_ "VFrameFormat" BO_ 2566864926 3;
+BA_ "GenMsgCycleTime" BO_ 2566865182 2000;
+BA_ "GenMsgCycleTimeFast" BO_ 2566865182 40;
+BA_ "VFrameFormat" BO_ 2566865182 3;
+BA_ "GenMsgCycleTime" BO_ 2566855936 100;
+BA_ "VFrameFormat" BO_ 2566855936 3;
+BA_ "GenMsgCycleTime" BO_ 2566849536 100;
+BA_ "VFrameFormat" BO_ 2566849536 3;
+BA_ "GenMsgCycleTime" BO_ 2365534211 20;
+BA_ "VFrameFormat" BO_ 2365534211 3;
+BA_ "GenMsgSendType" BO_ 2566849329 0;
+BA_ "VFrameFormat" BO_ 2566849329 3;
+BA_ "GenMsgSendType" BO_ 2566849074 0;
+BA_ "VFrameFormat" BO_ 2566849074 3;
+BA_ "GenMsgSendType" BO_ 2566849073 0;
+BA_ "VFrameFormat" BO_ 2566849073 3;
+BA_ "GenMsgSendType" BO_ 2566849585 0;
+BA_ "VFrameFormat" BO_ 2566849585 3;
+BA_ "GenMsgSendType" BO_ 2566888999 0;
+BA_ "GenMsgCycleTime" BO_ 2566888999 100;
+BA_ "GenMsgStartDelayTime" BO_ 2566888999 0;
+BA_ "VFrameFormat" BO_ 2566888999 3;
+BA_ "GenMsgSendType" BO_ 2566883879 0;
+BA_ "GenMsgCycleTime" BO_ 2566883879 1000;
+BA_ "GenMsgStartDelayTime" BO_ 2566883879 0;
+BA_ "VFrameFormat" BO_ 2566883879 3;
+BA_ "GenMsgSendType" BO_ 2566887975 0;
+BA_ "GenMsgCycleTime" BO_ 2566887975 100;
+BA_ "GenMsgStartDelayTime" BO_ 2566887975 0;
+BA_ "VFrameFormat" BO_ 2566887975 3;
+BA_ "GenMsgSendType" BO_ 2566888231 0;
+BA_ "GenMsgCycleTime" BO_ 2566888231 100;
+BA_ "GenMsgStartDelayTime" BO_ 2566888231 0;
+BA_ "VFrameFormat" BO_ 2566888231 3;
+BA_ "GenMsgSendType" BO_ 2365530151 2;
+BA_ "GenMsgCycleTime" BO_ 2365530151 20;
+BA_ "GenMsgStartDelayTime" BO_ 2365530151 0;
+BA_ "VFrameFormat" BO_ 2365530151 3;
+BA_ "GenMsgSendType" BO_ 2566884647 0;
+BA_ "GenMsgCycleTime" BO_ 2566884647 1000;
+BA_ "GenMsgStartDelayTime" BO_ 2566884647 0;
+BA_ "VFrameFormat" BO_ 2566884647 3;
+BA_ "GenMsgSendType" BO_ 2566912551 2;
+BA_ "GenMsgCycleTime" BO_ 2566912551 20;
+BA_ "GenMsgStartDelayTime" BO_ 2566912551 0;
+BA_ "VFrameFormat" BO_ 2566912551 3;
+BA_ "GenMsgSendType" BO_ 2566749184 0;
+BA_ "GenMsgCycleTime" BO_ 2566749184 1000;
+BA_ "GenMsgDelayTime" BO_ 2566749184 100;
+BA_ "VFrameFormat" BO_ 2566749184 3;
+BA_ "VFrameFormat" BO_ 2566841600 3;
+BA_ "GenMsgCycleTime" BO_ 2365522174 100;
+BA_ "GenMsgCycleTimeFast" BO_ 2365522174 20;
+BA_ "VFrameFormat" BO_ 2365522174 3;
+BA_ "GenMsgSendType" BO_ 2566844160 0;
+BA_ "GenMsgCycleTime" BO_ 2566844160 500;
+BA_ "VFrameFormat" BO_ 2566844160 3;
+BA_ "GenMsgSendType" BO_ 2364539904 0;
+BA_ "GenMsgCycleTime" BO_ 2364539904 20;
+BA_ "VFrameFormat" BO_ 2364539904 3;
+BA_ "GenMsgSendType" BO_ 2566843904 0;
+BA_ "GenMsgCycleTime" BO_ 2566843904 1000;
+BA_ "VFrameFormat" BO_ 2566843904 3;
+BA_ "GenMsgSendType" BO_ 2566804992 0;
+BA_ "GenMsgCycleTime" BO_ 2566804992 1000;
+BA_ "VFrameFormat" BO_ 2566804992 3;
+BA_ "GenSigStartValue" SG_ 2566865694 CAN_PDM_BoardTemp 40;
+BA_ "SigType" SG_ 2566849536 CANEngOilPress 1;
+BA_ "SPN" SG_ 2566849536 CANEngOilPress 7468;
+BA_ "SigType" SG_ 2566849536 CANEngCoolantTemp 1;
+BA_ "SPN" SG_ 2566849536 CANEngCoolantTemp 1637;
+BA_ "GenSigStartValue" SG_ 2566849536 CANEngCoolantTemp 40;
+BA_ "SigType" SG_ 2566849536 AccelPedalPos1 1;
+BA_ "SPN" SG_ 2566849536 AccelPedalPos1 91;
+BA_ "SigType" SG_ 2566849536 EngIntakeManifold1Press 1;
+BA_ "SPN" SG_ 2566849536 EngIntakeManifold1Press 102;
+BA_ "SigType" SG_ 2566849536 EngineSpeed 1;
+BA_ "SigType" SG_ 2566749184 ActiveRegenAvailabilityStatus 5;
+BA_ "SPN" SG_ 2566749184 ActiveRegenAvailabilityStatus 8857;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt5629 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt5629 5629;
+BA_ "SigType" SG_ 2566749184 AFT1DPFCondNotMetForActiveRegen 5;
+BA_ "SPN" SG_ 2566749184 AFT1DPFCondNotMetForActiveRegen 3750;
+BA_ "SigType" SG_ 2566749184 HydrocarbonDoserPurgingEnable 5;
+BA_ "SPN" SG_ 2566749184 HydrocarbonDoserPurgingEnable 5504;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnFrcdSttus 0;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnFrcdSttus 4175;
+BA_ "SigType" SG_ 2566749184 CANHESTLampCmd 0;
+BA_ "SPN" SG_ 2566749184 CANHESTLampCmd 3698;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrAtmtcActvRgnrtnIntt 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrAtmtcActvRgnrtnIntt 3718;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3717 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3717 3717;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTE 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTE 3716;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3715 4;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3715 3715;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTT 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTT 3714;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3713 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3713 3713;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3712 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3712 3712;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTL 4;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTL 3711;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3710 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3710 3710;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTV 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTV 3709;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTO 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTO 3708;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTA 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTA 3707;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTP 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTP 3706;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTS 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTS 3705;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTC 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTC 3704;
+BA_ "SigType" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTI 5;
+BA_ "SPN" SG_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTI 3703;
+BA_ "SigType" SG_ 2566749184 CANDPFActiveRegenInhibitedStatus 5;
+BA_ "SPN" SG_ 2566749184 CANDPFActiveRegenInhibitedStatus 3702;
+BA_ "SigType" SG_ 2566749184 AFTDPFStatus 0;
+BA_ "SPN" SG_ 2566749184 AFTDPFStatus 3701;
+BA_ "SigType" SG_ 2566749184 AFTDPFActiveRegenStatus 5;
+BA_ "SPN" SG_ 2566749184 AFTDPFActiveRegenStatus 3700;
+BA_ "SigType" SG_ 2566749184 AFTDPFPassiveRegenStatus 5;
+BA_ "SPN" SG_ 2566749184 AFTDPFPassiveRegenStatus 3699;
+BA_ "SigType" SG_ 2566749184 CANDPFLampCmd 0;
+BA_ "SPN" SG_ 2566749184 CANDPFLampCmd 3697;
+BA_ "SigType" SG_ 2566841600 CANEngTotalHoursOfOperation 1;
+BA_ "SPN" SG_ 2566841600 CANEngTotalHoursOfOperation 247;
+BA_ "SigType" SG_ 2566844160 CANEngCoolantLevel 1;
+BA_ "SPN" SG_ 2566844160 CANEngCoolantLevel 111;
+BA_ "SigType" SG_ 2566844160 CANEngOilPress 1;
+BA_ "SPN" SG_ 2566844160 CANEngOilPress 7468;
+BA_ "SigType" SG_ 2566844160 CANEngFuelDeliveryPress 1;
+BA_ "SPN" SG_ 2566844160 CANEngFuelDeliveryPress 7469;
+BA_ "SigType" SG_ 2364539904 CANEngDemandPercentTorque 1;
+BA_ "SPN" SG_ 2364539904 CANEngDemandPercentTorque 2432;
+BA_ "SigType" SG_ 2364539904 CANEngStarterMode 0;
+BA_ "SPN" SG_ 2364539904 CANEngStarterMode 1675;
+BA_ "SigType" SG_ 2364539904 CANSAOfCntrllngDvcForEngCtrl 0;
+BA_ "SPN" SG_ 2364539904 CANSAOfCntrllngDvcForEngCtrl 1483;
+BA_ "SigType" SG_ 2364539904 CANEngSpeed 1;
+BA_ "SPN" SG_ 2364539904 CANEngSpeed 190;
+BA_ "SigType" SG_ 2364539904 CANActualEngPercentTorque 1;
+BA_ "SPN" SG_ 2364539904 CANActualEngPercentTorque 513;
+BA_ "GenSigStartValue" SG_ 2364539904 CANActualEngPercentTorque 125;
+BA_ "SigType" SG_ 2364539904 CANDriversDemandEngPercentTorque 1;
+BA_ "SPN" SG_ 2364539904 CANDriversDemandEngPercentTorque 512;
+BA_ "GenSigStartValue" SG_ 2364539904 CANDriversDemandEngPercentTorque 125;
+BA_ "SigType" SG_ 2364539904 CANEngTorqueMode 0;
+BA_ "SPN" SG_ 2364539904 CANEngTorqueMode 899;
+BA_ "SigType" SG_ 2566843904 CANEngOilTemp1 1;
+BA_ "SPN" SG_ 2566843904 CANEngOilTemp1 175;
+BA_ "SigType" SG_ 2566843904 CANEngCoolantTemp 1;
+BA_ "SPN" SG_ 2566843904 CANEngCoolantTemp 110;
+BA_ "SigType" SG_ 2566804992 HtrPreliminaryFMI 0;
+BA_ "SPN" SG_ 2566804992 HtrPreliminaryFMI 4366;
+BA_ "SigType" SG_ 2566804992 Htr 1;
+BA_ "SPN" SG_ 2566804992 Htr 3363;
+BA_ "SigType" SG_ 2566804992 SCROpIndSev 0;
+BA_ "SPN" SG_ 2566804992 SCROpIndSev 5246;
+BA_ "SigType" SG_ 2566804992 TempPreliminaryFMI 0;
+BA_ "SPN" SG_ 2566804992 TempPreliminaryFMI 4365;
+BA_ "SigType" SG_ 2566804992 DEFTankLowLvlInd 0;
+BA_ "SPN" SG_ 2566804992 DEFTankLowLvlInd 5245;
+BA_ "SigType" SG_ 2566804992 LvlVolPreliminaryFMI 0;
+BA_ "SPN" SG_ 2566804992 LvlVolPreliminaryFMI 3532;
+BA_ "SigType" SG_ 2566804992 Lvl 1;
+BA_ "SPN" SG_ 2566804992 Lvl 3517;
+BA_ "SigType" SG_ 2566804992 Temp1 1;
+BA_ "SPN" SG_ 2566804992 Temp1 4427;
+BA_ "SigType" SG_ 2566804992 CANDEFLevel 1;
+BA_ "SPN" SG_ 2566804992 CANDEFLevel 1761;
+VAL_ 2566865438 CAN_KBK11CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBK10CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBK09CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBK08CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBK07CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBK06CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBK05CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBK04CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBK03CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBK02CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBK01CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY11CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY10CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY09CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY08CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY07CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY06CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY05CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY04CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY03CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY02CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KGY01CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBU13CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBU12CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBU08CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566865438 CAN_KBU07CircuitStatus 3 "NA" 2 "Error" 1 "Fault" 0 "Normal" ;
+VAL_ 2566864926 CAN_FGY10Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY09Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY08Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBK0607Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBK0405Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBK0103Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBK11Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBK10Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBK09Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBK08Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY07Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY06Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY05Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY04Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY03Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY02bStatus 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY02aStatus 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY01bStatus 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FGY01aStatus 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU13Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU12Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU11Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU10Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU09Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU08Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU07Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU06Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU05Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU04Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU03Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU02Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566864926 CAN_FBU01Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566865182 CAN_FBU14Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566865182 CAN_FGY11Status 3 "NA" 2 "error" 1 " Open Fuse" 0 "Normal Fuse" ;
+VAL_ 2566855936 CANEngWarningLamp 1 "On" 0 "Off" ;
+VAL_ 2566855936 FaultStatus 1 "Any fault is active" 0 "No fault is active" ;
+VAL_ 2566855936 EngRunningStatus 2 "Running" 1 "Cranking" 0 "Not running" ;
+VAL_ 2566855936 EngineProtectionPhase 19 "Shutdown timer triggered" 18 "Shutdown demand to driver ON" 17 "Automatic Shutdown  deactivated" 16 "Automatic Shutdown is triggered" 4 "Power reduction active" 3 "Warming active" 0 "No protection" ;
+VAL_ 2566855936 StartProtectionOverride 1 "Engine start protection override" 0 "No request" ;
+VAL_ 2566855936 ForcedShutdownOverride 1 "Shutdown timer override" 0 "No request" ;
+VAL_ 2566855936 PowerReductionOverride 1 "Power reduction override" 0 "No request" ;
+VAL_ 2566855936 PowerReduction 1 "Active" 0 "Not active" ;
+VAL_ 2566855936 Eng_PowertrainProtection 1 "Protection active" 0 "Protection inactive" ;
+VAL_ 2566855936 PreheatLamp 3 "Undefined" 2 "Blinking" 1 "On" 0 "Off" ;
+VAL_ 2566855936 OilWarningLamp 1 "On" 0 "Off" ;
+VAL_ 2566855936 EngineCoolantLamp 1 "On" 0 "Off" ;
+VAL_ 2566855936 CANEngStopLamp 1 "On" 0 "Off" ;
+VAL_ 2566855936 EngProtectionLamp 1 "On" 0 "Off" ;
+VAL_ 2566849536 CanSetPointStatus 4 "Undefined" 2 "Undefined" 1 "Undefined" 7 "Engine start protect is active" 6 "Can messages failed" 5 "Engine is running, CAN messag..." 3 "Engine starts (is cranking)" 0 "Initialisation after power on" ;
+VAL_ 2566849536 StatusPreheatSenseLine 1 "On" 0 "Off" ;
+VAL_ 2566849536 FlameFuelValveActiveStatus 1 "On" 0 "Off" ;
+VAL_ 2566849536 FlameGlowPlugActiveStatus 1 "On" 0 "Off" ;
+VAL_ 2566849536 GlowPlugActiveStatus 1 "On" 0 "Off" ;
+VAL_ 2566849536 PostHeatActive 1 "On" 0 "Off" ;
+VAL_ 2566849536 ReadyForStart 1 "On" 0 "Off" ;
+VAL_ 2566849536 CANPreheatActive 1 "On" 0 "Off" ;
+VAL_ 2566849329 CANOICRotary2YPlus 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849329 CANOICRotary2YMinus 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849329 CANOICRotary2XPlus 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849329 CANOICRotary2XMinus 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton9Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton8Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton7Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton6Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton5Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton21Rotary2Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton20Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton19Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton18Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton17Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton16Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton15Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton14Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton13Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton12Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton11Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton10Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton4Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton3Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton2Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849074 CANOICHMIButton1Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton9Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton8Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton7Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton6Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton5Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton21Rotary2Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton20Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton19Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton18Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton17Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton16Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton15Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton14Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton13Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton12Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton11Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton10Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton4Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton3Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton2Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849073 CANOICHMIButton1Status 3 "unused/ignore" 2 "Error" 1 "Pressed" 0 "Released" ;
+VAL_ 2566849585 CANOICPrimaryDigIn4 3 "ignore" 2 "unused" 1 "High" 0 "Low" ;
+VAL_ 2566849585 CANOICPrimaryDigIn3 3 "ignore" 2 "unused" 1 "High" 0 "Low" ;
+VAL_ 2566849585 CANOICPrimaryDigIn2 3 "ignore" 2 "unused" 1 "High" 0 "Low" ;
+VAL_ 2566849585 CANOICPrimaryDigIn1 3 "ignore" 2 "unused" 1 "High" 0 "Low" ;
+VAL_ 2566883879 CANDEFLevel 252 " Non utilis�" ;
+VAL_ 2566883879 CANDEFLevelAlertThreshold 252 " non utilis�" ;
+VAL_ 2566887975 CANDispTransGear 11 " Non utilis�" ;
+VAL_ 2566887975 CANDispTransMaxGear 11 " Non utilis�" ;
+VAL_ 2566887975 CANTransAuto 2 " Non utilis�" ;
+VAL_ 2566887975 CANDispVehicleSpeed 251 " Non utilis�" ;
+VAL_ 2566887975 CANDispVehicleMaxSpeed 251 " Non utilis�" ;
+VAL_ 2566887975 CANSteeringMode 0 " 2RD" 1 " 4RD" 2 " Crabe" 3 " ManiCrabe" 4 "Attente alignement arri�re" 5 " Option non pr�sente" 6 " Erreur" 7 " Indisponible" ;
+VAL_ 2566888231 CANBoomAngle 251 " Non calibr�" 254 " Erreur" 255 " Indisponible" ;
+VAL_ 2566888231 CANStrainGauge 251 " Non calibr�" 252 " Pas de Llmi" 254 " Erreur" 255 " Indisponible" ;
+VAL_ 2566888231 CANOverridePressed 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANHydroNeutralization 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANTransWarmUp 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANPreheatLamp 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANAlternatorNotCharging 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANDpfLampStatus 0 " Off" 1 " On" 2 " Flash 0.5 Hz" 3 " Flash 1.0 Hz" 4 " Flash 2.0 Hz" 7 " Not Available" ;
+VAL_ 2566888231 CANScrLampStatus 0 " Off" 1 " On" 2 " Flash 0.5 Hz" 3 " Flash 1.0 Hz" 4 " Flash 2.0 Hz" 7 " Not Available" ;
+VAL_ 2566888231 CANStandstillRegeForcedLamp 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANStandstillRegeInhibitedLamp 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANTransOilPressure 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANTransOilTemperature 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANEngineOilPressure 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANDefaultSteeringSensor 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANAirFilterCloggingSensor 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANHydOilFilterState 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANFaultBrakingSensor 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANLowBrakeFluidLevelSensor 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANLowCoolantFluidLevelSensor 0 " Off" 1 " On" ;
+VAL_ 2566888231 CANWaterInFuel 0 " Off" 1 " On" ;
+VAL_ 2566749184 ActiveRegenAvailabilityStatus 3 "Not Available" 2 "Reserved" 1 "Ready for initiation" 0 "Not ready for initiation" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt5629 3 "not available" 2 "reserved for SAE assignment" 1 "Undefined" 0 "Undefined" ;
+VAL_ 2566749184 AFT1DPFCondNotMetForActiveRegen 3 "not available" 2 "reserved for SAE assignment" 1 "active DPF regeneration inhibited" 0 "active DPF regeneration not inhibited" ;
+VAL_ 2566749184 HydrocarbonDoserPurgingEnable 3 "Not available" 2 "Undefined" 1 "Undefined" 0 "Undefined" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnFrcdSttus 7 "not available" 6 "Reserved for SAE Assignment" 5 "Reserved for SAE Assignment" 4 "Reserved for SAE Assignment" 3 "Reserved for SAE Assignment" 2 "Active, Forced by Service Tool" 1 "Active, Forced by Switch" 0 "Not Active" ;
+VAL_ 2566749184 CANHESTLampCmd 7 "not available" 6 "reserved for SAE assignment" 5 "reserved for SAE assignment" 4 "reserved for SAE assignment" 3 "reserved for SAE assignment" 2 "reserved for SAE assignment" 1 "On" 0 "Off" ;
+VAL_ 2566749184 DslPrtcltFltrAtmtcActvRgnrtnIntt 3 "not available" 2 "reserved for SAE assignment" 1 "Undefined" 0 "Undefined" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3717 3 "not available" 2 "reserved for SAE assignment" 1 "Undefined" 0 "Undefined" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTE 3 "not available" 2 "reserved for SAE assignment" 1 "enabled" 0 "not enabled" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3715 3 "not available" 2 "reserved for SAE assignment" 1 "inhibited (Service needed)" 0 "not inhibited" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTT 3 "not available" 2 "reserved for SAE assignment" 1 "inhibited (Normal Mode)" 0 "not inhibited (HeatMode or Stand" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3713 3 "not available" 2 "reserved for SAE assignment" 1 "active" 0 "not active" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3712 3 "not available" 2 "reserved for SAE assignment" 1 "active" 0 "not active" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTL 3 "not available" 2 "reserved for SAE assignment" 1 "Undefined" 0 "Undefined" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbt3710 3 "not available" 2 "reserved for SAE assignment" 1 "Active" 0 "Not Active" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTV 3 "not available" 2 "reserved for SAE assignment" 1 "Active" 0 "Not Active" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTO 3 "not available" 2 "reserved for SAE assignment" 1 "Active" 0 "Not Active" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTA 3 "not available" 2 "reserved for SAE assignment" 1 "Active, engine not in low idle" 0 "Not Active" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTP 3 "not available" 2 "reserved for SAE assignment" 1 "Undefined" 0 "Undefined" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTS 3 "not available" 2 "reserved for SAE assignment" 1 "Undefined" 0 "Undefined" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTC 3 "not available" 2 "reserved for SAE assignment" 1 "Undefined" 0 "Undefined" ;
+VAL_ 2566749184 DslPrtcltFltrActvRgnrtnInhbtdDTI 3 "not available" 2 "reserved for SAE assignment" 1 "inhibited" 0 "not inhibited" ;
+VAL_ 2566749184 CANDPFActiveRegenInhibitedStatus 3 "not available" 2 "reserved for SAE assignment" 1 "active (Standstill inhibited)" 0 "not active (Standstil not inhbt)" ;
+VAL_ 2566749184 AFTDPFStatus 7 "not available" 6 "reserved for SAE assignment" 5 "reserved for SAE assignment" 4 "reserved for SAE assignment" 3 "Regeneration needed, highest level" 2 "Regeneration needed, moderate level" 1 "Regeneration needed, lowest level" 0 "Regeneration not needed" ;
+VAL_ 2566749184 AFTDPFActiveRegenStatus 3 "not available" 2 "regeneration needed ..." 1 "active: only if standstill regen" 0 "not active" ;
+VAL_ 2566749184 AFTDPFPassiveRegenStatus 3 "not available" 2 "reserved for SAE assignment" 1 "active" 0 "not active" ;
+VAL_ 2566749184 CANDPFLampCmd 3 "reserved for SAE assignment" 2 "reserved for SAE assignment" 1 "On, solid" 0 "Off" 7 "not available" 6 "reserved for SAE assignment" 5 "slow blink(0.5 Hz) Standstill re" 4 "fast blink(3 Hz) Servicetool req" ;
+VAL_ 2365522174 CANIgnitionStatus 3 "NotAvailable" 2 "Error_Ignore" 1 "IgnitionOFF" 0 "IgnitionON" ;
+VAL_ 2364539904 CANEngStarterMode 15 "not available" 14 "error" 13 "undefined" 12 "starter inhibited reason unknown" 11 "undefined" 10 "undefined" 9 "undefined" 8 "undefined" 7 "starter inhibited due to active immobilizer" 6 "starter inhibited due to driveline engaged or other transmission inhibit" 5 "undefined" 4 "starter inhibited due to engine already running" 3 "start finished" 2 "starter active, gear engaged" 1 "undefined" 0 "start not requested" ;
+VAL_ 2364539904 CANEngTorqueMode 13 "Undefined" 12 "Fuel Cut/Overspeed" 15 "Not available" 11 "Undefinied" 10 "Undefinied" 9 "High speed governor" 8 "Torque limiting" 7 "Undefinied" 6 "Transmission control" 5 "Undefinied" 4 "Undefinied" 3 "Undefinied" 2 "Undefinied" 1 "Accelerator pedal" 0 "Low idle governor/no request (de" ;
+VAL_ 2566804992 SCROpIndSev 7 "Not Available / Not Supported" 6 "Temporary Override of Inducement " 5 "Inducement Level 5  .." 4 "Inducement Level 4  .." 3 "Inducement Level 3 � EPA defined SCR Inducement" 2 "Inducement Level 2 � DEF Warning" 1 "Inducement Level 1 � EPA defined SCR Inducement" 0 "Driver Warning" ;
+VAL_ 2566804992 DEFTankLowLvlInd 7 "not available" 6 "reserved for SAE assignment" 5 "reserved for SAE assignment" 4 "On fast blink" 3 "reserved for SAE assignment" 2 "reserved for SAE assignment" 1 "On solid" 0 "Off" ;
+

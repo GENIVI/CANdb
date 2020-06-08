@@ -7,7 +7,6 @@ script:
   - ninja -C build
   - ninja -C build test
 
-
 jobs:
   include:
     - os: linux
@@ -25,6 +24,7 @@ jobs:
             - g++-7
             - cmake
             - libboost-dev
+            - libboost-filesystem-dev
             - ninja-build
     - os: linux
       compiler: gcc-9
