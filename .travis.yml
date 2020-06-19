@@ -11,6 +11,8 @@ jobs:
   include:
     - os: linux
       name: clang-format
+      git:
+        submodules: false
       addons:
         apt:
           packages:
@@ -20,6 +22,8 @@ jobs:
         - ./travis/clang_format.sh
     - os: linux
       name: cmake-format
+      git:
+        submodules: false
       addons:
         apt:
           packages:
