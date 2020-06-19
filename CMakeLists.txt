@@ -6,9 +6,6 @@ option(CANDB__WITH_COVERAGE "Build with coverage" OFF)
 option(CANDB__WITH_TESTS "Build with test" ON)
 option(CANDB__WITH_TOOLS "Build example dbc tools" ON)
 
-find_package(Threads REQUIRED)
-find_package(Boost REQUIRED)
-
 add_subdirectory(3rdParty)
 
 if(CANDB__WITH_COVERAGE)

@@ -14,11 +14,12 @@ TEST_P(OpenDBCTest, parse_dbc_file)
 {
     auto dbc_file = GetParam();
     auto file = test_helper::loadDBCFile("opendbc/" + dbc_file);
-    ASSERT_TRUE(parser.parse(file));
+    const auto db = parser.parse(file);
+    ASSERT_TRUE(db);
 
     if (dbc_file == "tesla_can.dbc") {
-        EXPECT_EQ(parser.getDb().symbols, test_data::dbc_data.at(dbc_file).symbols);
-        EXPECT_EQ(parser.getDb().ecus, test_data::dbc_data.at(dbc_file).bu);
+        EXPECT_EQ(db->symbols, test_data::dbc_data.at(dbc_file).symbols);
+        EXPECT_EQ(db->ecus, test_data::dbc_data.at(dbc_file).bu);
     }
 }
 

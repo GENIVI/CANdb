@@ -2,11 +2,12 @@
 #define __CANDB_H
 
 #include "parser.hpp"
+#include <system_error>
 
 namespace CANdb {
 
 struct DBCParser : public Parser<DBCParser> {
-    bool parse(const std::string& data) noexcept;
+    CanDbOrError parse(const std::string& data) noexcept;
 };
 } // namespace CANdb
 

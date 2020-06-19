@@ -2,14 +2,19 @@
 #define PARSER_HPP_IEWKLXBS
 
 #include "cantypes.hpp"
-#include <string>
 #include <clocale>
+#include <expected.hpp>
+#include <string>
+#include <system_error>
+
+#include "parsererror.hpp"
 
 namespace CANdb {
 
+using CanDbOrError = tl::expected<CANdb_t, ParserError>;
 template <typename Derived> struct Parser {
 
-    bool parse(const std::string& data) noexcept
+    CanDbOrError parse(const std::string& data) noexcept
     {
         // Store current LOCALE
         std::string prevLocale = std::setlocale(LC_ALL, nullptr);
@@ -18,18 +23,13 @@ template <typename Derived> struct Parser {
         std::setlocale(LC_ALL, "C");
 
         Derived* d = static_cast<Derived*>(this);
-        auto ret = d->parse(data);
+        const auto ret = d->parse(data);
 
         // Restore previous LOCALE for the application
         std::setlocale(LC_ALL, prevLocale.c_str());
 
         return ret;
     }
-
-    const CANdb_t& getDb() const noexcept { return can_db; }
-
-protected:
-    CANdb_t can_db;
 };
 
 } // namespace CANdb
