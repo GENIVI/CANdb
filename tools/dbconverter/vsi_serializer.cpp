@@ -75,6 +75,6 @@ struct CanSignal {struct_name}[] = {{
 
     using namespace fmt::literals;
     _os << fmt::format(dbc_c_file, "messages"_a = dumpMessages(messages),
-               "struct_name"_a = "can_signal_array")
+        "struct_name"_a = "can_signal_array")
         << std::endl;
 }

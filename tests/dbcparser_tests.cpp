@@ -190,53 +190,59 @@ BU_ :
 
     // bo1
     std::vector<CANsignal> expectedSignals;
-    expectedSignals.push_back(CANsignal{ "DAS_steeringControlType", 23, 2, CANsignal::Motorola,
-        CANsignal::Unsigned, 1, 0, 0, 0, "", { { "EPAS" } } });
-    expectedSignals.push_back(CANsignal{ "DAS_steeringControlChecksum", 31, 8, CANsignal::Motorola,
-        CANsignal::Unsigned, 1, 0, 0, 0, "", { { "EPAS" } } });
-    expectedSignals.push_back(CANsignal{
-        "DAS_steeringControlType", 19, 4, CANsignal::Motorola, CANsignal::Unsigned, 1, 0, 0, 0, "", { "EPAS" } });
-    expectedSignals.push_back(CANsignal{
-        "DAS_steeringControlType", 7, 2, CANsignal::Motorola, CANsignal::Unsigned, 1, 0, 0, 0, "", { "EPAS" } });
+    expectedSignals.push_back(
+        CANsignal{ "DAS_steeringControlType", 23, 2, CANsignal::Motorola,
+            CANsignal::Unsigned, 1, 0, 0, 0, "", { { "EPAS" } } });
+    expectedSignals.push_back(
+        CANsignal{ "DAS_steeringControlChecksum", 31, 8, CANsignal::Motorola,
+            CANsignal::Unsigned, 1, 0, 0, 0, "", { { "EPAS" } } });
+    expectedSignals.push_back(CANsignal{ "DAS_steeringControlType", 19, 4,
+        CANsignal::Motorola, CANsignal::Unsigned, 1, 0, 0, 0, "", { "EPAS" } });
+    expectedSignals.push_back(CANsignal{ "DAS_steeringControlType", 7, 2,
+        CANsignal::Motorola, CANsignal::Unsigned, 1, 0, 0, 0, "", { "EPAS" } });
 
     CANmessage msg{ 1160, "DAS_steeringControl", 4, "NEO" };
-    auto expSig = CANsignal{ "DAS_steeringControlType", 23, 2, CANsignal::Motorola, CANsignal::Unsigned, 1, 0, 0,
-        0, "", { "EPAS" } };
+    auto expSig = CANsignal{ "DAS_steeringControlType", 23, 2,
+        CANsignal::Motorola, CANsignal::Unsigned, 1, 0, 0, 0, "", { "EPAS" } };
 
     ASSERT_EQ(parser.getDb().messages.size(), values.size());
     ASSERT_EQ(parser.getDb().messages.at(msg).size(), 6u);
     EXPECT_EQ(parser.getDb().messages.at(msg).at(0), expSig);
 
-    expSig = CANsignal{ "DAS_steeringControlChecksum", 31, 8, CANsignal::Motorola, CANsignal::Unsigned, 1, 0, 0,
-        0, "", { "EPAS" } };
+    expSig = CANsignal{ "DAS_steeringControlChecksum", 31, 8,
+        CANsignal::Motorola, CANsignal::Unsigned, 1, 0, 0, 0, "", { "EPAS" } };
     EXPECT_EQ(parser.getDb().messages.at(msg).at(1), expSig);
 
-    expSig = CANsignal{ "DAS_steeringControlCounter", 14, 7, CANsignal::Motorola, CANsignal::Unsigned, 15.0, 0, 0, 1425.0,
-        "", { "EPAS" } };
+    expSig
+        = CANsignal{ "DAS_steeringControlCounter", 14, 7, CANsignal::Motorola,
+              CANsignal::Unsigned, 15.0, 0, 0, 1425.0, "", { "EPAS" } };
     EXPECT_EQ(parser.getDb().messages.at(msg).at(2), expSig);
 
-    expSig = CANsignal{ "DAS_steeringHapticRequest", 7, 1, CANsignal::Motorola, CANsignal::Unsigned, 1, 0, 0, 0,
-        "", { "EPAS" } };
+    expSig = CANsignal{ "DAS_steeringHapticRequest", 7, 1, CANsignal::Motorola,
+        CANsignal::Unsigned, 1, 0, 0, 0, "", { "EPAS" } };
     EXPECT_EQ(parser.getDb().messages.at(msg).at(3), expSig);
 
     msg = CANmessage{ 257, "GTW_epasControl", 3, "NEO" };
     ASSERT_EQ(parser.getDb().messages.at(msg).size(), 7u);
 
-    expSig = CANsignal{ "GTW_epasEmergencyOn", 0, 1, CANsignal::Intel, CANsignal::Unsigned, 1, 0, 2, -1, "",
-        { "EPAS" } };
+    expSig = CANsignal{ "GTW_epasEmergencyOn", 0, 1, CANsignal::Intel,
+        CANsignal::Unsigned, 1, 0, 2, -1, "", { "EPAS" } };
     EXPECT_EQ(parser.getDb().messages.at(msg).at(3), expSig);
 
     // testing for correct signal signage handling
 
     CANmessage gyro{ 1091, "FKD_Gyro_04", 6, "NEO" };
 
-    expSig = CANsignal{ "FKD_GyroRoll", 32, 9, CANsignal::Intel, CANsignal::Signed, 0.1, 0, -25.6, 25.5, "", { "NEO" } };
+    expSig = CANsignal{ "FKD_GyroRoll", 32, 9, CANsignal::Intel,
+        CANsignal::Signed, 0.1, 0, -25.6, 25.5, "", { "NEO" } };
     EXPECT_EQ(parser.getDb().messages.at(gyro).at(0), expSig);
 
-    expSig = CANsignal{ "FKD_GyroPitch", 16, 9,  CANsignal::Intel, CANsignal::Signed, 0.1, 0, -25.6, 25.5, "", { "NEO" } };
+    expSig = CANsignal{ "FKD_GyroPitch", 16, 9, CANsignal::Intel,
+        CANsignal::Signed, 0.1, 0, -25.6, 25.5, "", { "NEO" } };
     EXPECT_EQ(parser.getDb().messages.at(gyro).at(1), expSig);
 
-    expSig = CANsignal{ "FKD_GyroHead", 0, 12, CANsignal::Intel, CANsignal::Unsigned, 0.1, 0, 0, 409.5, "", { "NEO" } };
+    expSig = CANsignal{ "FKD_GyroHead", 0, 12, CANsignal::Intel,
+        CANsignal::Unsigned, 0.1, 0, 0, 409.5, "", { "NEO" } };
     EXPECT_EQ(parser.getDb().messages.at(gyro).at(2), expSig);
 }
 

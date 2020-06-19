@@ -222,8 +222,8 @@ bool DBCParser::parse(const std::string& data) noexcept
         muxName = "";
     };
 
-    parser["signal"] = [&idents, &numbers, &phrases, &signals, &signs, &sig_sign,
-                           &ecu_tokens, &mux, &muxNdx,
+    parser["signal"] = [&idents, &numbers, &phrases, &signals, &signs,
+                           &sig_sign, &ecu_tokens, &mux, &muxNdx,
                            &muxName](const peg::SemanticValues& sv) {
         cdb_debug("Found signal {}", sv.token());
 
@@ -235,8 +235,9 @@ bool DBCParser::parse(const std::string& data) noexcept
         auto min = take_back(numbers);
         auto offset = take_back(numbers);
         auto factor = take_back(numbers);
-        CANsignal::SignType valueSigned = (take_back(sig_sign) == "-") ?
-                    CANsignal::Signed : CANsignal::Unsigned;
+        CANsignal::SignType valueSigned = (take_back(sig_sign) == "-")
+            ? CANsignal::Signed
+            : CANsignal::Unsigned;
 
         std::string sigMuxName;
         std::uint8_t sigMuxNdx = 0xff;
@@ -248,8 +249,9 @@ bool DBCParser::parse(const std::string& data) noexcept
             cdb_debug("Signal: muxName {}, muxNdx {}", muxName, sigMuxNdx);
         }
 
-        CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0) ?
-                    CANsignal::Motorola : CANsignal::Intel;
+        CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0)
+            ? CANsignal::Motorola
+            : CANsignal::Intel;
 
         auto signalSize = take_back(numbers);
         auto startBit = take_back(numbers);
