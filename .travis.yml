@@ -10,6 +10,15 @@ script:
 jobs:
   include:
     - os: linux
+      name: clang-format
+      addons:
+        apt:
+          packages:
+            - clang-format
+            - fd-find
+      script:
+        - ./travis/clang_format.sh
+    - os: linux
       compiler: gcc-7
       env:
         - GENERATOR=Ninja
