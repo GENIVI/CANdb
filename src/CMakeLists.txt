@@ -2,6 +2,7 @@ find_package(Boost REQUIRED)
 set(
   SRC
   dbcparser.cpp
+  parsererror.cpp
 )
 
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/dbc_grammar.peg DBC_GRAMMAR)

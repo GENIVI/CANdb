@@ -80,14 +80,11 @@ tl::expected<peg::parser, CANdb::ParserError> loadPegParser()
 {
     peg::parser pegParser;
 
-    pegParser.log = [](size_t l, size_t k, const std::string& s) {
-        cdb_error("Parser log {}:{} {}", l, k, s);
-    };
+    pegParser.log = [](size_t l, size_t k, const std::string& s) { cdb_error("Parser log {}:{} {}", l, k, s); };
 
     if (!pegParser.load_grammar(dbc_grammar.c_str(), dbc_grammar.length())) {
         cdb_error("Unable to parse grammar");
-        return tl::make_unexpected(
-            CANdb::make_error_code(CANdb::ErrorType::GrammarNotCorrent));
+        return tl::make_unexpected(CANdb::make_error_code(CANdb::ErrorType::GrammarNotCorrent));
     }
 
     return pegParser;
@@ -96,15 +93,12 @@ tl::expected<peg::parser, CANdb::ParserError> loadPegParser()
 CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
 {
     if (data.empty()) {
-        return tl::make_unexpected(
-            CANdb::make_error_code(ErrorType::DataEmpty));
+        return tl::make_unexpected(CANdb::make_error_code(ErrorType::DataEmpty));
     }
 
     const auto noTabsData = dos2unix(data);
-    pegParser.enable_trace(
-        [](const char* a, const char* k, long unsigned int,
-            const peg::SemanticValues&, const peg::Context&,
-            const peg::any&) { cdb_trace(" Parsing {} \"{}\"", a, k); });
+    pegParser.enable_trace([](const char* a, const char* k, long unsigned int, const peg::SemanticValues&,
+                               const peg::Context&, const peg::any&) { cdb_trace(" Parsing {} \"{}\"", a, k); });
     strings phrases;
     std::deque<std::string> idents, signs, sig_sign, ecu_tokens;
     std::deque<double> numbers;
@@ -185,14 +179,11 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         }
     };
 
-    pegParser["number_phrase_pair"]
-        = [&phrasesPairs, &numbers, &phrases](const peg::SemanticValues&) {
-              phrasesPairs.push_back(
-                  std::make_pair(take_back(numbers), take_back(phrases)));
-          };
+    pegParser["number_phrase_pair"] = [&phrasesPairs, &numbers, &phrases](const peg::SemanticValues&) {
+        phrasesPairs.push_back(std::make_pair(take_back(numbers), take_back(phrases)));
+    };
 
-    pegParser["val_entry"] = [&can_db, &phrasesPairs](
-                                 const peg::SemanticValues&) {
+    pegParser["val_entry"] = [&can_db, &phrasesPairs](const peg::SemanticValues&) {
         std::vector<CANdb_t::ValTable::ValTableEntry> tab;
         std::transform(phrasesPairs.begin(), phrasesPairs.end(), std::back_inserter(tab), [](const auto& p) {
             return CANdb_t::ValTable::ValTableEntry{ p.first, p.second };
@@ -202,16 +193,12 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
     };
 
     pegParser["mux"] = [&mux](const peg::SemanticValues&) { mux = true; };
-    pegParser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) {
-        muxNdx = std::stoi(sv.token());
-    };
+    pegParser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) { muxNdx = std::stoi(sv.token()); };
 
     std::string muxName;
     std::vector<CANsignal> signals;
-    pegParser["message"] = [&can_db, &numbers, &signals, &idents, &mux, &muxNdx,
-                               &muxName](const peg::SemanticValues&) {
-        cdb_debug(
-            "Found a message {} signals = {}", idents.size(), signals.size());
+    pegParser["message"] = [&can_db, &numbers, &signals, &idents, &mux, &muxNdx, &muxName](const peg::SemanticValues&) {
+        cdb_debug("Found a message {} signals = {}", idents.size(), signals.size());
         if (numbers.size() < 2 || idents.size() < 2) {
             return;
         }
@@ -231,8 +218,7 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         muxName = "";
     };
 
-    pegParser["signal"] = [&idents, &numbers, &phrases, &signals, &signs,
-                              &sig_sign, &ecu_tokens, &mux, &muxNdx,
+    pegParser["signal"] = [&idents, &numbers, &phrases, &signals, &signs, &sig_sign, &ecu_tokens, &mux, &muxNdx,
                               &muxName](const peg::SemanticValues& sv) {
         cdb_debug("Found signal {}", sv.token());
 
@@ -243,9 +229,7 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         auto min = take_back(numbers);
         auto offset = take_back(numbers);
         auto factor = take_back(numbers);
-        CANsignal::SignType valueSigned = (take_back(sig_sign) == "-")
-            ? CANsignal::Signed
-            : CANsignal::Unsigned;
+        CANsignal::SignType valueSigned = (take_back(sig_sign) == "-") ? CANsignal::Signed : CANsignal::Unsigned;
 
         std::string sigMuxName;
         std::uint8_t sigMuxNdx = 0xff;
@@ -258,9 +242,6 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         }
 
         CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0) ? CANsignal::Motorola : CANsignal::Intel;
-        CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0)
-            ? CANsignal::Motorola
-            : CANsignal::Intel;
 
         auto signalSize = take_back(numbers);
         auto startBit = take_back(numbers);
@@ -280,17 +261,13 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
     };
     return pegParser.parse(noTabsData.c_str())
         ? CANdb::CanDbOrError(can_db)
-        : tl::make_unexpected(
-            CANdb::make_error_code(CANdb::ErrorType::ParsingFailed));
+        : tl::make_unexpected(CANdb::make_error_code(CANdb::ErrorType::ParsingFailed));
 }
 
 } // namespace
 
 CANdb::CanDbOrError DBCParser::parse(const std::string& data) noexcept
 {
-
     return loadPegParser().and_then(
-        [&data](peg::parser pegParser) -> CANdb::CanDbOrError {
-            return ::parse(pegParser, data);
-        });
+        [&data](peg::parser pegParser) -> CANdb::CanDbOrError { return ::parse(pegParser, data); });
 }
