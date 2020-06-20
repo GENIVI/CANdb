@@ -17,13 +17,11 @@ std::string loadDBCFile(const std::string& filename)
     std::fstream file{ path.c_str() };
 
     if (!file.good()) {
-        throw std::runtime_error(
-            fmt::format("File {} does not exists", filename));
+        throw std::runtime_error(fmt::format("File {} does not exists", filename));
     }
 
     std::string buff;
-    std::copy(std::istreambuf_iterator<char>(file),
-        std::istreambuf_iterator<char>(), std::back_inserter(buff));
+    std::copy(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>(), std::back_inserter(buff));
 
     file.close();
     return buff;
@@ -58,22 +56,18 @@ template <typename T> std::string magenta(T&& t)
 
 std::string dumpSignal(const CANsignal& sig)
 {
-    return fmt::format("name={},startBit={},signalSize={}", sig.signal_name,
-        sig.startBit, sig.signalSize);
+    return fmt::format("name={},startBit={},signalSize={}", sig.signal_name, sig.startBit, sig.signalSize);
 }
 
-std::string dumpMessages(
-    const CANdb_t& dbc, const std::string& regex, bool dumpMessages = false)
+std::string dumpMessages(const CANdb_t& dbc, const std::string& regex, bool dumpMessages = false)
 {
     std::string buff;
     buff += "messages: \n";
     for (const auto& msg : dbc.messages) {
-        const bool isMatch
-            = std::regex_match(msg.first.name, std::regex{ regex });
+        const bool isMatch = std::regex_match(msg.first.name, std::regex{ regex });
         if (isMatch) {
-            buff += fmt::format("  id= {}, name= {:<30}, dlc= {}, ecu={} \n",
-                green(msg.first.id), red(msg.first.name), blue(msg.first.dlc),
-                magenta(msg.first.ecu));
+            buff += fmt::format("  id= {}, name= {:<30}, dlc= {}, ecu={} \n", green(msg.first.id), red(msg.first.name),
+                blue(msg.first.dlc), magenta(msg.first.ecu));
         }
 
         if (dumpMessages) {
@@ -86,8 +80,7 @@ std::string dumpMessages(
 }
 } // namespace
 
-std::shared_ptr<spdlog::logger> kDefaultLogger
-    = []() -> std::shared_ptr<spdlog::logger> {
+std::shared_ptr<spdlog::logger> kDefaultLogger = []() -> std::shared_ptr<spdlog::logger> {
     auto z = std::getenv("CDB_LEVEL");
     auto logger = spdlog::stdout_color_mt("cdb");
 
@@ -96,8 +89,7 @@ std::shared_ptr<spdlog::logger> kDefaultLogger
     } else {
         const std::string ll{ z };
 
-        auto it = std::find_if(std::begin(spdlog::level::level_names),
-            std::end(spdlog::level::level_names),
+        auto it = std::find_if(std::begin(spdlog::level::level_names), std::end(spdlog::level::level_names),
             [&ll](const char* name) { return std::string{ name } == ll; });
 
         if (it != std::end(spdlog::level::level_names)) {
@@ -159,8 +151,7 @@ int main(int argc, char* argv[])
         success = parser.parse(loadDBCFile(file));
 
         if (success) {
-            std::cout << fmt::format("DBC file {} successfully parsed", file)
-                      << std::endl;
+            std::cout << fmt::format("DBC file {} successfully parsed", file) << std::endl;
         }
         if (res.count("m")) {
             std::cout << dumpMessages(parser.getDb(), regex);

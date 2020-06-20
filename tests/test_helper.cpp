@@ -7,8 +7,7 @@
 #include <spdlog/fmt/fmt.h>
 #include <spdlog/spdlog.h>
 
-std::shared_ptr<spdlog::logger> kDefaultLogger
-    = []() -> std::shared_ptr<spdlog::logger> {
+std::shared_ptr<spdlog::logger> kDefaultLogger = []() -> std::shared_ptr<spdlog::logger> {
     auto z = std::getenv("CDB_LEVEL");
     auto logger = spdlog::stdout_color_mt("cdb");
 
@@ -17,8 +16,7 @@ std::shared_ptr<spdlog::logger> kDefaultLogger
     } else {
         const std::string ll{ z };
 
-        auto it = std::find_if(std::begin(spdlog::level::level_names),
-            std::end(spdlog::level::level_names),
+        auto it = std::find_if(std::begin(spdlog::level::level_names), std::end(spdlog::level::level_names),
             [&ll](const char* name) { return std::string{ name } == ll; });
 
         if (it != std::end(spdlog::level::level_names)) {
@@ -38,13 +36,11 @@ std::string loadDBCFile(const fs::path& dbcFileName)
     std::fstream ff{ path.c_str() };
 
     std::string buff;
-    std::copy(std::istreambuf_iterator<char>(ff),
-        std::istreambuf_iterator<char>(), std::back_inserter(buff));
+    std::copy(std::istreambuf_iterator<char>(ff), std::istreambuf_iterator<char>(), std::back_inserter(buff));
 
     ff.close();
     if (buff.empty())
-        throw std::runtime_error(
-            fmt::format("File {} does not exists", path.string()));
+        throw std::runtime_error(fmt::format("File {} does not exists", path.string()));
     return buff;
 }
 } // namespace test_helper

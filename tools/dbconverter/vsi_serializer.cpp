@@ -27,8 +27,7 @@ std::string getType(const CANsignal& signal)
     return "";
 }
 
-std::string dumpMessages(
-    const std::map<CANmessage, std::vector<CANsignal>>& msgs)
+std::string dumpMessages(const std::map<CANmessage, std::vector<CANsignal>>& msgs)
 {
     std::string buff;
     for (const auto& p : msgs) {
@@ -46,9 +45,8 @@ std::string dumpMessages(
                 .type = {type}
 }},)";
             using namespace fmt::literals;
-            auto ss = fmt::format(signal_c_desc, "can_id"_a = p.first.id,
-                "signal_id"_a = 0, "signal_name"_a = signal.signal_name,
-                "start"_a = signal.startBit, "min"_a = signal.min,
+            auto ss = fmt::format(signal_c_desc, "can_id"_a = p.first.id, "signal_id"_a = 0,
+                "signal_name"_a = signal.signal_name, "start"_a = signal.startBit, "min"_a = signal.min,
                 "max"_a = signal.max, "type"_a = getType(signal));
             buff += ss + std::string{ "\n" };
         }
@@ -74,7 +72,6 @@ struct CanSignal {struct_name}[] = {{
 )";
 
     using namespace fmt::literals;
-    _os << fmt::format(dbc_c_file, "messages"_a = dumpMessages(messages),
-               "struct_name"_a = "can_signal_array")
+    _os << fmt::format(dbc_c_file, "messages"_a = dumpMessages(messages), "struct_name"_a = "can_signal_array")
         << std::endl;
 }

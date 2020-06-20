@@ -10,6 +10,28 @@ script:
 jobs:
   include:
     - os: linux
+      name: clang-format
+      git:
+        submodules: false
+      addons:
+        apt:
+          packages:
+            - clang-format
+            - fd-find
+      script:
+        - ./travis/clang_format.sh
+    - os: linux
+      name: cmake-format
+      git:
+        submodules: false
+      addons:
+        apt:
+          packages:
+            - python3-pip
+      script:
+        - pip3 install cmake_format
+        - ./travis/cmake_format.sh
+    - os: linux
       compiler: gcc-7
       env:
         - GENERATOR=Ninja

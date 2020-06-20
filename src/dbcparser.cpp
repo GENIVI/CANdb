@@ -32,12 +32,11 @@ template <typename T> auto take_back(T& container) -> typename T::value_type
     return v;
 }
 
-template <typename T>
-auto to_vector(const T& container) -> std::vector<typename T::value_type>
+template <typename T> auto to_vector(const T& container) -> std::vector<typename T::value_type>
 {
     std::vector<typename T::value_type> ret;
-    std::transform(std::begin(container), std::end(container),
-        std::back_inserter(ret), [](const auto& v) { return v; });
+    std::transform(
+        std::begin(container), std::end(container), std::back_inserter(ret), [](const auto& v) { return v; });
     return ret;
 }
 
@@ -56,8 +55,7 @@ std::string withLines(const std::string& dbcFile)
 
     int counter{ 1 };
     for (const auto& line : split) {
-        buff += std::to_string(counter++) + std::string{ ": " } + line
-            + std::string{ "\n" };
+        buff += std::to_string(counter++) + std::string{ ": " } + line + std::string{ "\n" };
     }
 
     return buff;
@@ -67,8 +65,7 @@ std::string withLines(const std::string& dbcFile)
 std::string dos2unix(const std::string& data)
 {
     std::string noWindowsShit;
-    boost::replace_all_copy(
-        std::back_inserter(noWindowsShit), data, "\r\n", "\n");
+    boost::replace_all_copy(std::back_inserter(noWindowsShit), data, "\r\n", "\n");
 
     return noWindowsShit;
 }
@@ -79,19 +76,15 @@ bool DBCParser::parse(const std::string& data) noexcept
 
     peg::parser parser;
 
-    parser.log = [](size_t l, size_t k, const std::string& s) {
-        cdb_error("Parser log {}:{} {}", l, k, s);
-    };
+    parser.log = [](size_t l, size_t k, const std::string& s) { cdb_error("Parser log {}:{} {}", l, k, s); };
 
     if (!parser.load_grammar(dbc_grammar.c_str(), dbc_grammar.length())) {
         cdb_error("Unable to parse grammar");
         return false;
     }
 
-    parser.enable_trace(
-        [](const char* a, const char* k, long unsigned int,
-            const peg::SemanticValues&, const peg::Context&,
-            const peg::any&) { cdb_trace(" Parsing {} \"{}\"", a, k); });
+    parser.enable_trace([](const char* a, const char* k, long unsigned int, const peg::SemanticValues&,
+                            const peg::Context&, const peg::any&) { cdb_trace(" Parsing {} \"{}\"", a, k); });
 
     cdb_debug("DBC file  = \n{}", withLines(noTabsData));
 
@@ -170,38 +163,30 @@ bool DBCParser::parse(const std::string& data) noexcept
             cdb_trace("Found number {}", number);
             numbers.push_back(number);
         } catch (const std::exception& ex) {
-            cdb_error(
-                "Unable to parse {} to a number from {}", sv.token(), sv.str());
+            cdb_error("Unable to parse {} to a number from {}", sv.token(), sv.str());
         }
     };
 
-    parser["number_phrase_pair"]
-        = [&phrasesPairs, &numbers, &phrases](const peg::SemanticValues&) {
-              phrasesPairs.push_back(
-                  std::make_pair(take_back(numbers), take_back(phrases)));
-          };
+    parser["number_phrase_pair"] = [&phrasesPairs, &numbers, &phrases](const peg::SemanticValues&) {
+        phrasesPairs.push_back(std::make_pair(take_back(numbers), take_back(phrases)));
+    };
 
     parser["val_entry"] = [this, &phrasesPairs](const peg::SemanticValues&) {
         std::vector<CANdb_t::ValTable::ValTableEntry> tab;
-        std::transform(phrasesPairs.begin(), phrasesPairs.end(),
-            std::back_inserter(tab), [](const auto& p) {
-                return CANdb_t::ValTable::ValTableEntry{ p.first, p.second };
-            });
+        std::transform(phrasesPairs.begin(), phrasesPairs.end(), std::back_inserter(tab), [](const auto& p) {
+            return CANdb_t::ValTable::ValTableEntry{ p.first, p.second };
+        });
         can_db.val_tables.push_back(CANdb_t::ValTable{ "", tab });
         phrasesPairs.clear();
     };
 
     parser["mux"] = [&mux](const peg::SemanticValues&) { mux = true; };
-    parser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) {
-        muxNdx = std::stoi(sv.token());
-    };
+    parser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) { muxNdx = std::stoi(sv.token()); };
 
     std::string muxName;
     std::vector<CANsignal> signals;
-    parser["message"] = [this, &numbers, &signals, &idents, &mux, &muxNdx,
-                            &muxName](const peg::SemanticValues&) {
-        cdb_debug(
-            "Found a message {} signals = {}", idents.size(), signals.size());
+    parser["message"] = [this, &numbers, &signals, &idents, &mux, &muxNdx, &muxName](const peg::SemanticValues&) {
+        cdb_debug("Found a message {} signals = {}", idents.size(), signals.size());
         if (numbers.size() < 2 || idents.size() < 2) {
             return;
         }
@@ -210,8 +195,7 @@ bool DBCParser::parse(const std::string& data) noexcept
         auto ecu = take_back(idents);
         auto name = take_back(idents);
 
-        const CANmessage msg{ static_cast<std::uint32_t>(id), name,
-            static_cast<std::uint32_t>(dlc), ecu };
+        const CANmessage msg{ static_cast<std::uint32_t>(id), name, static_cast<std::uint32_t>(dlc), ecu };
         cdb_debug("Found a message with id = {}", msg.id);
         can_db.messages[msg] = signals;
         signals.clear();
@@ -222,21 +206,18 @@ bool DBCParser::parse(const std::string& data) noexcept
         muxName = "";
     };
 
-    parser["signal"] = [&idents, &numbers, &phrases, &signals, &signs, &sig_sign,
-                           &ecu_tokens, &mux, &muxNdx,
-                           &muxName](const peg::SemanticValues& sv) {
+    parser["signal"] = [&idents, &numbers, &phrases, &signals, &signs, &sig_sign, &ecu_tokens, &mux, &muxNdx, &muxName](
+                           const peg::SemanticValues& sv) {
         cdb_debug("Found signal {}", sv.token());
 
-        const std::vector<std::string> receiver{ ecu_tokens.begin(),
-            ecu_tokens.end() };
+        const std::vector<std::string> receiver{ ecu_tokens.begin(), ecu_tokens.end() };
         auto unit = take_back(phrases);
 
         auto max = take_back(numbers);
         auto min = take_back(numbers);
         auto offset = take_back(numbers);
         auto factor = take_back(numbers);
-        CANsignal::SignType valueSigned = (take_back(sig_sign) == "-") ?
-                    CANsignal::Signed : CANsignal::Unsigned;
+        CANsignal::SignType valueSigned = (take_back(sig_sign) == "-") ? CANsignal::Signed : CANsignal::Unsigned;
 
         std::string sigMuxName;
         std::uint8_t sigMuxNdx = 0xff;
@@ -248,8 +229,7 @@ bool DBCParser::parse(const std::string& data) noexcept
             cdb_debug("Signal: muxName {}, muxNdx {}", muxName, sigMuxNdx);
         }
 
-        CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0) ?
-                    CANsignal::Motorola : CANsignal::Intel;
+        CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0) ? CANsignal::Motorola : CANsignal::Intel;
 
         auto signalSize = take_back(numbers);
         auto startBit = take_back(numbers);
@@ -263,11 +243,9 @@ bool DBCParser::parse(const std::string& data) noexcept
         }
 
         signals.push_back(
-            CANsignal{ signal_name, static_cast<std::uint8_t>(startBit),
-                static_cast<std::uint8_t>(signalSize), byteOrder, valueSigned,
-                static_cast<float>(factor), static_cast<float>(offset),
-                static_cast<float>(min), static_cast<float>(max), unit,
-                receiver, sigMuxName, sigMuxNdx });
+            CANsignal{ signal_name, static_cast<std::uint8_t>(startBit), static_cast<std::uint8_t>(signalSize),
+                byteOrder, valueSigned, static_cast<float>(factor), static_cast<float>(offset), static_cast<float>(min),
+                static_cast<float>(max), unit, receiver, sigMuxName, sigMuxNdx });
     };
 
     return parser.parse(noTabsData.c_str());
