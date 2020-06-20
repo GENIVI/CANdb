@@ -14,16 +14,14 @@
 extern std::string dbc_grammar;
 
 namespace {
-tl::expected<std::string, std::error_code> loadDBCFile(
-    const std::string& filename)
+tl::expected<std::string, std::error_code> loadDBCFile(const std::string& filename)
 {
     const std::string path = filename;
 
     std::fstream file{ path.c_str() };
 
     if (!file.good()) {
-        return tl::make_unexpected(
-            std::make_error_code(std::errc::no_such_file_or_directory));
+        return tl::make_unexpected(std::make_error_code(std::errc::no_such_file_or_directory));
     }
 
     std::string buff;
@@ -33,10 +31,7 @@ tl::expected<std::string, std::error_code> loadDBCFile(
     return buff;
 }
 
-std::string getInputFileFromCli(const cxxopts::ParseResult& r)
-{
-    return r["i"].as<std::string>();
-}
+std::string getInputFileFromCli(const cxxopts::ParseResult& r) { return r["i"].as<std::string>(); }
 
 template <typename T> std::string red(T&& t)
 {
@@ -158,9 +153,8 @@ int main(int argc, char* argv[])
         const bool alsoDumpMessages = res.count("t");
         loadDBCFile(getInputFileFromCli(res))
             .and_then(parse)
-            .map([&regex, &alsoDumpMessages](const CANdb_t& db) {
-                std::cout << dumpMessages(db, regex, alsoDumpMessages) << "\n";
-            })
+            .map([&regex, &alsoDumpMessages](
+                     const CANdb_t& db) { std::cout << dumpMessages(db, regex, alsoDumpMessages) << "\n"; })
             .or_else([&success](const CANdb::ParserError& ec) {
                 std::cerr << ec.message() << "\n";
                 success = false;

@@ -12,12 +12,13 @@ configure_file(
 )
 
 add_library(CANdb ${SRC} ${dbc_grammar})
-target_include_directories(CANdb
-    INTERFACE
-        ${CMAKE_CURRENT_SOURCE_DIR}
-    PRIVATE
-        ${CMAKE_CURRENT_BINARY_DIR}
-        ${Boost_INCLUDE_DIRS}
+target_include_directories(
+  CANdb
+  INTERFACE
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  PRIVATE
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${Boost_INCLUDE_DIRS}
 )
 target_link_libraries(CANdb PUBLIC cpp-peglib spdlog tl::expected)
 target_compile_features(CANdb PUBLIC cxx_std_14)
