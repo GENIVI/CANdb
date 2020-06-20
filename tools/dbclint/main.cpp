@@ -1,6 +1,5 @@
 #include <cxxopts.hpp>
 #include <fstream>
-#include <optional>
 #include <regex>
 #include <spdlog/fmt/fmt.h>
 #include <system_error>
