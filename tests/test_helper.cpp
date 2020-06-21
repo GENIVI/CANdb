@@ -43,4 +43,17 @@ std::string loadDBCFile(const fs::path& dbcFileName)
         throw std::runtime_error(fmt::format("File {} does not exists", path.string()));
     return buff;
 }
+
+std::vector<fs::path> readAllDbcFiles(const fs::path& dbc_dir)
+{
+    std::vector<fs::path> allFiles;
+
+    fs::directory_iterator it{ fs::path{ DBC_DIR } / dbc_dir };
+
+    std::copy_if(it, fs::directory_iterator{}, std::back_inserter(allFiles), [](const fs::path& path) -> bool {
+        return fs::is_regular_file(path);
+    });
+
+    return allFiles;
+}
 } // namespace test_helper

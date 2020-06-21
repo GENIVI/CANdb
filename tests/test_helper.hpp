@@ -13,6 +13,9 @@ namespace fs = boost::filesystem;
 
 namespace test_helper {
 std::string loadDBCFile(const fs::path& dbcFileName);
-}
+
+std::vector<fs::path> readAllDbcFiles(const fs::path& dbc_dir);
+
+} // namespace test_helper
 
 #endif /* end of include guard: TEST_HELPER_HPP_LRQG1DTL */

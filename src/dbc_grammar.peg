@@ -11,7 +11,7 @@ bu_sl                   <- < 'BU_' s* ':' s* TOKEN (s* TOKEN)* > NewLine
 val_table               <- val_entry* NewLine
 message                 <- 'BO_' s* number s* TOKEN ':' s number s TOKEN _ signal* (TrailingSpace / _ )
 bo_tx_bu                <- < 'BO_TX_BU_' s* number s* ':' s* ECU_TOKEN (',' ECU_TOKEN)* ';' > NewLine
-cm                      <- < 'CM_' s* phrase > ';'* NewLine
+cm                      <- < 'CM_' s* phrase > ';'* NewLine*
 cm_bu                   <- < 'CM_' s* 'BU_' s* TOKEN s* phrase > ';' NewLine
 cm_bo                   <- < 'CM_' s* 'BO_' s* integer s* phrase > ';' NewLine
 cm_sg                   <- < 'CM_' s* 'SG_' s* integer s* TOKEN s* phrase > ';' NewLine*
