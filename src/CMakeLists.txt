@@ -5,6 +5,7 @@ set(
   parsererror.cpp
 )
 
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/dbc_grammar.peg)
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/dbc_grammar.peg DBC_GRAMMAR)
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/dbc_grammar.hpp.in
