@@ -2,22 +2,26 @@
 #include <fstream>
 #include <regex>
 #include <spdlog/fmt/fmt.h>
+#include <system_error>
 
 #include "dbcparser.h"
+#include "expected.hpp"
 #include "log.hpp"
+#include "parser.hpp"
+#include "parsererror.hpp"
 #include "termcolor.hpp"
 
 extern std::string dbc_grammar;
 
 namespace {
-std::string loadDBCFile(const std::string& filename)
+tl::expected<std::string, std::error_code> loadDBCFile(const std::string& filename)
 {
     const std::string path = filename;
 
     std::fstream file{ path.c_str() };
 
     if (!file.good()) {
-        throw std::runtime_error(fmt::format("File {} does not exists", filename));
+        return tl::make_unexpected(std::make_error_code(std::errc::no_such_file_or_directory));
     }
 
     std::string buff;
@@ -26,6 +30,8 @@ std::string loadDBCFile(const std::string& filename)
     file.close();
     return buff;
 }
+
+std::string getInputFileFromCli(const cxxopts::ParseResult& r) { return r["i"].as<std::string>(); }
 
 template <typename T> std::string red(T&& t)
 {
@@ -78,6 +84,13 @@ std::string dumpMessages(const CANdb_t& dbc, const std::string& regex, bool dump
     }
     return buff;
 }
+
+CANdb::CanDbOrError parse(const std::string& dbc)
+{
+    CANdb::DBCParser parser;
+    return parser.parse(dbc);
+}
+
 } // namespace
 
 std::shared_ptr<spdlog::logger> kDefaultLogger = []() -> std::shared_ptr<spdlog::logger> {
@@ -109,14 +122,47 @@ int main(int argc, char* argv[])
     options.add_options()
     ("i,input", "Input file",cxxopts::value<std::string>(),"[path to file]")
     ("d, dump-peg", "Dump DBC grammar")
-    ("m, messages", "Dump messages from DBC")
+    ("m, messages", "Dump messages from DBC", cxxopts::value<bool>())
     ("t, tree", "Dump messages and signals")
     ("f, filter", "filter by messages/signals", cxxopts::value<std::string>(regex)->default_value(".*"), "regexp")
     ("h,help", "show help message");
+    ;
     // clang-format on
 
     try {
-        options.parse(argc, argv);
+
+        const auto res = options.parse(argc, argv);
+        if (res.count("h") != 0) {
+            std::cout << options.help({ "" }) << std::endl;
+            return EXIT_SUCCESS;
+        }
+
+        if (res.count("dump-peg") != 0) {
+            std::cout << "Dumping\n";
+            std::cout << dbc_grammar << std::endl;
+            return EXIT_SUCCESS;
+        }
+
+        if (res.count("i") == 0) {
+            std::cerr << options.help({ "" }) << std::endl;
+            return EXIT_FAILURE;
+        }
+
+        bool success = true;
+        const auto file = res["i"].as<std::string>();
+        const bool alsoDumpMessages = res.count("t");
+        loadDBCFile(getInputFileFromCli(res))
+            .and_then(parse)
+            .map([&regex, &alsoDumpMessages](
+                     const CANdb_t& db) { std::cout << dumpMessages(db, regex, alsoDumpMessages) << "\n"; })
+            .or_else([&success](const CANdb::ParserError& ec) {
+                std::cerr << ec.message() << "\n";
+                success = false;
+            });
+        ;
+
+        return success ? EXIT_SUCCESS : EXIT_FAILURE;
+
     } catch (const cxxopts::option_not_exists_exception& ex) {
         std::cerr << ex.what() << std::endl;
         std::cerr << options.help({ "" }) << std::endl;
@@ -126,43 +172,4 @@ int main(int argc, char* argv[])
         std::cerr << options.help({ "" }) << std::endl;
         return EXIT_FAILURE;
     }
-
-    const auto res = options.parse(argc, argv);
-
-    if (res.count("h") != 0) {
-        std::cout << options.help({ "" }) << std::endl;
-        return EXIT_SUCCESS;
-    }
-
-    if (res.count("d") != 0) {
-        std::cout << dbc_grammar << std::endl;
-        return EXIT_SUCCESS;
-    }
-
-    if (res.count("i") == 0) {
-        std::cerr << options.help({ "" }) << std::endl;
-        return EXIT_FAILURE;
-    }
-
-    bool success = false;
-    try {
-        CANdb::DBCParser parser;
-        const auto file = res["i"].as<std::string>();
-        success = parser.parse(loadDBCFile(file));
-
-        if (success) {
-            std::cout << fmt::format("DBC file {} successfully parsed", file) << std::endl;
-        }
-        if (res.count("m")) {
-            std::cout << dumpMessages(parser.getDb(), regex);
-        } else if (res.count("t")) {
-            std::cout << dumpMessages(parser.getDb(), regex, true);
-        }
-
-    } catch (const std::exception& ex) {
-        std::cerr << ex.what() << std::endl;
-        return EXIT_FAILURE;
-    }
-
-    return success ? EXIT_SUCCESS : EXIT_FAILURE;
 }
