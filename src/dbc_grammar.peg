@@ -16,7 +16,7 @@ cm_bu                   <- < 'CM_' s* 'BU_' s* TOKEN s* phrase > ';' NewLine
 cm_bo                   <- < 'CM_' s* 'BO_' s* integer s* phrase > ';' NewLine
 cm_sg                   <- < 'CM_' s* 'SG_' s* integer s* TOKEN s* phrase > ';' NewLine*
 ba_def_str              <- (< 'BA_DEF_' s* (('BO_' / 'SG_' / 'BU_') s*)? phrase s* 'STRING' s* ';' > (NewLine / s* comment) ) / comment
-ba_def_num              <- (< 'BA_DEF_' s* (('BO_' / 'SG_' / 'BU_') s*)? phrase s* ('INT' / 'HEX') s* number s* number ';' > (NewLine / s* comment) ) / comment
+ba_def_num              <- (< 'BA_DEF_' s* (('BO_' / 'SG_' / 'BU_') s*)? phrase s* ('INT' / 'HEX' / 'FLOAT') s* number s* number ';' > (NewLine / s* comment) ) / comment
 ba_def_enum             <- (< 'BA_DEF_' s* (('BO_' / 'SG_' / 'BU_') s*)? phrase s* 'ENUM' s* ENUM_VAL';' > (NewLine / s* comment) ) / comment
 ba_def_def              <- < 'BA_DEF_DEF_' s* phrase s* (phrase / number ) ';' > NewLine
 ba                      <- < 'BA_' s* phrase s* (phrase / number ) ';' > NewLine
