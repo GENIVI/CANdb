@@ -23,7 +23,7 @@ ba_def_def              <- < 'BA_DEF_DEF_' s* phrase s* (phrase / number ) ';' >
 ba                      <- < 'BA_' s* phrase s* (phrase / number ) ';' > NewLine
 ba_bu                   <- < 'BA_' s* phrase s* 'BU_' s* TOKEN s* (phrase / number) ';' > NewLine
 ba_bo                   <- < 'BA_' s* phrase s* 'BO_' s* number s* (phrase / number) s* ';' > NewLine
-ba_sg                   <- < 'BA_' s* phrase s* 'SG_' s* number s* TOKEN s* number s* ';' > NewLine
+ba_sg                   <- < 'BA_' s* phrase s* 'SG_' s* number s* TOKEN s* (phrase / number) s* ';' > NewLine
 # ignore ba_def_rel for now
 ba_def_rel              <- 'BA_DEF_REL_' (!NewLine .)* NewLine
 # ignore ba_def_def_rel for now
