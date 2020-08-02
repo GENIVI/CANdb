@@ -38,7 +38,9 @@ sig_val                 <- < 'SIG_VALTYPE_' s* number s* TOKEN s* ':' s* number 
 signal                  <- < s* 'SG_' s* TOKEN s* mux? mux_ndx? s* ':' s* number '|' number '@' number sig_sign s* '(' number ',' s* number ')' s* '[' number '|' number ']' s* phrase s* ECU_TOKEN (',' ECU_TOKEN)* > NewLine
 val_entry               <- < 'VAL_TABLE_' s* TOKEN s (number_phrase_pair)* ';' > NewLine
 number_phrase_pair      <- number s phrase s
-phrase                  <- < '"' (!'"' .)* '"' >
+phrase                  <- < '"' (escaped_quote / string_char)* '"' >
+string_char             <- (!["] .)
+escaped_quote           <- '\\"'
 sign                    <- < [-+] > _
 sig_sign                <- < [-+] > _
 TOKEN                   <- [a-zA-Z0-9'_']+
