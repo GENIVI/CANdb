@@ -146,6 +146,12 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         cdb_warn("TAG BS Not implemented");
     };
 
+    pegParser["ev"] = [](const peg::SemanticValues& sv) {
+        // TODO: Implement me
+        cdb_warn("TAG EV Not implemented");
+        cdb_debug("Found environment variable [ev] {}", sv.token());
+    };
+
     pegParser["sign"] = [&signs](const peg::SemanticValues& sv) {
         cdb_debug("Found sign {}", sv.token());
         signs.push_back(sv.token());
