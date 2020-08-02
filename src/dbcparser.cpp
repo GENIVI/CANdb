@@ -241,7 +241,7 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
             cdb_debug("Signal: muxName {}, muxNdx {}", muxName, sigMuxNdx);
         }
 
-        CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0) ? CANsignal::Motorola : CANsignal::Intel;
+        CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0) ? CANsignal::Intel : CANsignal::Motorola;
 
         auto signalSize = take_back(numbers);
         auto startBit = take_back(numbers);
