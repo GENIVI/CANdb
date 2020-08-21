@@ -1,5 +1,5 @@
 # DBC Grammar
-grammar                 <- spacing _ version _ comment* ns_comment bs? _ (bu / bu_sl)? _ val_table? _ message* _ bo_tx_bu* _ cm* cm_bu* _ (cm_bo _ / cm_sg _)* _ (ba_def_str / ba_def_num / ba_def_enum / ba_def_rel)* _ (ba_def_def / ba_def_def_rel)* _ ba* _ ba_bu* _ ba_bo* _ ba_sg* _ ba_rel* vals* sig_val* _ EndOfFile
+grammar                 <- spacing _ version _ comment* ns_comment bs? _ (bu / bu_sl)? _ val_table? _ message* _ bo_tx_bu* _ cm* cm_bu* _ (cm_bo _ / cm_sg _)* _ ev* _ (ba_def_str / ba_def_num / ba_def_enum / ba_def_rel)* _ (ba_def_def / ba_def_def_rel)* _ ba* _ ba_bu* _ ba_bo* _ ba_sg* _ ba_rel* vals* sig_val* _ EndOfFile
 
 spacing                 <- (s / comment)*
 ns_comment              <- (ns? / comment)? NewLine*
@@ -15,14 +15,15 @@ cm                      <- < 'CM_' s* phrase > ';' NewLine
 cm_bu                   <- < 'CM_' s* 'BU_' s* TOKEN s* phrase > ';' NewLine
 cm_bo                   <- < 'CM_' s* 'BO_' s* integer s* phrase > ';' NewLine
 cm_sg                   <- < 'CM_' s* 'SG_' s* integer s* TOKEN s* phrase > ';' NewLine*
+ev                      <- < 'EV_' s* TOKEN ':' s* number s* '[' number '|' number ']' s* phrase s* number s* number s* TOKEN *s TOKEN > ';' NewLine*
 ba_def_str              <- (< 'BA_DEF_' s* (('BO_' / 'SG_' / 'BU_') s*)? phrase s* 'STRING' s* ';' > (NewLine / s* comment) ) / comment
-ba_def_num              <- (< 'BA_DEF_' s* (('BO_' / 'SG_' / 'BU_') s*)? phrase s* ('INT' / 'HEX') s* number s* number ';' > (NewLine / s* comment) ) / comment
+ba_def_num              <- (< 'BA_DEF_' s* (('BO_' / 'SG_' / 'BU_') s*)? phrase s* ('INT' / 'HEX' / 'FLOAT') s* number s* number ';' > (NewLine / s* comment) ) / comment
 ba_def_enum             <- (< 'BA_DEF_' s* (('BO_' / 'SG_' / 'BU_') s*)? phrase s* 'ENUM' s* ENUM_VAL';' > (NewLine / s* comment) ) / comment
 ba_def_def              <- < 'BA_DEF_DEF_' s* phrase s* (phrase / number ) ';' > NewLine
 ba                      <- < 'BA_' s* phrase s* (phrase / number ) ';' > NewLine
 ba_bu                   <- < 'BA_' s* phrase s* 'BU_' s* TOKEN s* (phrase / number) ';' > NewLine
 ba_bo                   <- < 'BA_' s* phrase s* 'BO_' s* number s* (phrase / number) s* ';' > NewLine
-ba_sg                   <- < 'BA_' s* phrase s* 'SG_' s* number s* TOKEN s* number s* ';' > NewLine
+ba_sg                   <- < 'BA_' s* phrase s* 'SG_' s* number s* TOKEN s* (phrase / number) s* ';' > NewLine
 # ignore ba_def_rel for now
 ba_def_rel              <- 'BA_DEF_REL_' (!NewLine .)* NewLine
 # ignore ba_def_def_rel for now
@@ -37,7 +38,9 @@ sig_val                 <- < 'SIG_VALTYPE_' s* number s* TOKEN s* ':' s* number 
 signal                  <- < s* 'SG_' s* TOKEN s* mux? mux_ndx? s* ':' s* number '|' number '@' number sig_sign s* '(' number ',' s* number ')' s* '[' number '|' number ']' s* phrase s* ECU_TOKEN (',' ECU_TOKEN)* > NewLine
 val_entry               <- < 'VAL_TABLE_' s* TOKEN s (number_phrase_pair)* ';' > NewLine
 number_phrase_pair      <- number s phrase s
-phrase                  <- < '"' (!'"' .)* '"' >
+phrase                  <- < '"' (escaped_quote / string_char)* '"' >
+string_char             <- (!["] .)
+escaped_quote           <- '\\"'
 sign                    <- < [-+] > _
 sig_sign                <- < [-+] > _
 TOKEN                   <- [a-zA-Z0-9'_']+

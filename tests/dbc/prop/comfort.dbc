@@ -1,0 +1,131 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: SUT_Driver SUT
+
+
+BO_ 1536 DiagResponse: 8 Vector__XXX
+
+BO_ 1792 DiagRequest: 8 Vector__XXX
+
+BO_ 1 LockingRemoteControlRequest: 1 SUT_Driver
+ SG_ LockRequest : 0|2@1+ (1,0) [0|0] ""  SUT
+
+BO_ 0 CentralLockingSystemState: 1 SUT
+ SG_ AntiTheftSystemActive : 1|1@1+ (1,2) [2|10] "" Vector__XXX
+ SG_ LockState : 0|1@1+ (2,3) [3|5] "" Vector__XXX
+
+BO_ 50 VehicleMotion: 3 SUT_Driver
+ SG_ EngineRunning : 17|1@1+ (3,0) [1|3] "" Vector__XXX
+ SG_ CrashDetected : 16|1@1+ (1,0) [0|0] ""  SUT
+ SG_ Velocity : 0|16@1- (3,0) [1|4] ""  SUT
+
+BO_ 100 WindowState: 2 SUT
+ SG_ WindowPosition : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ WindowMotion : 14|2@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 101 WindowControl: 1 SUT_Driver
+ SG_ KeyDown : 1|1@1+ (1,0) [0|0] ""  SUT
+ SG_ KeyUp : 0|1@1+ (1,0) [0|1] ""  SUT
+
+
+
+EV_ DoorClosed: 0 [0|1] "" 0 1 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ rbbpPowermode: 0 [0|5] "" 0 2 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+BA_DEF_  "NmMessageCount" INT 0 0;
+BA_DEF_ BO_  "DiagResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagRequest" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgFastOnStart" INT 0 0;
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 0;
+BA_DEF_ SG_  "NWM-WakeupAllowed" ENUM  "No","Yes";
+BA_DEF_ BO_  "NmMessage" ENUM  "no","yes";
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BU_  "NmNode" ENUM  "no","yes";
+BA_DEF_ BU_  "NmStationAddress" INT 0 63;
+BA_DEF_  "NmBaseAddress" HEX 1024 1087;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 50000;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 50000;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 1000;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 999999;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","NotUsed","NotUsed","NotUsed","NotUsed","Cyclic","NotUsed","IfActive","NoMsgSendType","NotUsed","vector_leerstring";
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 100000;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed";
+BA_DEF_ SG_  "GenSigStartValue" FLOAT 0 100000000000;
+BA_DEF_DEF_  "NmMessageCount" 64;
+BA_DEF_DEF_  "DiagResponse" "No";
+BA_DEF_DEF_  "DiagRequest" "No";
+BA_DEF_DEF_  "GenMsgFastOnStart" 0;
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "NWM-WakeupAllowed" "";
+BA_DEF_DEF_  "NmMessage" "no";
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "NmNode" "no";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "NmBaseAddress" 1024;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "BusType" "CAN";
+BA_DEF_DEF_  "GenMsgCycleTime" 100;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgSendType" "NoMsgSendType";
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "Cyclic";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_ "DiagResponse" BO_ 1536 1;
+BA_ "DiagRequest" BO_ 1792 1;
+BA_ "GenMsgDelayTime" BO_ 101 18;
+BA_ "GenMsgNrOfRepetition" BO_ 101 2;
+BA_ "GenMsgCycleTimeFast" BO_ 101 20;
+BA_ "GenMsgCycleTime" BO_ 101 500;
+BA_ "GenMsgSendType" BO_ 101 0;
+BA_ "GenSigSendType" SG_ 1 LockRequest 1;
+BA_ "GenSigStartValue" SG_ 0 AntiTheftSystemActive 6;
+BA_ "GenSigStartValue" SG_ 0 LockState 0.5;
+BA_ "GenSigStartValue" SG_ 50 EngineRunning 0.666666666666667;
+BA_ "GenSigSendType" SG_ 50 CrashDetected 1;
+BA_ "GenSigStartValue" SG_ 50 Velocity 1;
+BA_ "GenSigStartValue" SG_ 100 WindowPosition 3;
+BA_ "GenSigSendType" SG_ 100 WindowMotion 1;
+BA_ "GenSigSendType" SG_ 101 KeyDown 6;
+BA_ "GenSigSendType" SG_ 101 KeyUp 6;
+BA_ "GenSigStartValue" SG_ 101 KeyUp 1;
+VAL_ 1 LockRequest 3 "Comfort_lock" 2 "Request_unlock" 1 "Request_lock" 0 "idle" ;
+VAL_ 0 AntiTheftSystemActive 2 "currently_opening" 1 "currently_closing" 0 "not_moving" ;
+VAL_ 0 LockState 2 "currently_opening" 1 "currently_closing" 0 "not_moving" ;
+VAL_ 100 WindowMotion 2 "currently_opening" 1 "currently_closing" 0 "not_moving" ;
+
