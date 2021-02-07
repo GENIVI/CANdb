@@ -200,8 +200,7 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
 
     std::string muxName;
     std::vector<CANsignal> signals;
-    pegParser["message"] = [&can_db, &numbers, &signals, &idents,
-                            &muxNdx, &muxedMsg](const peg::SemanticValues&) {
+    pegParser["message"] = [&can_db, &numbers, &signals, &idents, &muxNdx, &muxedMsg](const peg::SemanticValues&) {
         cdb_debug("Found a message {} signals = {}", idents.size(), signals.size());
         if (numbers.size() < 2 || idents.size() < 2) {
             return;
@@ -211,8 +210,7 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         auto ecu = take_back(idents);
         auto name = take_back(idents);
 
-        const CANmessage msg{ static_cast<std::uint32_t>(id), name,
-                    static_cast<std::uint32_t>(dlc), ecu, muxedMsg };
+        const CANmessage msg{ static_cast<std::uint32_t>(id), name, static_cast<std::uint32_t>(dlc), ecu, muxedMsg };
         cdb_debug("Found a message with id = {}", msg.id);
         can_db.messages[msg] = signals;
         signals.clear();
@@ -221,15 +219,11 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         muxedMsg = false;
     };
 
-
     pegParser["mux_master"] = [&muxNdx](const peg::SemanticValues&) { muxNdx = CANsignal::MuxMaster; };
-    pegParser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) {
-        muxNdx = std::stoi(sv.token());
-    };
+    pegParser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) { muxNdx = std::stoi(sv.token()); };
 
-
-    pegParser["signal"] = [&idents, &numbers, &phrases, &signals, &signs, &sig_sign,
-                           &ecu_tokens, &muxNdx, &muxedMsg](const peg::SemanticValues& sv) {
+    pegParser["signal"] = [&idents, &numbers, &phrases, &signals, &signs, &sig_sign, &ecu_tokens, &muxNdx, &muxedMsg](
+                              const peg::SemanticValues& sv) {
         cdb_debug("Found signal {}", sv.token());
 
         const std::vector<std::string> receiver{ ecu_tokens.begin(), ecu_tokens.end() };
@@ -241,7 +235,6 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         auto factor = take_back(numbers);
         CANsignal::SignType valueSigned = (take_back(sig_sign) == "-") ? CANsignal::Signed : CANsignal::Unsigned;
 
-
         CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0) ? CANsignal::Motorola : CANsignal::Intel;
 
         auto signalSize = take_back(numbers);
@@ -250,10 +243,8 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         auto signal_name = take_back(idents);
 
         auto signal = CANsignal{ signal_name, static_cast<std::uint8_t>(startBit),
-            static_cast<std::uint8_t>(signalSize), byteOrder, valueSigned,
-            static_cast<float>(factor), static_cast<float>(offset),
-            static_cast<float>(min), static_cast<float>(max), unit,
-            receiver, muxNdx };
+            static_cast<std::uint8_t>(signalSize), byteOrder, valueSigned, static_cast<float>(factor),
+            static_cast<float>(offset), static_cast<float>(min), static_cast<float>(max), unit, receiver, muxNdx };
 
         signals.push_back(std::move(signal));
 
