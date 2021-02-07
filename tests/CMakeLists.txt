@@ -1,6 +1,6 @@
 include(GoogleTest)
 function(candb_add_test test_name)
-  add_executable(${test_name} ${test_name}.cpp)
+  add_executable(${test_name} ${test_name}.cpp dbc_parser_data.hpp dbc_parser_data_win.hpp)
   gtest_discover_tests(${test_name})
   target_link_libraries(${test_name} CANdb gtest gtest_main test_helper)
   add_test(NAME ${test_name} COMMAND ${test_name})

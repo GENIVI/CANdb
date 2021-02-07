@@ -103,9 +103,6 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
     std::deque<std::string> idents, signs, sig_sign, ecu_tokens;
     std::deque<double> numbers;
 
-    bool mux = false;
-    int muxNdx = -1;
-
     using PhrasePair = std::pair<std::uint32_t, std::string>;
     std::vector<PhrasePair> phrasesPairs;
     CANdb_t can_db;
@@ -198,12 +195,12 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         phrasesPairs.clear();
     };
 
-    pegParser["mux"] = [&mux](const peg::SemanticValues&) { mux = true; };
-    pegParser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) { muxNdx = std::stoi(sv.token()); };
+    uint8_t muxNdx = CANsignal::NonMuxed;
+    bool muxedMsg = false;
 
     std::string muxName;
     std::vector<CANsignal> signals;
-    pegParser["message"] = [&can_db, &numbers, &signals, &idents, &mux, &muxNdx, &muxName](const peg::SemanticValues&) {
+    pegParser["message"] = [&can_db, &numbers, &signals, &idents, &muxNdx, &muxedMsg](const peg::SemanticValues&) {
         cdb_debug("Found a message {} signals = {}", idents.size(), signals.size());
         if (numbers.size() < 2 || idents.size() < 2) {
             return;
@@ -213,19 +210,20 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         auto ecu = take_back(idents);
         auto name = take_back(idents);
 
-        const CANmessage msg{ static_cast<std::uint32_t>(id), name, static_cast<std::uint32_t>(dlc), ecu };
+        const CANmessage msg{ static_cast<std::uint32_t>(id), name, static_cast<std::uint32_t>(dlc), ecu, muxedMsg };
         cdb_debug("Found a message with id = {}", msg.id);
         can_db.messages[msg] = signals;
         signals.clear();
         numbers.clear();
         idents.clear();
-        mux = false;
-        muxNdx = -1;
-        muxName = "";
+        muxedMsg = false;
     };
 
-    pegParser["signal"] = [&idents, &numbers, &phrases, &signals, &signs, &sig_sign, &ecu_tokens, &mux, &muxNdx,
-                              &muxName](const peg::SemanticValues& sv) {
+    pegParser["mux_master"] = [&muxNdx](const peg::SemanticValues&) { muxNdx = CANsignal::MuxMaster; };
+    pegParser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) { muxNdx = std::stoi(sv.token()); };
+
+    pegParser["signal"] = [&idents, &numbers, &phrases, &signals, &signs, &sig_sign, &ecu_tokens, &muxNdx, &muxedMsg](
+                              const peg::SemanticValues& sv) {
         cdb_debug("Found signal {}", sv.token());
 
         const std::vector<std::string> receiver{ ecu_tokens.begin(), ecu_tokens.end() };
@@ -237,16 +235,6 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         auto factor = take_back(numbers);
         CANsignal::SignType valueSigned = (take_back(sig_sign) == "-") ? CANsignal::Signed : CANsignal::Unsigned;
 
-        std::string sigMuxName;
-        std::uint8_t sigMuxNdx = 0xff;
-
-        if (muxNdx != -1) {
-            sigMuxName = muxName;
-            sigMuxNdx = static_cast<std::uint8_t>(muxNdx);
-            muxNdx = -1;
-            cdb_debug("Signal: muxName {}, muxNdx {}", muxName, sigMuxNdx);
-        }
-
         CANsignal::ByteOrder byteOrder = (take_back(numbers) == 0) ? CANsignal::Motorola : CANsignal::Intel;
 
         auto signalSize = take_back(numbers);
@@ -254,16 +242,20 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
 
         auto signal_name = take_back(idents);
 
-        if (mux) {
-            sigMuxName = muxName;
-            sigMuxNdx = static_cast<std::uint8_t>(muxNdx);
-            muxNdx = -1;
+        auto signal = CANsignal{ signal_name, static_cast<std::uint8_t>(startBit),
+            static_cast<std::uint8_t>(signalSize), byteOrder, valueSigned, static_cast<float>(factor),
+            static_cast<float>(offset), static_cast<float>(min), static_cast<float>(max), unit, receiver, muxNdx };
+
+        signals.push_back(std::move(signal));
+
+        if (muxNdx == CANsignal::MuxMaster) {
+            muxedMsg = true;
+            cdb_debug("Signal: muxMaster {}", signal_name);
+        } else if (muxNdx != CANsignal::NonMuxed) {
+            cdb_debug("Signal: MuxNdx{}, muxNdx {}", muxNdx);
         }
 
-        signals.push_back(
-            CANsignal{ signal_name, static_cast<std::uint8_t>(startBit), static_cast<std::uint8_t>(signalSize),
-                byteOrder, valueSigned, static_cast<float>(factor), static_cast<float>(offset), static_cast<float>(min),
-                static_cast<float>(max), unit, receiver, sigMuxName, sigMuxNdx });
+        muxNdx = CANsignal::NonMuxed;
     };
     return pegParser.parse(noTabsData.c_str())
         ? CANdb::CanDbOrError(can_db)

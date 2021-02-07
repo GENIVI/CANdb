@@ -25,7 +25,22 @@ const std::string bo_signed_sigs = R"(BO_ 1091 FKD_Gyro_04: 6 NEO
   SG_ FKD_GyroHead : 0|12@1+ (0.1,0) [0|409.5] "" Vector__XXX
 )";
 
-// This is windows newline
-const std::string bo_with_window_endline = R"(BO_ 666 GTW_stupidSt: 3 NEO SG_ GTW_epasTuneRequest : 5|3@1+ (1,0) [8|-1] "" NEO)";
+const std::string bo_muxed_signals = R"(BO_ 2589283496 MN_MuxMsg_01: 8 MYNODE
+  SG_ MN_MUX M  : 0|2@1+ (1.0,0.0) [0.0|3] ""  Vector__XXX
+  SG_ MN_NonMuxed : 2|1@1+ (1.0,0.0) [0.0|1] ""  Vector__XXX
+  SG_ MN_MuxSig0_1 m0  : 3|4@1+ (1.0,0.0) [0.0|15] ""  Vector__XXX
+  SG_ MN_MuxSig1_1 m1  : 4|12@1+ (0.1,0) [0.0|409.5] ""  Vector__XXX
+  SG_ MN_MuxSig0_2 m0  : 7|1@1+ (1.0,0.0) [0.0|1] ""  Vector__XXX
+  SG_ MN_MuxSig0_3 m0  : 8|27@1+ (0.000001,0) [0.000000|90.000000] ""  Vector__XXX
+  SG_ MN_MuxSig1_2 m1  : 16|14@1+ (1,0) [0|16383] ""  Vector__XXX
+  SG_ MN_MuxSig1_3 m1  : 30|2@1+ (1.0,0.0) [0.0|3] ""  Vector__XXX
+  SG_ MN_MuxSig1_4 m1  : 32|32@1+ (1,0) [0|4294967295] ""  Vector__XXX
+  SG_ MN_MuxSig0_4 m0  : 35|1@1+ (1.0,0.0) [0.0|1] ""  Vector__XXX
+  SG_ MN_MuxSig0_5 m0  : 36|28@1+ (0.000001,0) [0.000000|180.000000] ""  Vector__XXX
+)";
 
 } // namespace test_data
+
+// This is windows newline
+#include "dbc_parser_data_win.hpp"
+

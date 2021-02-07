@@ -184,7 +184,7 @@ BU_ :
 
 )";
     std::vector<std::string> values{ test_data::bo1, test_data::bo2, test_data::bo_with_window_endline,
-        test_data::bo_signed_sigs };
+        test_data::bo_signed_sigs, test_data::bo_muxed_signals };
     for (const auto& value : values) {
         dbc += value;
         dbc += "\n";
@@ -249,6 +249,46 @@ BU_ :
 
     expSig = CANsignal{ "FKD_GyroHead", 0, 12, CANsignal::Intel, CANsignal::Unsigned, 0.1, 0, 0, 409.5, "", { "NEO" } };
     EXPECT_EQ(db->messages.at(gyro).at(2), expSig);
+
+    // testing for muxed (extended can) signals
+
+    CANmessage muxmsg{ 2589283496, "MN_MuxMsg_01", 8, "MYNODE" };
+    EXPECT_EQ(db->messages.find(muxmsg)->first.muxed, true);
+
+    // Mux master signal
+    expSig = CANsignal{ "MN_MUX", 0, 2, CANsignal::Intel, CANsignal::Unsigned, 1.0, 0, 0.0, 3.0, "", { "Vector__XXX" },
+        CANsignal::MuxMaster };
+    EXPECT_EQ(db->messages.at(muxmsg).at(0), expSig);
+
+    // Singular non-muxed signal
+    expSig = CANsignal{ "MN_NonMuxed", 2, 1, CANsignal::Intel, CANsignal::Unsigned, 1.0, 0, 0.0, 1.0, "",
+        { "Vector__XXX" } };
+    EXPECT_EQ(db->messages.at(muxmsg).at(1), expSig);
+
+    // First muxed signal slot 0.1
+    expSig = CANsignal{ "MN_MuxSig0_1", 3, 4, CANsignal::Intel, CANsignal::Unsigned, 1.0, 0, 0.0, 15.0, "",
+        { "Vector__XXX" }, 0 };
+    EXPECT_EQ(db->messages.at(muxmsg).at(2), expSig);
+
+    // First muxed signal slot 1.1
+    expSig = CANsignal{ "MN_MuxSig1_1", 4, 12, CANsignal::Intel, CANsignal::Unsigned, 0.1, 0, 0.0, 409.5, "",
+        { "Vector__XXX" }, 1 };
+    EXPECT_EQ(db->messages.at(muxmsg).at(3), expSig);
+
+    // First muxed signal slot 0.2
+    expSig = CANsignal{ "MN_MuxSig0_2", 7, 1, CANsignal::Intel, CANsignal::Unsigned, 1.0, 0, 0.0, 1.0, "",
+        { "Vector__XXX" }, 0 };
+    EXPECT_EQ(db->messages.at(muxmsg).at(4), expSig);
+
+    // First muxed signal slot 0.3
+    expSig = CANsignal{ "MN_MuxSig0_3", 8, 27, CANsignal::Intel, CANsignal::Unsigned, 0.000001, 0, 0.0, 90.000000, "",
+        { "Vector__XXX" }, 0 };
+    EXPECT_EQ(db->messages.at(muxmsg).at(5), expSig);
+
+    // First muxed signal slot 1.2
+    expSig = CANsignal{ "MN_MuxSig1_2", 16, 14, CANsignal::Intel, CANsignal::Unsigned, 1.0, 0, 0.0, 16383, "",
+        { "Vector__XXX" }, 1 };
+    EXPECT_EQ(db->messages.at(muxmsg).at(6), expSig);
 }
 
 TEST_P(ValuesTest, vals)

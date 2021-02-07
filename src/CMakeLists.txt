@@ -3,6 +3,8 @@ set(
   SRC
   dbcparser.cpp
   parsererror.cpp
+  cantypes.hpp
+  log.hpp
 )
 
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/dbc_grammar.peg DBC_GRAMMAR)
