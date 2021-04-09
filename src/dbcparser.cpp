@@ -1,5 +1,4 @@
 #include "dbcparser.h"
-#include "expected.hpp"
 #include "log.hpp"
 #include "parser.hpp"
 #include "parsererror.hpp"
@@ -11,6 +10,7 @@
 #include <fstream>
 #include <peglib.h>
 #include <system_error>
+#include <tl/expected.hpp>
 
 namespace {
 template <typename T> auto take_first(T& container) -> typename T::value_type
