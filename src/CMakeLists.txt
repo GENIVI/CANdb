@@ -2,8 +2,6 @@ set(
   SRC
   dbcparser.cpp
   parsererror.cpp
-  cantypes.hpp
-  log.hpp
   stringutils.cpp
 )
 
