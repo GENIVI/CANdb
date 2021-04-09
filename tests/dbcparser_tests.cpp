@@ -184,7 +184,7 @@ BU_ :
 
 )";
     std::vector<std::string> values{ test_data::bo1, test_data::bo2, test_data::bo_with_window_endline,
-        test_data::bo_signed_sigs };
+        test_data::bo_signed_sigs, test_data::bo_utf };
     for (const auto& value : values) {
         dbc += value;
         dbc += "\n";
@@ -195,7 +195,7 @@ BU_ :
     ASSERT_TRUE(db);
 
     EXPECT_EQ(db->messages.size(), values.size());
-    EXPECT_EQ(db->messages.at(CANmessage{ 1160 }).size(), 6u);
+    EXPECT_EQ(db->messages.at(CANmessage{ 1160 }).size(), 7u);
 
     // bo1
     std::vector<CANsignal> expectedSignals;
@@ -213,7 +213,7 @@ BU_ :
         { "EPAS" } };
 
     ASSERT_EQ(db->messages.size(), values.size());
-    ASSERT_EQ(db->messages.at(msg).size(), 6u);
+    ASSERT_EQ(db->messages.at(msg).size(), 7u);
     EXPECT_EQ(db->messages.at(msg).at(0), expSig);
 
     expSig = CANsignal{ "DAS_steeringControlChecksum", 31, 8, CANsignal::Motorola, CANsignal::Unsigned, 1, 0, 0, 0, "",

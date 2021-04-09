@@ -5,12 +5,17 @@
 #include "stringutils.h"
 
 #include <dbc_grammar.hpp>
+#include <exception>
+#include <ratio>
+#include <tl/expected.hpp>
 
+#include <codecvt>
 #include <deque>
 #include <fstream>
+#include <locale>
 #include <peglib.h>
+#include <string>
 #include <system_error>
-#include <tl/expected.hpp>
 
 namespace {
 template <typename T> auto take_first(T& container) -> typename T::value_type
@@ -69,6 +74,14 @@ std::string dos2unix(const std::string& data)
     std::string noWindowsShit = StringUtils::replace_all(data, "\r\n", "\n");
 
     return noWindowsShit;
+}
+
+std::string toUtf(const std::string& data)
+{
+    return data;
+    // std::wstring_convert<std::codecvt_utf16<wchar_t>> converter;
+    // std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter2;
+    // return converter2.to_bytes(converter.from_bytes(data));
 }
 
 tl::expected<peg::parser, CANdb::ParserError> loadPegParser()
