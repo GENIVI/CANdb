@@ -4,12 +4,7 @@
 
 #include <system_error>
 namespace CANdb {
-enum class ErrorType {
-    GrammarNotCorrent,
-    DataEmpty,
-    ParsingFailed,
-    StdErrorCode
-};
+enum class ErrorType { GrammarNotCorrent, DataEmpty, ParsingFailed, DBCEncodedIncorrectly, StdErrorCode };
 
 struct ParserErrorCategory : std::error_category {
 
@@ -18,8 +13,9 @@ struct ParserErrorCategory : std::error_category {
 };
 
 struct ParserError {
-    ParserError(ErrorType t)
+    ParserError(ErrorType t, const std::string& mess)
         : _t(t)
+        , _mess(mess)
     {
     }
     ParserError(std::error_code ec)
@@ -31,9 +27,10 @@ struct ParserError {
 
 private:
     ErrorType _t;
+    const std::string _mess;
 };
 
-ParserError make_error_code(ErrorType t);
+ParserError make_error_code(ErrorType t, const std::string& mes = "");
 
 } // namespace CANdb
 
