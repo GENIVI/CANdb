@@ -92,8 +92,12 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
     }
 
     const auto noTabsData = dos2unix(data);
-    pegParser.enable_trace([](const char* a, const char* k, long unsigned int, const peg::SemanticValues&,
-                               const peg::Context&, const peg::any&) { cdb_trace(" Parsing {} \"{}\"", a, k); });
+    const auto traceEnter
+        = [](const char* name, const char* s, size_t n, const peg::SemanticValues& sv, const peg::Context& c,
+              const peg::any& dt) { cdb_trace(" Parsing {} \"{}\"", name, s); };
+    const auto traceLeave = [](const char* name, const char* s, size_t n, const peg::SemanticValues& sv,
+                                const peg::Context& c, const peg::any& dt, std::size_t) {};
+    pegParser.enable_trace(traceEnter, traceLeave);
     strings phrases;
     std::deque<std::string> idents, signs, sig_sign, ecu_tokens;
     std::deque<double> numbers;
