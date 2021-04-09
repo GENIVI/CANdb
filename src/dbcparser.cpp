@@ -3,16 +3,13 @@
 #include "log.hpp"
 #include "parser.hpp"
 #include "parsererror.hpp"
+#include "stringutils.h"
 
 #include <dbc_grammar.hpp>
 
+#include <deque>
 #include <fstream>
 #include <peglib.h>
-
-#include <boost/algorithm/string/classification.hpp>
-#include <boost/algorithm/string/erase.hpp>
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/algorithm/string/split.hpp>
 #include <system_error>
 
 namespace {
@@ -51,12 +48,11 @@ using strings = std::vector<std::string>;
 
 std::string withLines(const std::string& dbcFile)
 {
-    strings split;
 
     auto withDots = dbcFile;
-    boost::replace_all(withDots, " ", "$");
-    boost::replace_all(withDots, "\t", "[t]");
-    boost::split(split, withDots, boost::is_any_of("\n"));
+    withDots = StringUtils::replace_all(withDots, " ", "$");
+    withDots = StringUtils::replace_all(withDots, "\t", "[t]");
+    const strings split = StringUtils::split(withDots, "\n");
     std::string buff;
 
     int counter{ 1 };
@@ -70,8 +66,7 @@ std::string withLines(const std::string& dbcFile)
 // Changes \r\n to \n
 std::string dos2unix(const std::string& data)
 {
-    std::string noWindowsShit;
-    boost::replace_all_copy(std::back_inserter(noWindowsShit), data, "\r\n", "\n");
+    std::string noWindowsShit = StringUtils::replace_all(data, "\r\n", "\n");
 
     return noWindowsShit;
 }
@@ -114,11 +109,8 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         can_db.version = take_back(phrases);
     };
 
-    pegParser["phrase"] = [&phrases](const peg::SemanticValues& sv) {
-        auto s = sv.token();
-        boost::algorithm::erase_all(s, "\"");
-        phrases.push_back(s);
-    };
+    pegParser["phrase"]
+        = [&phrases](const peg::SemanticValues& sv) { phrases.push_back(StringUtils::erase_all(sv.token(), "\"")); };
 
     pegParser["ns"] = [&can_db, &idents](const peg::SemanticValues& sv) {
         can_db.symbols = to_vector(idents);
@@ -126,16 +118,12 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         idents.clear();
     };
 
-    pegParser["TOKEN"] = [&idents](const peg::SemanticValues& sv) {
-        auto s = sv.token();
-        boost::algorithm::erase_all(s, "\n");
-        idents.push_back(s);
-    };
+    pegParser["TOKEN"]
+        = [&idents](const peg::SemanticValues& sv) { idents.push_back(StringUtils::erase_all(sv.token(), "\n")); };
 
     pegParser["ECU_TOKEN"] = [&ecu_tokens](const peg::SemanticValues& sv) {
-        auto s = sv.token();
-        boost::algorithm::erase_all(s, "\n");
-        ecu_tokens.push_back(s);
+        // auto s = sv.token();
+        ecu_tokens.push_back(StringUtils::erase_all(sv.token(), "\n"));
     };
 
     pegParser["bs"] = [](const peg::SemanticValues&) {

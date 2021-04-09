@@ -45,8 +45,6 @@ jobs:
           packages:
             - g++-7
             - cmake
-            - libboost-dev
-            - libboost-filesystem-dev
             - ninja-build
     - os: linux
       compiler: gcc-9
@@ -62,7 +60,6 @@ jobs:
           packages:
             - g++-9
             - cmake
-            - libboost-dev
             - ninja-build
     - os: linux
       compiler: clang
@@ -76,7 +73,6 @@ jobs:
           packages:
             - clang
             - cmake
-            - libboost-dev
             - ninja-build
     - os: linux
       compiler: clang-10
@@ -90,7 +86,6 @@ jobs:
           packages:
             - clang-10
             - cmake
-            - libboost-dev
             - ninja-build
           sources:
             - llvm-toolchain-focal-10
