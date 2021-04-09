@@ -1,5 +1,19 @@
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(TARGETS)
+if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
+   message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+   file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/master/conan.cmake"
+                  "${CMAKE_BINARY_DIR}/conan.cmake")
+endif()
+
+include(${CMAKE_BINARY_DIR}/conan.cmake)
+conan_cmake_run(REQUIRES
+        spdlog/1.8.5
+        cxxopts/2.2.1
+        gtest/1.10.0
+        cpp-peglib/0.1.13
+        tl-expected/20190710
+        termcolor/1.0.1
+    BASIC_SETUP CMAKE_TARGETS
+)
 add_library(cpp-peglib ALIAS CONAN_PKG::cpp-peglib)
 add_library(spdlog ALIAS CONAN_PKG::spdlog)
 add_library(cxxopts ALIAS CONAN_PKG::cxxopts)
