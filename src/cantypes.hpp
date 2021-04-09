@@ -17,6 +17,7 @@ struct CANsignal {
     // plain enums to retain backwards compatibility
     enum ByteOrder { Motorola = 0, Intel = 1 };
     enum SignType { Unsigned = false, Signed = true };
+    enum MuxIndex { /*mux slot 0 .. 253 */ MuxMaster = 0xFE, NonMuxed = 0xFF };
 
     // Constructor required for vs2015
     CANsignal(std::string _signal_name, std::uint8_t _startBit, std::uint8_t _signalSize,
@@ -57,8 +58,12 @@ struct CANsignal {
     {
         return (signal_name == rhs.signal_name) && (startBit == rhs.startBit) && (signalSize == rhs.signalSize)
             && (byteOrder == rhs.byteOrder) && (valueSigned == rhs.valueSigned) && (factor == rhs.factor)
-            && (offset == rhs.offset);
-        // Theres is more to compare, yet this is the logical minimum.
+            && (offset == rhs.offset) && (min == rhs.min) && (max == rhs.max) && (muxNdx == rhs.muxNdx);
+        // Theres is more to compare, yet this is the logical minimum without too much
+        // compromise on performance as the following arguably do not taint the signals
+        // structure
+        // (unit == rhs.unit)
+        // (receiver == rhs.receiver)
     }
 };
 
@@ -106,5 +111,10 @@ struct CANdb_t {
     std::vector<std::string> ecus;
     std::vector<ValTable> val_tables;
 };
+
+inline bool operator==(const CANdb_t::ValTable::ValTableEntry& lhs, const CANdb_t::ValTable::ValTableEntry& rhs)
+{
+    return (lhs.id == rhs.id) && (lhs.ident == rhs.ident);
+}
 
 #endif /* end of include guard: CANTYPES_HPP_ML9DFK7A */
