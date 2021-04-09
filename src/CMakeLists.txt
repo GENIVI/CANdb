@@ -21,5 +21,7 @@ target_include_directories(
   PRIVATE
   ${CMAKE_CURRENT_BINARY_DIR}
 )
-target_link_libraries(CANdb PUBLIC cpp-peglib spdlog tl::expected)
+
+target_link_libraries(CANdb PUBLIC cpp-peglib spdlog tl-expected fmt)
+#target_link_libraries(CANdb PUBLIC spdlog fmt)
 target_compile_features(CANdb PUBLIC cxx_std_14)

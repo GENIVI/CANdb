@@ -12,4 +12,4 @@ target_include_directories(spdlog INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/spdlog/i
 
 add_library(expected INTERFACE)
 target_include_directories(expected INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/expected)
-add_library(tl::expected ALIAS expected)
+add_library(tl-expected ALIAS expected)
