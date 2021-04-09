@@ -32,7 +32,10 @@ target_compile_features(test_helper PUBLIC cxx_std_17)
 target_compile_definitions(test_helper PUBLIC HAS_STD_FILESYSTEM)
 
 candb_add_test(dbcparser_tests)
-candb_add_test(opendbc_tests)
+# As opendbc is a submodule we can't use it with Conan
+if(NOT CANDB__WITH_CONAN)
+    candb_add_test(opendbc_tests)
+endif()
 candb_add_test(prop_tests)
 candb_add_test(stringutils_tests)
 
