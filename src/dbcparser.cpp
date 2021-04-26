@@ -205,6 +205,7 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
 
     pegParser["mux"] = [&mux](const peg::SemanticValues&) { mux = true; };
     pegParser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) { muxNdx = std::stoi(sv.token()); };
+    pegParser["vals"] = [](const peg::SemanticValues&) { std::vector<CANdb_t::ValTable::ValTableEntry> tab; };
 
     std::string muxName;
     std::vector<CANsignal> signals;

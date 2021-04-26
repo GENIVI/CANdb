@@ -36,6 +36,7 @@ candb_add_test(dbcparser_tests)
 if(NOT CANDB__WITH_CONAN)
     candb_add_test(opendbc_tests)
 endif()
+candb_add_test(dbcparser_single_tests)
 candb_add_test(prop_tests)
 candb_add_test(stringutils_tests)
 
