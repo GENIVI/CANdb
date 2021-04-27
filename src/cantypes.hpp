@@ -58,7 +58,7 @@ struct CANsignal {
     {
         return (signal_name == rhs.signal_name) && (startBit == rhs.startBit) && (signalSize == rhs.signalSize)
             && (byteOrder == rhs.byteOrder) && (valueSigned == rhs.valueSigned) && (factor == rhs.factor)
-            && (offset == rhs.offset) && (min == rhs.min) && (max == rhs.max) && (muxNdx == rhs.muxNdx);
+            && (offset == rhs.offset);
         // Theres is more to compare, yet this is the logical minimum without too much
         // compromise on performance as the following arguably do not taint the signals
         // structure
