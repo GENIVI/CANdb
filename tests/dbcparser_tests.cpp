@@ -165,6 +165,7 @@ BU_ :
     const auto db = parser.parse(dbc);
     ASSERT_TRUE(db);
 
+    EXPECT_EQ(db->val_tables.at(0).identifier, "StW_AnglHP_Spd");
     EXPECT_EQ(db->val_tables.size(), values.size());
 }
 

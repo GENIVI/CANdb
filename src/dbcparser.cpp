@@ -194,17 +194,18 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         phrasesPairs.push_back(std::make_pair(take_back(numbers), take_back(phrases)));
     };
 
-    pegParser["val_entry"] = [&can_db, &phrasesPairs](const peg::SemanticValues&) {
+    pegParser["val_entry"] = [&idents, &can_db, &phrasesPairs](const peg::SemanticValues&) {
         std::vector<CANdb_t::ValTable::ValTableEntry> tab;
         std::transform(phrasesPairs.begin(), phrasesPairs.end(), std::back_inserter(tab), [](const auto& p) {
             return CANdb_t::ValTable::ValTableEntry{ p.first, p.second };
         });
-        can_db.val_tables.push_back(CANdb_t::ValTable{ "", tab });
+        can_db.val_tables.push_back(CANdb_t::ValTable{ take_back(idents), tab });
         phrasesPairs.clear();
     };
 
     pegParser["mux"] = [&mux](const peg::SemanticValues&) { mux = true; };
     pegParser["mux_ndx"] = [&muxNdx](const peg::SemanticValues& sv) { muxNdx = std::stoi(sv.token()); };
+    pegParser["vals"] = [](const peg::SemanticValues&) { std::vector<CANdb_t::ValTable::ValTableEntry> tab; };
 
     std::string muxName;
     std::vector<CANsignal> signals;
