@@ -40,6 +40,15 @@ candb_add_test(dbcparser_single_tests)
 candb_add_test(prop_tests)
 candb_add_test(stringutils_tests)
 
+if(CANDB__WITH_CONAN)
+    add_executable(dbc_parser_benchmark benchmark.cpp)
+    target_compile_features(dbc_parser_benchmark PUBLIC cxx_std_17)
+    target_link_libraries(dbc_parser_benchmark benchmark CANdb test_helper)
+    add_custom_target(benchmarks DEPENDS dbc_parser_benchmark
+        COMMAND $<TARGET_FILE:dbc_parser_benchmark>
+        )
+endif()
+
 find_program(VALGRIND "valgrind")
 if(VALGRIND)
   add_custom_target(
