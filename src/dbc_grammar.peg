@@ -61,4 +61,3 @@ NewLine                 <- [\r\n]' '*
 TrailingSpace           <- ' '* _
 
 ~_                      <- [\t\r\n]*
-~__                     <- ![a-zA-Z0-9]

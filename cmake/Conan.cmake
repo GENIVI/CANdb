@@ -9,7 +9,7 @@ conan_cmake_run(REQUIRES
         spdlog/1.8.5
         cxxopts/2.2.1
         gtest/1.10.0
-        cpp-peglib/0.1.13
+        cpp-peglib/1.3.7
         tl-expected/20190710
         termcolor/1.0.1
     BASIC_SETUP CMAKE_TARGETS

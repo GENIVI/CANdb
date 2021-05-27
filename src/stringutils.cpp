@@ -1,8 +1,9 @@
 #include "stringutils.h"
+#include <string_view>
 
 namespace StringUtils {
 
-std::string replace_all(const std::string& original, const std::string& what, const std::string& withWhat)
+std::string replace_all(const std::string_view& original, const std::string& what, const std::string& withWhat)
 {
     std::string result{ original };
     std::size_t index = 0;
@@ -38,5 +39,8 @@ std::vector<std::string> split(const std::string& original, const std::string& d
     return result;
 }
 
-std::string erase_all(const std::string& original, const std::string& what) { return replace_all(original, what, ""); }
+std::string erase_all(const std::string_view& original, const std::string& what)
+{
+    return replace_all(original, what, "");
+}
 } // namespace StringUtils
