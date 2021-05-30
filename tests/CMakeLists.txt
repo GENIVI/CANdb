@@ -10,6 +10,9 @@ function(candb_add_test test_name)
       add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
       add_dependencies(check ${test_name})
   endif()
+  if(CODE_COVERAGE)
+      target_code_coverage(${test_name} AUTO ALL EXCLUDE tests/*)
+  endif()
 endfunction()
 
 try_compile(
