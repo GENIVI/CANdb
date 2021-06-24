@@ -51,37 +51,12 @@ template <typename T> auto to_vector(const T& container) -> std::vector<typename
 using namespace CANdb;
 using strings = std::vector<std::string>;
 
-std::string withLines(const std::string& dbcFile)
-{
-
-    auto withDots = dbcFile;
-    withDots = StringUtils::replace_all(withDots, " ", "$");
-    withDots = StringUtils::replace_all(withDots, "\t", "[t]");
-    const strings split = StringUtils::split(withDots, "\n");
-    std::string buff;
-
-    int counter{ 1 };
-    for (const auto& line : split) {
-        buff += std::to_string(counter++) + std::string{ ": " } + line + std::string{ "\n" };
-    }
-
-    return buff;
-}
-
 // Changes \r\n to \n
 std::string dos2unix(const std::string& data)
 {
     std::string noWindowsShit = StringUtils::replace_all(data, "\r\n", "\n");
 
     return noWindowsShit;
-}
-
-std::string toUtf(const std::string& data)
-{
-    return data;
-    // std::wstring_convert<std::codecvt_utf16<wchar_t>> converter;
-    // std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter2;
-    // return converter2.to_bytes(converter.from_bytes(data));
 }
 
 tl::expected<peg::parser, CANdb::ParserError> loadPegParser()
@@ -105,10 +80,10 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
     }
 
     const auto noTabsData = dos2unix(data);
-    const auto traceEnter = [](const peg::Ope& ope, const char* name, std::size_t, const peg::SemanticValues&,
+    const auto traceEnter = [](const peg::Ope&, const char* name, std::size_t, const peg::SemanticValues&,
                                 const peg::Context&, const std::any&) { cdb_trace(" Parsing {} ", name); };
-    const auto traceLeave = [](const peg::Ope& ope, const char* s, std::size_t n, const peg::SemanticValues& sv,
-                                const peg::Context& c, const std::any& dt, std::size_t) {};
+    const auto traceLeave = [](const peg::Ope&, const char*, std::size_t, const peg::SemanticValues&,
+                                const peg::Context&, const std::any&, std::size_t) {};
     pegParser.enable_trace(traceEnter, traceLeave);
     strings phrases;
     std::deque<std::string> idents, signs, sig_sign, ecu_tokens;
@@ -229,7 +204,7 @@ CANdb::CanDbOrError parse(peg::parser& pegParser, const std::string& data)
         muxName = "";
     };
 
-    pegParser["signal"] = [&idents, &numbers, &phrases, &signals, &signs, &sig_sign, &ecu_tokens, &mux, &muxNdx,
+    pegParser["signal"] = [&idents, &numbers, &phrases, &signals, &sig_sign, &ecu_tokens, &mux, &muxNdx,
                               &muxName](const peg::SemanticValues& sv) {
         cdb_debug("Found signal {}", sv.token());
 
