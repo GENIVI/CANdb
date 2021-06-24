@@ -13,20 +13,17 @@ struct ParserErrorCategory : std::error_category {
 };
 
 struct ParserError {
-    ParserError(ErrorType t, const std::string& mess)
-        : _t(t)
-        , _mess(mess)
+    ParserError(ErrorType, const std::string& mess)
+        : _mess(mess)
     {
     }
-    ParserError(std::error_code ec)
-        : _t(ErrorType::StdErrorCode)
+    ParserError(std::error_code)
     {
     }
 
     std::string message() const;
 
 private:
-    ErrorType _t;
     const std::string _mess;
 };
 
